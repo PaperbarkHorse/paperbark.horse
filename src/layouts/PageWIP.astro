@@ -1,0 +1,82 @@
+---
+import PaperBlock from "$components/containers/PaperBlock.astro";
+import StickyNote from "$components/containers/StickyNote.astro";
+import Content from "$components/elements/Content.astro";
+import Skeleton from "./Skeleton.astro";
+
+interface Props {
+    title: string;
+}
+
+let { title } = Astro.props;
+---
+
+<Skeleton {title} bodyClass="background-carpet">
+    <main class="page-content">
+        <div class="page-inner">
+            <StickyNote>
+                <div class="note-inner">
+                    <Content>
+                        <p>This page is under construction.<br />Come back another time!</p>
+                    </Content>
+                </div>
+            </StickyNote>
+            <PaperBlock>
+                <div class="content-inner">
+                    <img src="/assets/construction.gif" alt="" />
+
+                    <!-- TODO: Replace with sticky note button -->
+                    <Content theme="paper">
+                        <p>
+                            <a href="/">Return to homepage</a>
+                        </p>
+                    </Content>
+                </div>
+            </PaperBlock>
+        </div>
+    </main>
+</Skeleton>
+
+<style lang="scss">
+    .page-content {
+        min-height: 100svh;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .page-inner {
+        display: flex;
+        flex-direction: column;
+
+        gap: 1rem;
+        padding: 1rem;
+
+        img {
+            width: 100%;
+            max-width: 18rem;
+
+            border-radius: 0.5rem;
+
+            box-shadow: var(--shadow-medium);
+        }
+    }
+
+    .note-inner {
+        padding: 1rem 1.5rem;
+
+        font-weight: var(--font-medium);
+        text-align: center;
+    }
+
+    .content-inner {
+        display: flex;
+        flex-direction: column;
+
+        gap: 1rem;
+
+        text-align: center;
+    }
+</style>

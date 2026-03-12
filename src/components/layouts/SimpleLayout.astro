@@ -1,0 +1,17 @@
+<div class="simple-layout">
+    <slot />
+</div>
+
+<style lang="scss">
+    .simple-layout {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+
+        width: 100%;
+        max-width: 50rem;
+
+        padding-inline: 1rem;
+        gap: 2rem;
+    }
+</style>

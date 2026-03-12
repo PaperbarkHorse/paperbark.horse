@@ -1,8 +1,12 @@
 ---
+interface Props {
+    padding?: boolean;
+}
 
+const { padding = true } = Astro.props;
 ---
 
-<div class="sticky-note">
+<div class:list={["sticky-note", { padding }]}>
     <div class="sticky-note-inner">
         <slot />
     </div>
@@ -11,6 +15,10 @@
 <style lang="scss">
     .sticky-note {
         filter: var(--filter-shadow-medium);
+
+        &.padding .sticky-note-inner {
+            padding: 1rem 1.5rem;
+        }
     }
 
     .sticky-note-inner {

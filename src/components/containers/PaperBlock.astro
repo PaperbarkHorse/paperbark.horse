@@ -1,4 +1,12 @@
-<div class="paper-block">
+---
+interface Props {
+    padding?: boolean;
+}
+
+const { padding = true } = Astro.props;
+---
+
+<div class:list={["paper-block", { padding }]}>
     <slot />
 </div>
 
@@ -28,11 +36,17 @@
             content: "";
             position: absolute;
             left: var(--paper-margin-width);
+            top: 0;
+            bottom: 0;
 
             width: 0.2rem;
-            height: 100%;
 
             background-color: #fcb9b9;
+        }
+
+        &.padding {
+            padding: 1rem;
+            padding-left: calc(var(--paper-margin-width) + 0.2rem + 1rem);
         }
     }
 </style>

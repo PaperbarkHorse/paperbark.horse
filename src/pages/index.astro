@@ -1,21 +1,18 @@
 ---
-import ContentPage from "$layouts/ContentPage.astro";
+import Page from "$layouts/Page.astro";
 import SiteBanner from "$components/display/SiteBanner.astro";
 import PaperBlock from "$components/containers/PaperBlock.astro";
 import Content from "$components/elements/Content.astro";
+import SimpleLayout from "$components/layouts/SimpleLayout.astro";
 ---
 
-<ContentPage title="Home">
+<Page title="Home" navigation={false}>
     <SiteBanner />
-    <div
-        style="display: flex; flex-direction: column; align-self: center; width: 100%; max-width: 50rem; padding: 1rem; gap: 1rem;"
-    >
+    <SimpleLayout>
         <PaperBlock>
-            <div style="padding: 1rem;">
-                <Content theme="paper">
-                    <p>What the dog doin?</p>
-                </Content>
-            </div>
+            <Content theme="paper">
+                <p>What the dog doin?</p>
+            </Content>
         </PaperBlock>
-    </div>
-</ContentPage>
+    </SimpleLayout>
+</Page>

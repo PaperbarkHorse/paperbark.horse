@@ -1,23 +1,46 @@
 ---
-import "$styles/site.scss";
-import "$styles/fonts/lexend.scss";
+import Skeleton from "./Skeleton.astro";
 
 interface Props {
     title: string;
+    navigation?: boolean;
 }
 
-let { title } = Astro.props;
+let { title, navigation = true } = Astro.props;
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>{title} - Paperbark</title>
-    </head>
-    <body>
+<Skeleton {title} bodyClass="background-carpet">
+    <main class="page-content">
+        <!-- TODO: Replace with sticky note button -->
+        {
+            navigation && (
+                <nav class="page-navigation">
+                    <a href="/">Return to homepage</a>
+                </nav>
+            )
+        }
         <slot />
-    </body>
-</html>
+    </main>
+</Skeleton>
+
+<style lang="scss">
+    .page-content {
+        display: flex;
+        flex-direction: column;
+
+        flex-grow: 1;
+
+        margin-bottom: 5rem;
+    }
+
+    .page-navigation {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+
+        padding: 0.2rem 1rem;
+        background-color: var(--highlighter-yellow);
+    }
+</style>
