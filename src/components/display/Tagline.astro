@@ -4,7 +4,7 @@ import StickyNote from "$components/containers/StickyNote.astro";
 
 <a id="tagline-container" target="_blank" rel="noreferrer noopener">
     <StickyNote padding={false}>
-        <p id="tagline-text">It's the Festival of Friendship!</p>
+        <p id="tagline-text"></p>
     </StickyNote>
 </a>
 
@@ -44,7 +44,7 @@ import StickyNote from "$components/containers/StickyNote.astro";
         },
         {
             type: "song",
-            text: "You can make it if you try, with a hop, skip and jump!",
+            text: "You can make it if you try with a hop, skip and jump!",
             href: "https://www.youtube.com/watch?v=s_lJFoyujrA",
         },
         {
@@ -130,6 +130,7 @@ import StickyNote from "$components/containers/StickyNote.astro";
         { type: "quote", text: "The night will last forever!" },
         { type: "quote", text: "I just don't know what went wrong!" },
         { type: "quote", text: "What the dog doing?" },
+        { type: "quote", text: "Chicken jockey!" },
 
         // Text
         { type: "text", text: "I &#9829; Vinyl Scratch!" },
@@ -137,6 +138,7 @@ import StickyNote from "$components/containers/StickyNote.astro";
         { type: "text", text: "I &#9829; Big Mac!" },
         { type: "text", text: "I &#9829; Marble Pie!" },
         { type: "text", text: "Every pony is best pony!" },
+        { type: "text", text: "Crazy? I was crazy once..." },
     ];
 
     function refreshQuote() {
@@ -166,9 +168,9 @@ import StickyNote from "$components/containers/StickyNote.astro";
 
     const boopTarget = document.getElementById("boop-target");
 
-    if (boopTarget) {
-        boopTarget.addEventListener("click", refreshQuote);
-    }
+    // if (boopTarget) {
+    //     boopTarget.addEventListener("click", refreshQuote);
+    // }
 </script>
 
 <style lang="scss">

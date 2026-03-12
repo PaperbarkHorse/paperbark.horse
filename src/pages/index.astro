@@ -1,18 +1,10 @@
 ---
 import Page from "$layouts/Page.astro";
 import SiteBanner from "$components/display/SiteBanner.astro";
-import PaperBlock from "$components/containers/PaperBlock.astro";
-import Content from "$components/elements/Content.astro";
-import SimpleLayout from "$components/layouts/SimpleLayout.astro";
+import PlaceholderSocials from "$components/display/PlaceholderSocials.astro";
 ---
 
 <Page title="Home" navigation={false}>
     <SiteBanner />
-    <SimpleLayout>
-        <PaperBlock>
-            <Content theme="paper">
-                <p>What the dog doin?</p>
-            </Content>
-        </PaperBlock>
-    </SimpleLayout>
+    <PlaceholderSocials />
 </Page>
