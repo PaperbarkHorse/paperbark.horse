@@ -2,13 +2,13 @@
 import Polaroid from "$components/elements/Polaroid.astro";
 import Tagline from "$components/display/Tagline.astro";
 import TitleSVG from "$assets/paperbark-title.svg";
-import paperbarkProfile from "$assets/paperbark-profile.png";
+import paperbarkProfile from "$assets/paperbark-profile.jpg";
 ---
 
 <div class="site-banner">
     <div class="left">
         <Polaroid src={paperbarkProfile.src} angle="-5deg" width="100%" />
-        <button id="boop-target" title="Boop!"></button>
+        <button id="boop-target" title="Boop!" class="hidden"></button>
         <div id="explosion"></div>
     </div>
     <div class="right">
@@ -40,6 +40,7 @@ import paperbarkProfile from "$assets/paperbark-profile.png";
     squeeAltAudio.preservesPitch = false;
 
     if (boopTarget) {
+        boopTarget.classList.remove("hidden");
         boopTarget.addEventListener("click", boop);
     }
 
