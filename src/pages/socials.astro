@@ -1,104 +1,110 @@
 ---
 import Page from "$layouts/Page.astro";
 import SiteBanner from "$components/blocks/SiteBanner.astro";
+import ArrowButton from "$components/elements/ArrowButton.astro";
+import CenterBlock from "$components/blocks/CenterBlock.astro";
+import Paper from "$components/containers/Paper.astro";
 
 import DiscordIcon from "$assets/icons/discord.svg";
 import TelegramIcon from "$assets/icons/telegram.svg";
 import SteamIcon from "$assets/icons/steam.svg";
 import LastFmIcon from "$assets/icons/lastfm.svg";
 import BlueskyIcon from "$assets/icons/bluesky.svg";
+import ContentBlock from "$components/blocks/ContentBlock.astro";
 ---
 
-<Page title="Socials" navigation={false} footer={false}>
+<Page title="Socials" navigation={false}>
     <SiteBanner />
-    <div class="link-group">
-        <a class="link" href="/discord" style="--bg: #5865f2; --fg: #ffffff;">
-            <div class="icon">
-                <DiscordIcon class="icon-image" style="transform: scale(1.03);" />
+    <ContentBlock width="30rem">
+        <Paper>
+            <div class="link-group">
+                <a class="link" href="/discord" style="--bg: #5865f2; --fg: #ffffff;">
+                    <div class="icon">
+                        <DiscordIcon class="icon-image" style="transform: scale(1.03);" />
+                    </div>
+                    <div class="details">
+                        <span class="service">Discord</span>
+                        <span class="name">quasarhusky</span>
+                    </div>
+                </a>
+                <a
+                    class="link"
+                    href="https://t.me/QuasarHusky"
+                    target="_blank"
+                    rel="noreferrer"
+                    style="--bg: #0088cc; --fg: #ffffff;"
+                >
+                    <div class="icon">
+                        <TelegramIcon class="icon-image" />
+                    </div>
+                    <div class="details">
+                        <span class="service">Telegram</span>
+                        <span class="name">@QuasarHusky</span>
+                    </div>
+                </a>
+                <a
+                    class="link"
+                    href="https://steamcommunity.com/id/quasarhusky/"
+                    target="_blank"
+                    rel="noreferrer"
+                    style="--bg: #171D25; --fg: #ffffff;"
+                >
+                    <div class="icon">
+                        <SteamIcon class="icon-image" />
+                    </div>
+                    <div class="details">
+                        <span class="service">Steam</span>
+                        <span class="name">QuasarHusky</span>
+                    </div>
+                </a>
+                <a
+                    class="link"
+                    href="https://www.last.fm/user/QuasarHusky"
+                    target="_blank"
+                    rel="noreferrer"
+                    style="--bg: #d51007; --fg: #ffffff;"
+                >
+                    <div class="icon">
+                        <LastFmIcon class="icon-image" />
+                    </div>
+                    <div class="details">
+                        <span class="service">Last.fm</span>
+                        <span class="name">QuasarHusky</span>
+                    </div>
+                </a>
+                <a
+                    class="link"
+                    href="https://bsky.app/profile/quasarhusky.uk"
+                    target="_blank"
+                    rel="noreferrer"
+                    style="--bg: #1185FE; --fg: #ffffff;"
+                >
+                    <div class="icon">
+                        <BlueskyIcon class="icon-image" style="transform: scale(0.95) translateY(2%);" />
+                    </div>
+                    <div class="details">
+                        <span class="service">Bluesky</span>
+                        <span class="name">@quasarhusky.uk</span>
+                    </div>
+                </a>
             </div>
-            <div class="details">
-                <span class="service">Discord</span>
-                <span class="name">quasarhusky</span>
-            </div>
-        </a>
-        <a
-            class="link"
-            href="https://t.me/QuasarHusky"
-            target="_blank"
-            rel="noreferrer"
-            style="--bg: #0088cc; --fg: #ffffff;"
-        >
-            <div class="icon">
-                <TelegramIcon class="icon-image" />
-            </div>
-            <div class="details">
-                <span class="service">Telegram</span>
-                <span class="name">@QuasarHusky</span>
-            </div>
-        </a>
-        <a
-            class="link"
-            href="https://steamcommunity.com/id/quasarhusky/"
-            target="_blank"
-            rel="noreferrer"
-            style="--bg: #171D25; --fg: #ffffff;"
-        >
-            <div class="icon">
-                <SteamIcon class="icon-image" />
-            </div>
-            <div class="details">
-                <span class="service">Steam</span>
-                <span class="name">QuasarHusky</span>
-            </div>
-        </a>
-        <a
-            class="link"
-            href="https://www.last.fm/user/QuasarHusky"
-            target="_blank"
-            rel="noreferrer"
-            style="--bg: #d51007; --fg: #ffffff;"
-        >
-            <div class="icon">
-                <LastFmIcon class="icon-image" />
-            </div>
-            <div class="details">
-                <span class="service">Last.fm</span>
-                <span class="name">QuasarHusky</span>
-            </div>
-        </a>
-        <a
-            class="link"
-            href="https://bsky.app/profile/quasarhusky.uk"
-            target="_blank"
-            rel="noreferrer"
-            style="--bg: #1185FE; --fg: #ffffff;"
-        >
-            <div class="icon">
-                <BlueskyIcon class="icon-image" style="transform: scale(0.95) translateY(2%);" />
-            </div>
-            <div class="details">
-                <span class="service">Bluesky</span>
-                <span class="name">@quasarhusky.uk</span>
-            </div>
-        </a>
-        <a class="link-subtle" href="https://quasarhusky.atabook.org/">Leave me a message!</a>
-    </div>
+        </Paper>
+    </ContentBlock>
+    <CenterBlock>
+        <div class="button-container">
+            <ArrowButton href="https://quasarhusky.atabook.org/" external={true}>
+                Sign my guestbook!
+            </ArrowButton>
+            <!-- <ArrowButton href="/">Explore the website</ArrowButton> -->
+        </div>
+    </CenterBlock>
 </Page>
 
 <style lang="scss">
     .link-group {
         display: flex;
         flex-direction: column;
-        align-self: center;
 
-        width: 100%;
-        max-width: 500px;
-
-        padding: 1rem;
-
-        font-size: 1.2rem;
-
-        margin-bottom: 2rem;
         gap: 1rem;
     }
 
@@ -116,11 +122,8 @@ import BlueskyIcon from "$assets/icons/bluesky.svg";
 
         text-decoration: none;
         color: var(--fg);
-    }
 
-    .link:hover,
-    .link:focus-visible {
-        outline: 0.2rem solid white;
+        box-shadow: var(--shadow-medium);
     }
 
     .link > .icon {
@@ -161,5 +164,13 @@ import BlueskyIcon from "$assets/icons/bluesky.svg";
     .link-subtle:hover,
     .link-subtle:focus {
         text-decoration: underline;
+    }
+
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        gap: 1rem;
     }
 </style>

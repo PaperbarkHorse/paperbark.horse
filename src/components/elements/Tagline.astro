@@ -42,8 +42,6 @@ const quotes = await getCollection("tagline");
             forcedMode ? quote.data.force : !seenQuotes.includes(quote.id),
         );
 
-        console.log(pickableQuotes.length);
-
         let quote = pickableQuotes[Math.floor(Math.random() * pickableQuotes.length)];
 
         if (quote.data.type === "song") {
