@@ -1,8 +1,21 @@
 ---
 import ContentPage from "$layouts/ContentPage.astro";
-import Polaroid from "$components/elements/Polaroid.astro";
+import SiteBanner from "$components/display/SiteBanner.astro";
+import PaperBlock from "$components/containers/PaperBlock.astro";
+import Content from "$components/elements/Content.astro";
 ---
 
 <ContentPage title="Home">
-    <Polaroid src="/Paperbark Boop.png" />
+    <SiteBanner />
+    <div
+        style="display: flex; flex-direction: column; align-self: center; width: 100%; max-width: 50rem; padding: 1rem; gap: 1rem;"
+    >
+        <PaperBlock>
+            <div style="padding: 1rem;">
+                <Content theme="paper">
+                    <p>What the dog doin?</p>
+                </Content>
+            </div>
+        </PaperBlock>
+    </div>
 </ContentPage>

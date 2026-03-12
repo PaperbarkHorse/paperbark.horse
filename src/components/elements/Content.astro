@@ -73,7 +73,7 @@ const { theme = "default", style } = Astro.props;
 
     .content.theme-paper {
         > p a {
-            background-color: #f9e380;
+            background-color: var(--highlighter-yellow);
             mix-blend-mode: multiply;
 
             border-top-left-radius: 1.8em 0.6em;
@@ -88,7 +88,7 @@ const { theme = "default", style } = Astro.props;
             margin-block: -0.05em;
 
             &[target="_blank"] {
-                background-color: #baf980;
+                background-color: var(--highlighter-green);
             }
         }
     }

@@ -11,13 +11,33 @@
     --font-extrabold: 800;
     --font-black: 900;
 
+    --highlighter-yellow: #f9e380;
+    --highlighter-green: #baf980;
+
     --text-black: #2b2b2b;
     --text-white: #eeeeee;
 
-    --shadow-medium: 0.15rem 0.15rem 0.35rem rgba(0, 0, 0, 0.175), 0rem 0rem 0.1rem rgba(0, 0, 0, 0.1);
-    --shadow-large: 0.33rem 0.33rem 1rem rgba(0, 0, 0, 0.175), 0rem 0rem 0.2rem rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0.15rem 0.15rem 0.35rem rgba(0, 0, 0, 0.15), 0rem 0rem 0.1rem rgba(0, 0, 0, 0.1);
+    --shadow-large: 0.33rem 0.33rem 1rem rgba(0, 0, 0, 0.15), 0rem 0rem 0.2rem rgba(0, 0, 0, 0.1);
+
+    --filter-shadow-medium: drop-shadow(0.15rem 0.15rem 0.15rem rgba(0, 0, 0, 0.15))
+        drop-shadow(0rem 0rem 0.1rem rgba(0, 0, 0, 0.05));
+    --filter-shadow-large: drop-shadow(0.33rem 0.33rem 1rem rgba(0, 0, 0, 0.15))
+        drop-shadow(0rem 0rem 0.2rem rgba(0, 0, 0, 0.1));
 
     font-size: 112.5%;
+}
+
+@media screen and (max-width: 400px) {
+    :root {
+        font-size: 100%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    :root {
+        font-size: 88%;
+    }
 }
 
 *,
@@ -62,4 +82,17 @@ audio,
 video {
     display: block;
     line-height: 1.1;
+}
+
+button {
+    padding: unset;
+
+    border: unset;
+    background: unset;
+
+    font-family: inherit;
+    font-size: 1em;
+    color: inherit;
+
+    cursor: pointer;
 }

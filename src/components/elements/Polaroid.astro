@@ -3,12 +3,14 @@ interface Props {
     src: string;
     alt?: string;
     width?: string;
+    dynamic?: boolean;
+    angle?: string;
 }
 
-const { src, alt = "", width } = Astro.props;
+const { src, alt = "", width, dynamic = false, angle = "0deg" } = Astro.props;
 ---
 
-<div class="polaroid" style={{ "--polaroid-width": width }}>
+<div class:list={["polaroid", { dynamic }]} style={{ "--polaroid-width": width, "--polaroid-angle": angle }}>
     <img {src} {alt} />
 </div>
 
@@ -16,6 +18,7 @@ const { src, alt = "", width } = Astro.props;
     .polaroid {
         --polaroid-width: 12.5rem;
         --polaroid-edge: calc(var(--polaroid-width) * 0.05);
+        --polaroid-angle: 0deg;
 
         position: relative;
 
@@ -32,11 +35,28 @@ const { src, alt = "", width } = Astro.props;
         background-image: linear-gradient(-45deg, #f3f3f3, #ffffff);
 
         box-shadow: var(--shadow-medium);
+        rotate: var(--polaroid-angle);
+        scale: 100%;
+        z-index: 0;
 
         img {
             width: 100%;
             aspect-ratio: 1 / 1;
             object-fit: cover;
+        }
+
+        &.dynamic {
+            transition-property: rotate, scale, box-shadow;
+            transition-duration: 0.12s;
+            transition-timing-function: ease-out;
+
+            &:hover {
+                rotate: calc(var(--polaroid-angle) * 0.25);
+                scale: 110%;
+                z-index: 10;
+
+                box-shadow: var(--shadow-large);
+            }
         }
     }
 </style>
