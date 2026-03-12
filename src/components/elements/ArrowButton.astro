@@ -1,0 +1,66 @@
+---
+type Direction = "none" | "backwards" | "forwards";
+
+interface Props {
+    href: string;
+    external?: boolean;
+    direction?: Direction;
+}
+
+const { href, external = false, direction = "forwards" } = Astro.props;
+---
+
+<a
+    {href}
+    class:list={["arrow-button", `direction-${direction}`]}
+    target={external ? "_blank" : undefined}
+    rel={external ? "noreferrer noopener" : undefined}
+>
+    <div class="arrow-button-inner">
+        <slot />
+    </div>
+</a>
+
+<style lang="scss">
+    .arrow-button {
+        --arrow-size: 1.5rem;
+
+        filter: var(--filter-shadow-medium);
+
+        .arrow-button-inner {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            padding-block: 0.5rem;
+            padding-inline: 1.25rem;
+
+            border-radius: 0.2rem;
+
+            background-image: var(--sticky-note-yellow-gradient);
+
+            font-weight: var(--font-bold);
+            text-align: center;
+        }
+
+        &.direction-forwards .arrow-button-inner {
+            padding-left: 1.25rem;
+            padding-right: 2.25rem;
+            clip-path: polygon(
+                0 0,
+                calc(100% - var(--arrow-size)) 0,
+                100% 50%,
+                calc(100% - var(--arrow-size)) 100%,
+                0 100%
+            );
+        }
+
+        &.direction-backwards .arrow-button-inner {
+            padding-left: 2.25rem;
+            padding-right: 1.25rem;
+            clip-path: polygon(0 50%, var(--arrow-size) 0, 100% 0, 100% 100%, var(--arrow-size) 100%);
+        }
+    }
+</style>

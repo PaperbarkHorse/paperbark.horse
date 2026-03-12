@@ -1,4 +1,5 @@
 ---
+import ArrowButton from "$components/elements/ArrowButton.astro";
 import Skeleton from "./Skeleton.astro";
 
 interface Props {
@@ -10,15 +11,16 @@ let { title, navigation = true } = Astro.props;
 ---
 
 <Skeleton {title} bodyClass="background-carpet">
+    {
+        navigation && (
+            <nav class="page-navigation">
+                <ArrowButton href="/" direction="backwards">
+                    Return to homepage
+                </ArrowButton>
+            </nav>
+        )
+    }
     <main class="page-content">
-        <!-- TODO: Replace with sticky note button -->
-        {
-            navigation && (
-                <nav class="page-navigation">
-                    <a href="/">Return to homepage</a>
-                </nav>
-            )
-        }
         <slot />
     </main>
 </Skeleton>
@@ -38,7 +40,6 @@ let { title, navigation = true } = Astro.props;
         align-items: center;
         align-self: center;
 
-        padding: 0.2rem 1rem;
-        background-color: var(--highlighter-yellow);
+        padding: 2rem;
     }
 </style>
