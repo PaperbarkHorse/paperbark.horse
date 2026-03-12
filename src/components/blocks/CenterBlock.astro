@@ -1,0 +1,18 @@
+<div class="center-block">
+    <slot />
+</div>
+
+<style lang="scss">
+    .center-block {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        max-width: var(--site-content-width);
+        align-self: center;
+
+        &:not(:first-child) {
+            margin-top: var(--site-content-spacing);
+        }
+    }
+</style>

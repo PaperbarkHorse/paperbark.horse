@@ -1,8 +1,27 @@
 ---
 import Page from "$layouts/Page.astro";
-import SiteBanner from "$components/display/SiteBanner.astro";
+import SiteBanner from "$components/blocks/SiteBanner.astro";
+import ContentBlock from "$components/blocks/ContentBlock.astro";
+import CenterBlock from "$components/blocks/CenterBlock.astro";
+import Paper from "$components/containers/Paper.astro";
+import StickyNote from "$components/containers/StickyNote.astro";
+import Content from "$components/elements/Content.astro";
 ---
 
 <Page title="Home" navigation={false}>
     <SiteBanner />
+    <ContentBlock>
+        <Paper>
+            <Content theme="paper">
+                <p>There's nothing here yet...</p>
+            </Content>
+        </Paper>
+    </ContentBlock>
+    <CenterBlock>
+        <StickyNote>
+            <Content>
+                <p>Wow a sticky note!</p>
+            </Content>
+        </StickyNote>
+    </CenterBlock>
 </Page>

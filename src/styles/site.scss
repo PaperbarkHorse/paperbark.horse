@@ -28,6 +28,9 @@
         drop-shadow(0rem 0rem 0.2rem rgba(0, 0, 0, 0.1));
 
     font-size: 112.5%;
+
+    --site-content-width: 50rem;
+    --site-content-spacing: 2rem;
 }
 
 @media screen and (max-width: 400px) {

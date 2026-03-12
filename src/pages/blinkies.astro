@@ -1,14 +1,14 @@
 ---
-import PaperBlock from "$components/containers/PaperBlock.astro";
+import ContentBlock from "$components/blocks/ContentBlock.astro";
+import Paper from "$components/containers/Paper.astro";
 import Blinkie from "$components/elements/Blinkie.astro";
 import Content from "$components/elements/Content.astro";
-import SimpleLayout from "$components/layouts/SimpleLayout.astro";
 import Page from "$layouts/Page.astro";
 ---
 
 <Page title="Blinkies">
-    <SimpleLayout>
-        <PaperBlock>
+    <ContentBlock>
+        <Paper>
             <Content theme="paper">
                 <!-- TODO: Fix spacing -->
                 <h2>Blinkies</h2>
@@ -102,9 +102,11 @@ import Page from "$layouts/Page.astro";
                     />
                 </div>
             </div>
-        </PaperBlock>
+        </Paper>
+    </ContentBlock>
 
-        <PaperBlock>
+    <ContentBlock>
+        <Paper>
             <Content theme="paper">
                 <!-- TODO: Fix spacing -->
                 <h2>Stamps</h2>
@@ -206,9 +208,11 @@ import Page from "$layouts/Page.astro";
                 <Blinkie type="stamp" src="/blinkies/stamps/i-love-lua.png" alt="I Love Lua" />
                 <Blinkie type="stamp" src="/blinkies/stamps/paint-dot-net.jpg" alt="I use Paint.NET" />
             </div>
-        </PaperBlock>
+        </Paper>
+    </ContentBlock>
 
-        <PaperBlock>
+    <ContentBlock>
+        <Paper>
             <Content theme="paper">
                 <!-- TODO: Fix spacing -->
                 <h2>Buttons</h2>
@@ -317,8 +321,8 @@ import Page from "$layouts/Page.astro";
                 />
                 <Blinkie type="button" src="/blinkies/buttons/css-is-awesome.png" alt="CSS is awesome" />
             </div>
-        </PaperBlock>
-    </SimpleLayout>
+        </Paper>
+    </ContentBlock>
 </Page>
 
 <style lang="scss">
