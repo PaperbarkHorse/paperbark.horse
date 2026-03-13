@@ -1,0 +1,76 @@
+---
+import Paper from "$components/containers/Paper.astro";
+import StickyNote from "$components/containers/StickyNote.astro";
+import ArrowButton from "$components/elements/ArrowButton.astro";
+import Skeleton from "./Skeleton.astro";
+
+interface Props {
+    status: string;
+    title: string;
+    image?: string;
+}
+
+let { status, title, image = "/images/errors/404.png" } = Astro.props;
+---
+
+<Skeleton title={`${status}: ${title}`} bodyClass="background-carpet">
+    <main class="page-content">
+        <img src={image} alt="" class="main-image" />
+        <Paper>
+            <div class="note-inner">
+                <div class="message">
+                    <span class="status">{status}</span>
+                    <h1 class="title">{title}</h1>
+                </div>
+                <div class="button-container">
+                    <ArrowButton href="/" direction="backwards">Return to homepage</ArrowButton>
+                </div>
+            </div>
+        </Paper>
+    </main>
+</Skeleton>
+
+<style lang="scss">
+    .page-content {
+        min-height: 100svh;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        gap: 2rem;
+        padding-block: 2rem;
+    }
+
+    .note-inner {
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+
+        gap: 1.5rem;
+
+        text-align: center;
+    }
+
+    .main-image {
+        width: 100%;
+        max-width: 17.5rem;
+    }
+
+    .status {
+        font-size: 4rem;
+        font-weight: var(--font-medium);
+        line-height: 0.8;
+        text-align: center;
+    }
+
+    .title {
+        font-size: 2rem;
+        font-weight: var(--font-semibold);
+        line-height: 1.1;
+        text-align: center;
+    }
+</style>
