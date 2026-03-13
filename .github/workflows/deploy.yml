@@ -1,0 +1,34 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [24]
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build Astro project
+        run: pnpm build
+      - name: Add SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519 && chmod 600 ~/.ssh/id_ed25519
+      - name: Deploy using SCP
+        run: scp -o StrictHostKeyChecking=no -i ~/.ssh/id_ed25519 -r ./dist/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/data/sites/paperbark.horse/web_deploy
+      - name: Update live site
+        run: ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_ed25519 ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd /data/sites/paperbark.horse && rm -rf web && mv web_deploy web && chmod -R 775 web"

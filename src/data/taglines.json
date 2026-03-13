@@ -332,7 +332,7 @@
     },
     "73": {
         "type": "text",
-        "text": "Archiving memories since 2024!"
+        "text": "Preserving memories since 2024!"
     },
     "74": {
         "type": "text",
@@ -340,7 +340,7 @@
     },
     "75": {
         "type": "text",
-        "text": "The same song on repeat!"
+        "text": "One song on repeat!"
     },
     "76": {
         "type": "text",
@@ -371,5 +371,67 @@
     "82": {
         "type": "text",
         "text": "Designed responsively!"
+    },
+    "83": {
+        "type": "text",
+        "text": "<em>Melaleuca quinquenervia</em>",
+        "href": "https://en.wikipedia.org/wiki/Melaleuca_quinquenervia"
+    },
+    "84": {
+        "type": "text",
+        "text": "<img src=\"/assets/its-tv-time.png\" alt=\"IT'S!! TV!! TIME!!!\" style=\"width: 100%;\">"
+    },
+    "85": {
+        "type": "quote",
+        "text": "Coming straight from YOUR house!"
+    },
+    "86": {
+        "type": "quote",
+        "text": "You can't get this from an EGG!"
+    },
+    "87": {
+        "type": "quote",
+        "text": "Whaaaaat?!"
+    },
+    "88": {
+        "type": "quote",
+        "text": "Muffin?"
+    },
+    "89": {
+        "type": "quote",
+        "text": "Dude, are we talking horses?"
+    },
+    "90": {
+        "type": "text",
+        "text": "Whole ass teapot!"
+    },
+    "91": {
+        "type": "text",
+        "text": "Always under construction!"
+    },
+    "92": {
+        "type": "quote",
+        "text": "[[Hyperlink Blocked]]"
+    },
+    "93": {
+        "type": "text",
+        "text": "Free and open source!",
+        "href": "https://github.com/QuasarHusky/paperbark.horse"
+    },
+    "94": {
+        "type": "quote",
+        "text": "First we mine, then we craft!"
+    },
+    "95": {
+        "type": "text",
+        "text": "Check out my mixtapes!"
+    },
+    "96": {
+        "type": "quote",
+        "text": "I'd like to be a tree!"
+    },
+    "97": {
+        "type": "quote",
+        "text": "There's only one way to find out &mdash; FIGHT!!!"
     }
 }
