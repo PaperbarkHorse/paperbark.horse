@@ -1,0 +1,51 @@
+---
+import Page from "$layouts/Page.astro";
+import ContentBlock from "$components/blocks/ContentBlock.astro";
+import Paper from "$components/containers/Paper.astro";
+import PaperTitle from "$components/elements/PaperTitle.astro";
+---
+
+<Page title="2025 Mixtape" back={{ href: "/playlists", text: "Playlists" }}>
+    <ContentBlock>
+        <Paper>
+            <PaperTitle>
+                <h1>2025 Mixtape</h1>
+            </PaperTitle>
+            <div class="playlist-shelf">
+                <div class="overview">
+                    <img src="/images/playlists/2025-mixtape.jpg" alt="" class="cover-image" />
+                </div>
+                <div class="description"></div>
+                <ol class="track-list"></ol>
+            </div>
+        </Paper>
+    </ContentBlock>
+    <ContentBlock>
+        <Paper>
+            <PaperTitle>
+                <h2>B-Side</h2>
+            </PaperTitle>
+            <div class="playlist-shelf">
+                <div class="overview">
+                    <img src="/images/playlists/2025-mixtape-b-side.jpg" alt="" class="cover-image" />
+                </div>
+                <div class="description"></div>
+                <ol class="track-list"></ol>
+            </div>
+        </Paper>
+    </ContentBlock>
+</Page>
+
+<style lang="scss">
+    .playlist-shelf {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+
+        gap: 1rem;
+
+        .cover-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+        }
+    }
+</style>

@@ -1,14 +1,16 @@
 ---
 import ArrowButton from "$components/elements/ArrowButton.astro";
+import { backIn } from "svelte/easing";
 import Skeleton from "./Skeleton.astro";
 
 interface Props {
     title: string;
     navigation?: boolean;
     footer?: boolean;
+    back?: { text: string; href: string; }
 }
 
-let { title, navigation = true, footer = true } = Astro.props;
+let { title, navigation = true, footer = true, back } = Astro.props;
 ---
 
 <Skeleton {title} bodyClass="background-carpet">
@@ -17,9 +19,18 @@ let { title, navigation = true, footer = true } = Astro.props;
     {
         navigation && (
             <nav class="page-navigation">
-                <ArrowButton href="/" direction="backwards">
-                    Return to homepage
-                </ArrowButton>
+                { back ? 
+                    <ArrowButton href={back.href} direction="backwards">
+                        {back.text}
+                    </ArrowButton>
+                    <ArrowButton href="/" direction="none">
+                        Home
+                    </ArrowButton>
+                    :
+                    <ArrowButton href="/" direction="backwards">
+                        Return to homepage
+                    </ArrowButton>
+                }
             </nav>
         )
     }
@@ -44,12 +55,13 @@ let { title, navigation = true, footer = true } = Astro.props;
 
     .page-navigation {
         display: flex;
-        flex-direction: column;
+        flex-direction: flex;
         justify-content: center;
         align-items: center;
         align-self: center;
 
         padding: 2rem;
+        gap: 1rem;
     }
 
     .page-footer {
