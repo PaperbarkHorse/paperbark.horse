@@ -18,6 +18,8 @@ let { title, bodyClass } = Astro.props;
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>{title} - Paperbark</title>
+
+        <slot name="head" />
     </head>
     <body class={bodyClass}>
         <slot />
