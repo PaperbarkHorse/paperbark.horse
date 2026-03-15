@@ -42,6 +42,7 @@ let { status, title, image = "/images/errors/404.png" } = Astro.props;
         align-items: center;
 
         gap: 2rem;
+        padding-inline: 1rem;
         padding-block: 2rem;
     }
 
@@ -59,7 +60,9 @@ let { status, title, image = "/images/errors/404.png" } = Astro.props;
 
     .main-image {
         width: 100%;
-        max-width: 14rem;
+        max-width: 18rem;
+        aspect-ratio: 4 / 3;
+        object-fit: contain;
     }
 
     .status {
