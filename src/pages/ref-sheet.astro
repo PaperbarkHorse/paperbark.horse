@@ -1,0 +1,72 @@
+---
+import ContentBlock from "$components/blocks/ContentBlock.astro";
+import Paper from "$components/containers/Paper.astro";
+import ArrowButton from "$components/elements/ArrowButton.astro";
+import Content from "$components/elements/Content.astro";
+import PaperTitle from "$components/elements/PaperTitle.astro";
+import Page from "$layouts/Page.astro";
+---
+
+<Page title="Ref Sheet">
+    <ContentBlock>
+        <Paper>
+            <PaperTitle>
+                <h1>Ref Sheet</h1>
+            </PaperTitle>
+            <div class="ref-container">
+                <img src="/images/refs/paperbark.png" alt="Paperbark ref sheet" class="ref-image" />
+            </div>
+            <div class="button-container">
+                <ArrowButton
+                    href="/images/refs/paperbark.png"
+                    download="Paperbark Ref Sheet.png"
+                    direction="forwards"
+                >
+                    Download reference sheet
+                </ArrowButton>
+            </div>
+            <Content theme="paper">
+                <br />
+                <p>
+                    All rights reserved. Paperbark reference sheet commissioned from
+                    <a href="https://beatlinked.carrd.co/" target="_blank" rel="noopener noreferrer">
+                        Beatlinked</a
+                    >. Do not use unless I am commissioning you for artwork or you have explicit permission
+                    from me to use it. Never to be used for NSFW artwork. Do not copy, repost, or
+                    redistribute.
+                </p>
+                <p>
+                    Use with generative AI is prohibited. Do not use this reference sheet to generate AI
+                    images or videos, and do not use it to train AI models.
+                </p>
+                <p>
+                    <a href="/socials">Contact me</a>
+                    for permission or more information.
+                </p>
+            </Content>
+        </Paper>
+    </ContentBlock>
+</Page>
+
+<style lang="scss">
+    .ref-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .ref-image {
+        width: 100%;
+        max-width: 70vh;
+
+        box-shadow: var(--shadow-medium);
+    }
+
+    .button-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        padding-block: 1rem;
+    }
+</style>

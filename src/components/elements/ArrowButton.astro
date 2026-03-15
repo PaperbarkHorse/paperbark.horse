@@ -3,16 +3,18 @@ type Direction = "none" | "backwards" | "forwards";
 
 interface Props {
     href: string;
-    external?: boolean;
     direction?: Direction;
+    external?: boolean;
+    download?: string;
     visualCenter?: boolean;
 }
 
-const { href, external = false, direction = "forwards", visualCenter = false } = Astro.props;
+const { href, download, external = false, direction = "forwards", visualCenter = false } = Astro.props;
 ---
 
 <a
     {href}
+    {download}
     class:list={["arrow-button", `direction-${direction}`, { "visual-center": visualCenter }]}
     target={external ? "_blank" : undefined}
     rel={external ? "noreferrer noopener" : undefined}
