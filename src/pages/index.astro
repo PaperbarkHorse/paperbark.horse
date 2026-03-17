@@ -6,11 +6,25 @@ import Paper from "$components/containers/Paper.astro";
 import Content from "$components/elements/Content.astro";
 import ArrowButton from "$components/elements/ArrowButton.astro";
 import ContentBlock from "$components/blocks/ContentBlock.astro";
-import PaperTitle from "$components/elements/PaperTitle.astro";
+import StickyNote from "$components/containers/StickyNote.astro";
 ---
 
 <Page title="Home" navigation={false}>
     <SiteBanner />
+    <ContentBlock width="30rem">
+        <StickyNote color="green">
+            <Content theme="sticky-note">
+                <h2>My name has changed!</h2>
+                <p>
+                    I've started using the name <strong>"Paperbark"</strong> online instead of my previous name
+                    <strong>"Quasar"</strong>.
+                </p>
+                <div class="button-container">
+                    <ArrowButton href="/name-change" color="white">Find out more</ArrowButton>
+                </div>
+            </Content>
+        </StickyNote>
+    </ContentBlock>
     <CenterBlock>
         <Paper>
             <Content theme="paper" style="max-width: 20rem;">

@@ -1,21 +1,32 @@
 ---
-type Direction = "none" | "backwards" | "forwards";
-
 interface Props {
     href: string;
-    direction?: Direction;
+    direction?: "none" | "backwards" | "forwards";
+    color?: "yellow" | "green" | "white";
     external?: boolean;
     download?: string;
     visualCenter?: boolean;
 }
 
-const { href, download, external = false, direction = "forwards", visualCenter = false } = Astro.props;
+const {
+    href,
+    download,
+    external = false,
+    direction = "forwards",
+    color = "yellow",
+    visualCenter = false,
+} = Astro.props;
 ---
 
 <a
     {href}
     {download}
-    class:list={["arrow-button", `direction-${direction}`, { "visual-center": visualCenter }]}
+    class:list={[
+        "arrow-button",
+        `direction-${direction}`,
+        `sticky-note-color-${color}`,
+        { "visual-center": visualCenter },
+    ]}
     target={external ? "_blank" : undefined}
     rel={external ? "noreferrer noopener" : undefined}
 >
@@ -72,6 +83,18 @@ const { href, download, external = false, direction = "forwards", visualCenter =
 
         &.direction-backwards.visual-center {
             margin-left: calc(var(--arrow-size) * -1);
+        }
+
+        &.sticky-note-color-yellow .arrow-button-inner {
+            background-image: var(--sticky-note-yellow-gradient);
+        }
+
+        &.sticky-note-color-green .arrow-button-inner {
+            background-image: var(--sticky-note-green-gradient);
+        }
+
+        &.sticky-note-color-white .arrow-button-inner {
+            background-image: var(--sticky-note-white-gradient);
         }
     }
 </style>

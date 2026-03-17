@@ -1,12 +1,13 @@
 ---
 interface Props {
     padding?: boolean;
+    color?: "yellow" | "green" | "white";
 }
 
-const { padding = true } = Astro.props;
+const { padding = true, color = "yellow" } = Astro.props;
 ---
 
-<div class:list={["sticky-note", { padding }]}>
+<div class:list={["sticky-note", `sticky-note-color-${color}`, { padding }]}>
     <div class="sticky-note-inner">
         <slot />
     </div>
@@ -19,6 +20,18 @@ const { padding = true } = Astro.props;
         &.padding .sticky-note-inner {
             padding: 1rem 1.5rem;
         }
+
+        &.sticky-note-color-yellow .sticky-note-inner {
+            background-image: var(--sticky-note-yellow-gradient);
+        }
+
+        &.sticky-note-color-green .sticky-note-inner {
+            background-image: var(--sticky-note-green-gradient);
+        }
+
+        &.sticky-note-color-white .sticky-note-inner {
+            background-image: var(--sticky-note-white-gradient);
+        }
     }
 
     .sticky-note-inner {
@@ -28,8 +41,6 @@ const { padding = true } = Astro.props;
         position: relative;
 
         border-radius: var(--sticky-note-corner-radius);
-
-        background-image: var(--sticky-note-yellow-gradient);
 
         color: var(--text-black);
 

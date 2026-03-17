@@ -1,6 +1,6 @@
 ---
 interface Props {
-    theme?: "default" | "paper";
+    theme?: "default" | "paper" | "sticky-note";
     style?: string;
 }
 
@@ -76,10 +76,17 @@ const { theme = "default", style } = Astro.props;
         > ol {
             padding-left: 1em;
         }
+
+        > .button-container {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
     }
 
     .content.theme-paper {
-        > * a[href] {
+        > :is(p, ul, ol) a[href] {
             background-color: var(--highlighter-yellow);
             mix-blend-mode: multiply;
 
@@ -97,6 +104,25 @@ const { theme = "default", style } = Astro.props;
             &[target="_blank"] {
                 background-color: var(--highlighter-green);
             }
+        }
+    }
+
+    .content.theme-sticky-note {
+        --content-gap: 1em;
+
+        > h1,
+        > h2,
+        > h3,
+        > h4,
+        > h5,
+        > h6 {
+            font-weight: var(--font-bold);
+            line-height: 1.2;
+            font-size: 1.2rem;
+        }
+
+        > .button-container {
+            justify-content: center;
         }
     }
 </style>
