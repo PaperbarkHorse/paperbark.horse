@@ -77,6 +77,26 @@ const { theme = "default", style } = Astro.props;
             padding-left: 1em;
         }
 
+        > table {
+            align-self: flex-start;
+            border-collapse: collapse;
+
+            td,
+            th {
+                padding: 0.1rem 0.3rem;
+            }
+
+            th {
+                padding-top: 0.2rem;
+                border-bottom: 0.15rem solid rgba(0, 0, 0, 0.2);
+            }
+
+            th[scope="row"] {
+                text-align: right;
+                border-bottom: none;
+            }
+        }
+
         > .button-container {
             display: flex;
             flex-direction: row;
@@ -86,7 +106,7 @@ const { theme = "default", style } = Astro.props;
     }
 
     .content.theme-paper {
-        > :is(p, ul, ol) a[href] {
+        > :is(p, ul, ol, table) a[href] {
             background-color: var(--highlighter-yellow);
             mix-blend-mode: multiply;
 
