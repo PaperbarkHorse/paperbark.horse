@@ -232,7 +232,7 @@
     },
     "50": {
         "type": "text",
-        "text": "Over 16,000 scrobbles!"
+        "text": "Over 17,000 scrobbles!"
     },
     "51": {
         "type": "quote",
@@ -546,10 +546,41 @@
     },
     "125": {
         "type": "text",
-        "text": "Over 2,000 journal entries!"
+        "text": "Over 2,000 days of journaling!"
     },
     "126": {
         "type": "text",
         "text": "The Royal Horse Paperbark!"
+    },
+    "127": {
+        "type": "quote",
+        "text": "We better hurry, it's almost 5 minutes past 4!",
+        "href": "https://www.youtube.com/watch?v=ALhxCDHC_VE"
+    },
+    "128": {
+        "type": "quote",
+        "text": "Eight spices! Some must be doubles.",
+        "href": "https://www.youtube.com/watch?v=kPA90uCyc7A"
+    },
+    "129": {
+        "type": "quote",
+        "text": "You got the dud!",
+        "href": "https://www.youtube.com/watch?v=awRGKFUcl_A"
+    },
+    "130": {
+        "type": "text",
+        "text": "No bark and no bite!"
+    },
+    "131": {
+        "type": "text",
+        "text": "Professional background pony!"
+    },
+    "132": {
+        "type": "text",
+        "text": "Friendship is Magic!"
+    },
+    "133": {
+        "type": "text",
+        "text": "Redeem your free hug coupons here!"
     }
 }
