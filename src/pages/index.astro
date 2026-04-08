@@ -27,30 +27,29 @@ import Polaroid from "$components/elements/Polaroid.astro";
             </Content>
         </StickyNote>
     </ContentBlock>
-    <CenterBlock>
+    <ContentBlock>
         <Paper>
-            <Content theme="paper" style="max-width: 20rem;">
-                <p><strong>This site is under construction!</strong></p>
-                <p>More things will be here soon, but for now you can check out my social links.</p>
-                <br />
+            <PaperTitle>
+                <h2>Welcome</h2>
+            </PaperTitle>
+            <Content theme="paper">
+                <p>Hey there, I'm Paperbark!</p>
             </Content>
-            <div style="display: flex; flex-direction: row; justify-content: center;">
-                <ArrowButton href="/socials">Check out my socials</ArrowButton>
-            </div>
         </Paper>
-    </CenterBlock>
-    <!-- <ContentBlock>
+    </ContentBlock>
+    <ContentBlock>
         <Paper>
             <PaperTitle>
                 <h2>Explore</h2>
             </PaperTitle>
-            <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 1rem;">
+            <nav class="nav-list">
                 <ArrowButton href="/playlists">Playlists</ArrowButton>
                 <ArrowButton href="/shrines">Shrines</ArrowButton>
                 <ArrowButton href="/blinkies">Blinkies</ArrowButton>
-            </div>
+                <ArrowButton href="/socials">Socials</ArrowButton>
+            </nav>
         </Paper>
-    </ContentBlock> -->
+    </ContentBlock>
     <ContentBlock>
         <Paper>
             <PaperTitle>
@@ -82,7 +81,7 @@ import Polaroid from "$components/elements/Polaroid.astro";
                     <Polaroid src="/images/ocs/gasoline/profile.jpg" angle="4deg" />
                     <div class="item-details">
                         <span class="item-title">Gasoline</span>
-                        <span class="item-description">Fire hazard</span>
+                        <span class="item-description">Highly flammable</span>
                     </div>
                 </a>
                 <a href="/ocs/maple-scruff" class="grid-item">
@@ -127,5 +126,14 @@ import Polaroid from "$components/elements/Polaroid.astro";
                 font-weight: var(--font-semibold);
             }
         }
+    }
+
+    .nav-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+
+        gap: 1rem;
     }
 </style>
