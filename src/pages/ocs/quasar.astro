@@ -1,0 +1,31 @@
+---
+import Page from "$layouts/Page.astro";
+import ContentBlock from "$components/blocks/ContentBlock.astro";
+import Paper from "$components/containers/Paper.astro";
+import Content from "$components/elements/Content.astro";
+import PaperTitle from "$components/elements/PaperTitle.astro";
+import Polaroid from "$components/elements/Polaroid.astro";
+import Link from "$components/elements/Link.astro";
+---
+
+<Page title="Quasar">
+    <ContentBlock>
+        <Paper>
+            <PaperTitle>
+                <h1>Quasar</h1>
+            </PaperTitle>
+            <Content theme="paper">
+                <figure class="float">
+                    <Polaroid src="/images/ocs/quasar/profile.jpg" />
+                    <figcaption>
+                        Artwork by <Link href="https://oggy123.eu/">OggyTheFox</Link>
+                    </figcaption>
+                </figure>
+                <p>
+                    <strong>Quasar</strong> was my fursona betweem 2018 and 2026, when I retired him in favour of
+                    <Link href="/ocs/paperbark">Paperbark</Link>.
+                </p>
+            </Content>
+        </Paper>
+    </ContentBlock>
+</Page>

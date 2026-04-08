@@ -7,6 +7,8 @@ import Content from "$components/elements/Content.astro";
 import ArrowButton from "$components/elements/ArrowButton.astro";
 import ContentBlock from "$components/blocks/ContentBlock.astro";
 import StickyNote from "$components/containers/StickyNote.astro";
+import PaperTitle from "$components/elements/PaperTitle.astro";
+import Polaroid from "$components/elements/Polaroid.astro";
 ---
 
 <Page title="Home" navigation={false}>
@@ -16,7 +18,7 @@ import StickyNote from "$components/containers/StickyNote.astro";
             <Content theme="sticky-note">
                 <h2>My name has changed!</h2>
                 <p>
-                    I've started using the name <strong>"Paperbark"</strong> online instead of my previous name
+                    Since March 2026, I've started using the name <strong>"Paperbark"</strong> online instead of
                     <strong>"Quasar"</strong>.
                 </p>
                 <div class="button-container">
@@ -49,4 +51,81 @@ import StickyNote from "$components/containers/StickyNote.astro";
             </div>
         </Paper>
     </ContentBlock> -->
+    <ContentBlock>
+        <Paper>
+            <PaperTitle>
+                <h2>My OCs</h2>
+            </PaperTitle>
+            <div class="polaroid-grid">
+                <a href="/ocs/paperbark" class="grid-item">
+                    <Polaroid src="/images/ocs/paperbark/profile.jpg" angle="-4deg" />
+                    <div class="item-details">
+                        <span class="item-title">Paperbark</span>
+                        <span class="item-description">Archivist pony</span>
+                    </div>
+                </a>
+                <a href="/ocs/quasar" class="grid-item">
+                    <Polaroid src="/images/ocs/quasar/profile.jpg" angle="2deg" />
+                    <div class="item-details">
+                        <span class="item-title">Quasar</span>
+                        <span class="item-description">The dog</span>
+                    </div>
+                </a>
+                <a href="/ocs/cocoa-butter" class="grid-item">
+                    <Polaroid src="/images/ocs/cocoa-butter/profile.jpg" angle="-3deg" />
+                    <div class="item-details">
+                        <span class="item-title">Cocoa Butter</span>
+                        <span class="item-description">Highlands cow</span>
+                    </div>
+                </a>
+                <a href="/ocs/gasoline" class="grid-item">
+                    <Polaroid src="/images/ocs/gasoline/profile.jpg" angle="4deg" />
+                    <div class="item-details">
+                        <span class="item-title">Gasoline</span>
+                        <span class="item-description">Fire hazard</span>
+                    </div>
+                </a>
+                <a href="/ocs/maple-scruff" class="grid-item">
+                    <Polaroid src="/images/ocs/maple-scruff/profile.jpg" angle="-2deg" />
+                    <div class="item-details">
+                        <span class="item-title">Maple Scruff</span>
+                        <span class="item-description">Pegasus</span>
+                    </div>
+                </a>
+            </div>
+        </Paper>
+    </ContentBlock>
 </Page>
+
+<style lang="scss">
+    .polaroid-grid {
+        --polaroid-width: min(100%, 12.5rem);
+
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+        align-items: center;
+
+        gap: 1rem;
+
+        .grid-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            padding: 0.6rem;
+            gap: 1rem;
+
+            text-align: center;
+
+            .item-details {
+                display: flex;
+                flex-direction: column;
+                align-self: normal;
+            }
+
+            .item-title {
+                font-weight: var(--font-semibold);
+            }
+        }
+    }
+</style>

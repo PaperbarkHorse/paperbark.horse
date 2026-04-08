@@ -33,7 +33,7 @@
 
     font-size: 112.5%; // 18px
 
-    --site-content-width: 50rem;
+    --site-content-width: min(45rem, 70ch);
     --site-content-spacing: 2rem;
     --site-content-edge: 0.5rem;
 }
@@ -89,7 +89,9 @@ h3,
 h4,
 h5,
 h6,
-p {
+p,
+figure,
+figcaption {
     margin: 0;
 
     font-size: 1em;

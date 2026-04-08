@@ -14,12 +14,16 @@ const { src, alt = "", width, dynamic = false, angle = "0deg" } = Astro.props;
     {src ? <img {src} {alt} /> : <slot />}
 </div>
 
-<style lang="scss">
-    .polaroid {
-        --polaroid-width: 12.5rem;
+<style is:global lang="scss">
+    :root {
+        --polaroid-width: min(100%, 12.5rem);
         --polaroid-edge: calc(var(--polaroid-width) * 0.05);
         --polaroid-angle: 0deg;
+    }
+</style>
 
+<style lang="scss">
+    .polaroid {
         position: relative;
 
         display: flex;

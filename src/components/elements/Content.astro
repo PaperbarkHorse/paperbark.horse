@@ -17,10 +17,7 @@ const { theme = "default", style } = Astro.props;
 
         width: 100%;
 
-        display: flex;
-        flex-direction: column;
-
-        > * + * {
+        > :not(.float) + * {
             margin-top: var(--content-gap);
         }
 
@@ -97,16 +94,35 @@ const { theme = "default", style } = Astro.props;
             }
         }
 
+        > figure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            gap: 0.5rem;
+
+            figcaption {
+                align-self: normal;
+
+                font-style: italic;
+                text-align: center;
+            }
+        }
+
         > .button-container {
             display: flex;
             flex-direction: row;
             gap: 1rem;
             flex-wrap: wrap;
         }
+
+        > .float {
+            margin-bottom: 1rem;
+        }
     }
 
     .content.theme-paper {
-        > :is(p, ul, ol, table) a[href] {
+        > :is(p, ul, ol, table, figure) a[href] {
             background-color: var(--highlighter-yellow);
             mix-blend-mode: multiply;
 
@@ -143,6 +159,18 @@ const { theme = "default", style } = Astro.props;
 
         > .button-container {
             justify-content: center;
+        }
+    }
+
+    @media screen and (min-width: 550px) {
+        .content {
+            > .float {
+                max-width: 20ch;
+                float: right;
+
+                margin-left: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
         }
     }
 </style>
