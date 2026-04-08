@@ -6,6 +6,8 @@ import Content from "$components/elements/Content.astro";
 import PaperTitle from "$components/elements/PaperTitle.astro";
 import Polaroid from "$components/elements/Polaroid.astro";
 import Link from "$components/elements/Link.astro";
+import Gallery from "$components/elements/gallery/Gallery.astro";
+import GalleryImage from "$components/elements/gallery/GalleryImage.astro";
 ---
 
 <Page title="Paperbark">
@@ -16,16 +18,75 @@ import Link from "$components/elements/Link.astro";
             </PaperTitle>
             <Content theme="paper">
                 <figure class="float">
-                    <Polaroid src="/images/ocs/paperbark/profile.jpg" />
+                    <Polaroid src="/images/ocs/paperbark/profile.jpg" angle="-2deg" />
                     <figcaption>
                         Artwork by <Link href="https://beatlinked.carrd.co/">Beatlinked</Link>
                     </figcaption>
                 </figure>
                 <p>
-                    <strong>Paperbark</strong> is my main ponysona! They're a gentle unicorn pony who loves to archive
-                    and preserve memories.
+                    <strong>Paperbark</strong> is my main
+                    <Link href="https://en.wikipedia.org/wiki/Ponysona">ponysona</Link>. They're a gentle,
+                    reserved unicorn pony who loves to archive and preserve memories.
                 </p>
             </Content>
+        </Paper>
+    </ContentBlock>
+    <ContentBlock>
+        <Paper>
+            <PaperTitle>
+                <h2>Character</h2>
+            </PaperTitle>
+            <Content theme="paper">
+                <p></p>
+            </Content>
+        </Paper>
+    </ContentBlock>
+    <ContentBlock>
+        <Paper>
+            <PaperTitle>
+                <h2>Outfits</h2>
+            </PaperTitle>
+            <Gallery>
+                <GalleryImage src="/images/ocs/paperbark/outfits/base.png">Base</GalleryImage>
+                <GalleryImage src="/images/ocs/paperbark/outfits/av.png">AV technician</GalleryImage>
+                <GalleryImage src="/images/ocs/paperbark/outfits/av-armbands.png">
+                    AV with armbands
+                </GalleryImage>
+                <GalleryImage src="/images/ocs/paperbark/outfits/pride-2025.png">Pride (2025)</GalleryImage>
+                <GalleryImage src="/images/ocs/paperbark/outfits/swimming.png">Swimming</GalleryImage>
+                <GalleryImage src="/images/ocs/paperbark/outfits/pirate.png">Pirate</GalleryImage>
+                <GalleryImage src="/images/ocs/paperbark/outfits/halloween-2025.png">
+                    Wizard (Halloween 2025)
+                </GalleryImage>
+                <GalleryImage src="/images/ocs/paperbark/outfits/christmas-2025.png">
+                    Christmas 2025
+                </GalleryImage>
+                <GalleryImage src="/images/ocs/paperbark/outfits/christmas-2025-alt.png">
+                    Christmas 2025 (Alt)
+                </GalleryImage>
+                <GalleryImage src="/images/ocs/paperbark/outfits/winter-2025.png">Winter 2025</GalleryImage>
+                <GalleryImage src="/images/ocs/paperbark/outfits/formal.png">
+                    Formal business attire
+                </GalleryImage>
+            </Gallery>
+        </Paper>
+    </ContentBlock>
+    <ContentBlock>
+        <Paper>
+            <PaperTitle>
+                <h2>Gallery</h2>
+            </PaperTitle>
+            <Gallery>
+                <GalleryImage src="/images/ocs/paperbark/boop.jpg">
+                    By <Link href="https://linktr.ee/sodaspaceshop">Soda</Link>
+                </GalleryImage>
+                <GalleryImage src="/images/ocs/paperbark/beatlinked.png">
+                    By <Link href="https://beatlinked.carrd.co/">Beatlinked</Link>
+                </GalleryImage>
+                <GalleryImage src="/images/ocs/paperbark/ponytown.jpg">
+                    By <Link href="https://linktr.ee/sodaspaceshop">Soda</Link>
+                </GalleryImage>
+            </Gallery>
         </Paper>
     </ContentBlock>
 </Page>

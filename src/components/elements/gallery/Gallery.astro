@@ -1,0 +1,18 @@
+---
+
+---
+
+<div class="gallery">
+    <slot />
+</div>
+
+<style lang="scss">
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(9.05rem, 1fr));
+
+        gap: 0.5rem;
+
+        text-align: center;
+    }
+</style>

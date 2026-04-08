@@ -1,0 +1,42 @@
+---
+import Content from "../Content.astro";
+
+interface Props {
+    src: string;
+}
+
+let { src } = Astro.props;
+---
+
+<figure class="gallery-image">
+    <a href={src} target="_blank">
+        <img {src} alt="" />
+    </a>
+    <figcaption>
+        <Content theme="paper">
+            <p>
+                <slot />
+            </p>
+        </Content>
+    </figcaption>
+</figure>
+
+<style lang="scss">
+    .gallery-image {
+        display: flex;
+        flex-direction: column;
+
+        gap: 0.5rem;
+        padding: 0.5rem;
+
+        border-radius: 0.5rem;
+
+        background-color: rgba(0, 0, 0, 0.04);
+
+        img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: contain;
+        }
+    }
+</style>
