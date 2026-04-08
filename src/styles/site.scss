@@ -31,22 +31,34 @@
     --filter-shadow-large: drop-shadow(0.33rem 0.33rem 1rem rgba(0, 0, 0, 0.15))
         drop-shadow(0rem 0rem 0.2rem rgba(0, 0, 0, 0.1));
 
-    font-size: 112.5%;
+    font-size: 112.5%; // 18px
 
     --site-content-width: 50rem;
     --site-content-spacing: 2rem;
     --site-content-edge: 0.5rem;
 }
 
+@media screen and (max-width: 1400px) {
+    :root {
+        font-size: 106.25%; // 17px
+    }
+}
+
 @media screen and (max-width: 400px) {
     :root {
-        font-size: 100%;
+        font-size: 100%; // 16px
     }
 }
 
 @media screen and (max-width: 350px) {
     :root {
-        font-size: 88%;
+        font-size: 87.5%; // 14px
+    }
+}
+
+@media screen and (max-width: 300px) {
+    :root {
+        font-size: 75%; // 12px
     }
 }
 
