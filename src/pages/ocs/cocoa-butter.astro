@@ -1,5 +1,32 @@
 ---
-import PageWIP from "$layouts/PageWIP.astro";
+import Page from "$layouts/Page.astro";
+import ContentBlock from "$components/blocks/ContentBlock.astro";
+import Paper from "$components/containers/Paper.astro";
+import Content from "$components/elements/text/Content.astro";
+import PaperTitle from "$components/elements/text/PaperTitle.astro";
+import Polaroid from "$components/elements/images/Polaroid.astro";
+import Link from "$components/elements/text/Link.astro";
 ---
 
-<PageWIP title="Cocoa Butter" />
+<Page title="Cocoa Butter">
+    <ContentBlock>
+        <Paper>
+            <PaperTitle>
+                <h1>Cocoa Butter</h1>
+            </PaperTitle>
+            <Content theme="paper">
+                <figure class="float">
+                    <Polaroid src="/images/ocs/cocoa-butter/profile.jpg" />
+                    <figcaption>
+                        Screenshot of Cocoa Butter in
+                        <Link href="https://pony.town">Pony Town</Link>
+                    </figcaption>
+                </figure>
+                <p>
+                    <strong>Cocoa Butter</strong> is a
+                    <Link href="https://en.wikipedia.org/wiki/Highland_cattle">highland cow</Link>
+                </p>
+            </Content>
+        </Paper>
+    </ContentBlock>
+</Page>

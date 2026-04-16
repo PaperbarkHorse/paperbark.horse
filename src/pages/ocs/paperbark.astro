@@ -2,10 +2,10 @@
 import Page from "$layouts/Page.astro";
 import ContentBlock from "$components/blocks/ContentBlock.astro";
 import Paper from "$components/containers/Paper.astro";
-import Content from "$components/elements/Content.astro";
-import PaperTitle from "$components/elements/PaperTitle.astro";
-import Polaroid from "$components/elements/Polaroid.astro";
-import Link from "$components/elements/Link.astro";
+import Content from "$components/elements/text/Content.astro";
+import PaperTitle from "$components/elements/text/PaperTitle.astro";
+import Polaroid from "$components/elements/images/Polaroid.astro";
+import Link from "$components/elements/text/Link.astro";
 import Gallery from "$components/elements/gallery/Gallery.astro";
 import GalleryImage from "$components/elements/gallery/GalleryImage.astro";
 ---
@@ -18,7 +18,7 @@ import GalleryImage from "$components/elements/gallery/GalleryImage.astro";
             </PaperTitle>
             <Content theme="paper">
                 <figure class="float">
-                    <Polaroid src="/images/ocs/paperbark/profile.jpg" angle="-2deg" />
+                    <Polaroid src="/images/ocs/paperbark/profile.jpg" />
                     <figcaption>
                         Artwork by <Link href="https://beatlinked.carrd.co/">Beatlinked</Link>
                     </figcaption>
@@ -26,7 +26,7 @@ import GalleryImage from "$components/elements/gallery/GalleryImage.astro";
                 <p>
                     <strong>Paperbark</strong> is my main
                     <Link href="https://en.wikipedia.org/wiki/Ponysona">ponysona</Link>. They're a gentle,
-                    reserved unicorn pony who loves to archive and preserve memories.
+                    reserved unicorn who loves to archive and preserve memories in scrapbooks and journals.
                 </p>
             </Content>
         </Paper>
