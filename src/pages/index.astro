@@ -27,71 +27,74 @@ import Polaroid from "$components/elements/images/Polaroid.astro";
         </StickyNote>
     </ContentBlock>
     <ContentBlock>
-        <Paper>
-            <PaperTitle>
-                <h2>Welcome</h2>
-            </PaperTitle>
-            <Content theme="paper">
-                <p>Hey there, I'm Paperbark!</p>
-            </Content>
-        </Paper>
-    </ContentBlock>
-    <ContentBlock>
-        <Paper>
-            <PaperTitle>
-                <h2>Explore</h2>
-            </PaperTitle>
-            <nav class="nav-list">
-                <ArrowButton href="/playlists">Playlists</ArrowButton>
-                <ArrowButton href="/shrines">Shrines</ArrowButton>
-                <ArrowButton href="/blinkies">Blinkies</ArrowButton>
-                <ArrowButton href="/socials">Socials</ArrowButton>
-            </nav>
-        </Paper>
-    </ContentBlock>
-    <ContentBlock>
-        <Paper>
-            <PaperTitle>
-                <h2>My OCs</h2>
-            </PaperTitle>
-            <div class="polaroid-grid">
-                <a href="/ocs/paperbark" class="grid-item group">
-                    <Polaroid src="/images/ocs/paperbark/profile.jpg" angle="-4deg" dynamic={true} />
-                    <div class="item-details">
-                        <span class="item-title">Paperbark</span>
-                        <span class="item-description">Archivist pony</span>
-                    </div>
-                </a>
-                <a href="/ocs/quasar" class="grid-item group">
-                    <Polaroid src="/images/ocs/quasar/profile.jpg" angle="2deg" dynamic={true} />
-                    <div class="item-details">
-                        <span class="item-title">Quasar</span>
-                        <span class="item-description">The dog</span>
-                    </div>
-                </a>
-                <a href="/ocs/cocoa-butter" class="grid-item group">
-                    <Polaroid src="/images/ocs/cocoa-butter/profile.jpg" angle="-3deg" dynamic={true} />
-                    <div class="item-details">
-                        <span class="item-title">Cocoa Butter</span>
-                        <span class="item-description">Highlands cow</span>
-                    </div>
-                </a>
-                <a href="/ocs/gasoline" class="grid-item group">
-                    <Polaroid src="/images/ocs/gasoline/profile.jpg" angle="4deg" dynamic={true} />
-                    <div class="item-details">
-                        <span class="item-title">Gasoline</span>
-                        <span class="item-description">Highly flammable</span>
-                    </div>
-                </a>
-                <a href="/ocs/maple-scruff" class="grid-item group">
-                    <Polaroid src="/images/ocs/maple-scruff/profile.jpg" angle="-2deg" dynamic={true} />
-                    <div class="item-details">
-                        <span class="item-title">Maple Scruff</span>
-                        <span class="item-description">My first pony OC</span>
-                    </div>
-                </a>
-            </div>
-        </Paper>
+        <ContentBlock>
+            <Paper>
+                <PaperTitle>
+                    <h2>Welcome</h2>
+                </PaperTitle>
+                <Content theme="paper">
+                    <p>Hey there, I'm Paperbark!</p>
+                </Content>
+            </Paper>
+        </ContentBlock>
+        <ContentBlock />
+        <ContentBlock>
+            <Paper>
+                <PaperTitle>
+                    <h2>Explore</h2>
+                </PaperTitle>
+                <nav class="nav-list">
+                    <ArrowButton href="/playlists">Playlists</ArrowButton>
+                    <ArrowButton href="/shrines">Shrines</ArrowButton>
+                    <ArrowButton href="/blinkies">Blinkies</ArrowButton>
+                    <ArrowButton href="/socials">Socials</ArrowButton>
+                </nav>
+            </Paper>
+        </ContentBlock>
+        <ContentBlock>
+            <Paper>
+                <PaperTitle>
+                    <h2>My OCs</h2>
+                </PaperTitle>
+                <div class="polaroid-grid">
+                    <a href="/ocs/paperbark" class="grid-item group">
+                        <Polaroid src="/images/ocs/paperbark/profile.jpg" angle="-4deg" dynamic={true} />
+                        <div class="item-details">
+                            <span class="item-title">Paperbark</span>
+                            <span class="item-description">Archivist pony</span>
+                        </div>
+                    </a>
+                    <a href="/ocs/quasar" class="grid-item group">
+                        <Polaroid src="/images/ocs/quasar/profile.jpg" angle="2deg" dynamic={true} />
+                        <div class="item-details">
+                            <span class="item-title">Quasar</span>
+                            <span class="item-description">The dog</span>
+                        </div>
+                    </a>
+                    <a href="/ocs/cocoa-butter" class="grid-item group">
+                        <Polaroid src="/images/ocs/cocoa-butter/profile.jpg" angle="-3deg" dynamic={true} />
+                        <div class="item-details">
+                            <span class="item-title">Cocoa Butter</span>
+                            <span class="item-description">Highlands cow</span>
+                        </div>
+                    </a>
+                    <a href="/ocs/gasoline" class="grid-item group">
+                        <Polaroid src="/images/ocs/gasoline/profile.jpg" angle="4deg" dynamic={true} />
+                        <div class="item-details">
+                            <span class="item-title">Gasoline</span>
+                            <span class="item-description">Highly flammable</span>
+                        </div>
+                    </a>
+                    <a href="/ocs/maple-scruff" class="grid-item group">
+                        <Polaroid src="/images/ocs/maple-scruff/profile.jpg" angle="-2deg" dynamic={true} />
+                        <div class="item-details">
+                            <span class="item-title">Maple Scruff</span>
+                            <span class="item-description">My first pony OC</span>
+                        </div>
+                    </a>
+                </div>
+            </Paper>
+        </ContentBlock>
     </ContentBlock>
 </Page>
 
