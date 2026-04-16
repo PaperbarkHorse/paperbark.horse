@@ -1,12 +1,12 @@
 ---
 import Page from "$layouts/Page.astro";
 import SiteBanner from "$components/blocks/SiteBanner.astro";
-import CenterBlock from "$components/blocks/CenterBlock.astro";
 import Paper from "$components/containers/Paper.astro";
 import Content from "$components/elements/Content.astro";
 import ArrowButton from "$components/elements/ArrowButton.astro";
 import ContentBlock from "$components/blocks/ContentBlock.astro";
 import StickyNote from "$components/containers/StickyNote.astro";
+import PaperTitle from "$components/elements/PaperTitle.astro";
 ---
 
 <Page title="Home" navigation={false}>
@@ -25,28 +25,42 @@ import StickyNote from "$components/containers/StickyNote.astro";
             </Content>
         </StickyNote>
     </ContentBlock>
-    <CenterBlock>
+    <ContentBlock>
         <Paper>
-            <Content theme="paper" style="max-width: 20rem;">
-                <p><strong>This site is under construction!</strong></p>
-                <p>More things will be here soon, but for now you can check out my social links.</p>
-                <br />
+            <PaperTitle>
+                <h2>Under Construction</h2>
+            </PaperTitle>
+            <Content theme="paper">
+                <p>
+                    Hey there! Thanks for checking out my website, but things are still a bit of a work in
+                    progress around here right now. I only have a few things you can check out at the moment,
+                    but more stuff will come in the future!
+                </p>
+                <p>
+                    For now, you can <a href="/socials">check out my socials</a> or explore what's here already!
+                </p>
             </Content>
-            <div style="display: flex; flex-direction: row; justify-content: center;">
-                <ArrowButton href="/socials">Check out my socials</ArrowButton>
-            </div>
         </Paper>
-    </CenterBlock>
-    <!-- <ContentBlock>
+    </ContentBlock>
+    <ContentBlock>
         <Paper>
             <PaperTitle>
                 <h2>Explore</h2>
             </PaperTitle>
-            <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 1rem;">
-                <ArrowButton href="/playlists">Playlists</ArrowButton>
-                <ArrowButton href="/shrines">Shrines</ArrowButton>
+            <nav class="nav-list">
                 <ArrowButton href="/blinkies">Blinkies</ArrowButton>
-            </div>
+                <ArrowButton href="/socials">Socials</ArrowButton>
+            </nav>
         </Paper>
-    </ContentBlock> -->
+    </ContentBlock>
 </Page>
+
+<style lang="scss">
+    .nav-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        gap: 1rem;
+    }
+</style>
