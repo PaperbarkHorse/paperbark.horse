@@ -1,0 +1,11 @@
+---
+import MobileNavigationComponent from "./MobileNavigation.svelte";
+import MenuIcon from "$assets/icons/menu.svg";
+import CloseIcon from "$assets/icons/x.svg";
+---
+
+<MobileNavigationComponent client:visible site={Astro.site}>
+    <Fragment slot="menuIcon"><MenuIcon /></Fragment>
+    <Fragment slot="closeIcon"><CloseIcon /></Fragment>
+    <slot />
+</MobileNavigationComponent>

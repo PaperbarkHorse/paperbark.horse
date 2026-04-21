@@ -1,5 +1,6 @@
 ---
 import StickyNote from "$components/containers/StickyNote.astro";
+import MobileNavigation from "$components/navigation/MobileNavigation.astro";
 import NavBlock from "$components/navigation/NavBlock.astro";
 import Skeleton from "./Skeleton.astro";
 
@@ -11,10 +12,20 @@ let { title } = Astro.props;
 ---
 
 <Skeleton {title} bodyClass="background-carpet">
+    <a href="#main" class="skip-to-main">
+        <StickyNote>Skip to main content</StickyNote>
+    </a>
+
+    <MobileNavigation>
+        <NavBlock>
+            <slot name="navigation" />
+        </NavBlock>
+        <NavBlock>
+            <slot name="contents" />
+        </NavBlock>
+    </MobileNavigation>
+
     <div class="page-container">
-        <a href="#main" class="skip-to-main">
-            <StickyNote>Skip to main content</StickyNote>
-        </a>
         <slot name="header" />
         <div class="page-layout">
             <div class="navigation">
@@ -76,26 +87,25 @@ let { title } = Astro.props;
         top: 1rem;
         left: 1rem;
 
+        z-index: 1000;
+
         &:not(:focus) {
             transform: translateY(-1000%);
         }
     }
 
-    @media (max-width: 800px) {
-        // TODO: Better mobile navigation
-
+    @media screen and (max-width: 800px) {
         .page-layout {
             display: grid;
             grid-template-columns: 1fr;
+
+            &:first-child {
+                margin-top: 4.5rem;
+            }
         }
 
         .navigation {
-            margin-inline: 1rem;
-            margin-bottom: 1rem;
-
-            .nav-block:nth-child(2) {
-                display: none;
-            }
+            display: none;
         }
     }
 </style>
