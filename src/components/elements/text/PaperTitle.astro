@@ -1,5 +1,23 @@
-<div class="paper-title">
-    <slot />
+---
+import GithubSlugger from "github-slugger";
+
+interface Props {
+    el: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+    title: string;
+    id?: string;
+}
+
+let { el, title, id = undefined } = Astro.props;
+
+let Element = el;
+
+if (id === undefined) {
+    id = new GithubSlugger().slug(title);
+}
+---
+
+<div class="paper-title" id={id}>
+    <Element>{title}</Element>
 </div>
 
 <style lang="scss">
@@ -24,5 +42,7 @@
 
         z-index: 1;
         clip-path: polygon(0 0, 100% 0, calc(100% - var(--paper-title-size)) 50%, 100% 100%, 0 100%);
+
+        scroll-margin-top: 2rem;
     }
 </style>
