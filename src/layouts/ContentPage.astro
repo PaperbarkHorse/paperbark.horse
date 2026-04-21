@@ -1,4 +1,5 @@
 ---
+import StickyNote from "$components/containers/StickyNote.astro";
 import NavBlock from "$components/navigation/NavBlock.astro";
 import Skeleton from "./Skeleton.astro";
 
@@ -11,6 +12,9 @@ let { title } = Astro.props;
 
 <Skeleton {title} bodyClass="background-carpet">
     <div class="page-container">
+        <a href="#main" class="skip-to-main">
+            <StickyNote>Skip to main content</StickyNote>
+        </a>
         <slot name="header" />
         <div class="page-layout">
             <div class="navigation">
@@ -21,7 +25,7 @@ let { title } = Astro.props;
                     <slot name="contents" />
                 </NavBlock>
             </div>
-            <main class="main">
+            <main class="main" id="main" tabindex="-1">
                 <slot name="main" />
             </main>
         </div>
@@ -65,5 +69,15 @@ let { title } = Astro.props;
         flex-direction: column;
 
         gap: 1.5rem;
+    }
+
+    .skip-to-main {
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+
+        &:not(:focus) {
+            transform: translateY(-1000%);
+        }
     }
 </style>
