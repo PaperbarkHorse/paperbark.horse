@@ -3,9 +3,10 @@ interface Props {
     name: string;
     href: string;
     external?: boolean;
+    disabled?: boolean;
 }
 
-let { name, href, external } = Astro.props;
+let { name, href, external, disabled = false } = Astro.props;
 
 if (external === undefined) {
     let url = new URL(href, Astro.site);
@@ -13,23 +14,33 @@ if (external === undefined) {
 }
 ---
 
-<li class="nav-item">
-    <a {href} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
+<li class:list={["nav-item", { disabled }]}>
+    <a
+        href={disabled ? undefined : href}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+    >
         {name}
     </a>
 </li>
 
 <style lang="scss">
     .nav-item {
+        user-select: none;
+
         a {
             display: flex;
             padding: 0.4rem 0.5rem;
 
             line-height: 1.1;
+        }
 
-            &:hover {
-                text-decoration: underline;
-            }
+        &:not(.disabled) a:hover {
+            text-decoration: underline;
+        }
+
+        &.disabled {
+            opacity: 0.2;
         }
     }
 </style>

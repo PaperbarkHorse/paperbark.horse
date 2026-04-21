@@ -62,7 +62,16 @@
 
         > ul,
         > ol {
+            --content-gap: 0.5em;
             padding-left: 1em;
+        }
+
+        > ul {
+            list-style: disc;
+        }
+
+        > ol {
+            list-style: decimal;
         }
 
         > table {
@@ -123,7 +132,7 @@
             }
         }
     }
-    
+
     .theme-paper .content {
         > :is(p, ul, ol, table, figure) a[href] {
             background-color: var(--highlighter-yellow);

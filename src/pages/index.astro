@@ -6,6 +6,10 @@ import SiteBanner from "$components/site/SiteBanner.astro";
 import Paper from "$components/containers/Paper.astro";
 import PaperTitle from "$components/elements/text/PaperTitle.astro";
 import Content from "$components/elements/text/Content.astro";
+import StickyNote from "$components/containers/StickyNote.astro";
+import ArrowButton from "$components/elements/buttons/ArrowButton.astro";
+import Hyperlink from "$components/elements/text/Hyperlink.astro";
+import Polaroid from "$components/elements/images/Polaroid.astro";
 ---
 
 <ContentPage title="Home">
@@ -16,14 +20,14 @@ import Content from "$components/elements/text/Content.astro";
             <NavItem name="Guestbook" href="https://paperbark.atabook.org/" />
         </NavSection>
         <NavSection name="Creations">
-            <NavItem name="Characters" href="/ocs" />
-            <NavItem name="Playlists" href="/playlists" />
-            <NavItem name="Shrines" href="/shrines" />
+            <NavItem name="Characters" href="/ocs" disabled={true} />
+            <NavItem name="Playlists" href="/playlists" disabled={true} />
+            <NavItem name="Shrines" href="/shrines" disabled={true} />
         </NavSection>
         <NavSection name="Favourites">
-            <NavItem name="Music" href="/music" />
-            <NavItem name="Media" href="/media" />
-            <NavItem name="Links" href="/links" />
+            <NavItem name="Music" href="/music" disabled={true} />
+            <NavItem name="Media" href="/media" disabled={true} />
+            <NavItem name="Links" href="/links" disabled={true} />
             <NavItem name="Blinkies" href="/blinkies" />
         </NavSection>
     </Fragment>
@@ -39,6 +43,23 @@ import Content from "$components/elements/text/Content.astro";
 
     <Fragment slot="header">
         <SiteBanner />
+
+        <div class="motd">
+            <StickyNote color="green">
+                <Content>
+                    <h2>My name has changed!</h2>
+                    <p>
+                        Since March 2026, I now go by the name <strong>"Paperbark"</strong> online instead of my
+                        previous name <strong>"Quasar."</strong>
+                    </p>
+                    <div class="button-container">
+                        <ArrowButton href="/name-change" direction="forwards" color="white">
+                            Read more
+                        </ArrowButton>
+                    </div>
+                </Content>
+            </StickyNote>
+        </div>
     </Fragment>
 
     <Fragment slot="main">
@@ -47,13 +68,36 @@ import Content from "$components/elements/text/Content.astro";
                 <h1 id="welcome">Welcome</h1>
             </PaperTitle>
             <Content>
-                <p>Hey there, I'm Paperbark! Welcome to my website!</p>
+                <p>
+                    Hey there, welcome to my website! This place is still a work in progress (and probably
+                    always will be), but I try and add new stuff quite often. Feel free to take a look around
+                    and if you'd like, you can
+                    <Hyperlink href="https://paperbark.atabook.org/"
+                        >leave a friendly message in my guestbook</Hyperlink
+                    >
+                    or <Hyperlink href="/socials">find me on my other socials</Hyperlink> as well!
+                </p>
             </Content>
         </Paper>
         <Paper>
             <PaperTitle>
                 <h2 id="about">About</h2>
             </PaperTitle>
+            <Content>
+                <p>I'm Paperbark!</p>
+                <ul>
+                    <li>Pronouns are "He/Him" or "They/Them"</li>
+                    <li>
+                        Proudly <Hyperlink href="https://en.wikipedia.org/wiki/Aromantic_asexual"
+                            >aroace</Hyperlink
+                        >
+                    </li>
+                    <li>Brony with an unhealthy obsession for Vinyl Scratch</li>
+                    <li>Furry and a fursuiter</li>
+                    <li>Lover of plushies, pooltoys, and anything else that's soft and cuddly</li>
+                    <li>Hugs are 100% encouraged!</li>
+                </ul>
+            </Content>
         </Paper>
         <Paper>
             <PaperTitle>
@@ -67,8 +111,18 @@ import Content from "$components/elements/text/Content.astro";
             <PaperTitle>
                 <h2 id="neighbours">Neighbours</h2>
             </PaperTitle>
-            <div class="placeholder-content">
-                <p>It's a little quiet around here right now...</p>
+            <div class="neighbour-list">
+                <a
+                    class="neighbour"
+                    href="https://linktr.ee/sodaspaceshop"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <Polaroid
+                        src="https://ugc.production.linktr.ee/e8515bbf-9fec-4a78-b288-47b1055c6c2c_Etsy-PFP.png?io=true&size=avatar-v3_0"
+                    />
+                    <span>Soda Abyss</span>
+                </a>
             </div>
         </Paper>
     </Fragment>
@@ -84,5 +138,30 @@ import Content from "$components/elements/text/Content.astro";
 
         text-align: center;
         font-style: italic;
+    }
+
+    .motd {
+        max-width: 32rem;
+
+        margin-bottom: 2rem;
+    }
+
+    .neighbour-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+
+        gap: 1rem;
+
+        .neighbour {
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 0.5rem;
+
+            font-weight: var(--font-semibold);
+            text-align: center;
+        }
     }
 </style>
