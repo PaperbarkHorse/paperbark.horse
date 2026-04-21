@@ -45,9 +45,7 @@ const quotes = (await getCollection("tagline"))
 
     <Fragment slot="main">
         <Paper>
-            <PaperTitle>
-                <h1 id="taglines">Taglines</h1>
-            </PaperTitle>
+            <PaperTitle el="h1" title="Taglines" />
             <Content theme="paper">
                 <p>
                     Taglines are the small bits of text which appear under my name in a sticky note

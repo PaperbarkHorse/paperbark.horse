@@ -24,9 +24,7 @@ import ContentPage from "$layouts/ContentPage.astro";
 
     <Fragment slot="main">
         <Paper>
-            <PaperTitle>
-                <h1 id="blinkies">Blinkies</h1>
-            </PaperTitle>
+            <PaperTitle el="h1" title="Blinkies" />
             <div class="blinkies-grid">
                 <div class="blinkie-grid">
                     <Blinkie type="blinkie" src="/blinkies/blinkies/fluttershy.gif" alt="Fluttershy" />
@@ -117,9 +115,7 @@ import ContentPage from "$layouts/ContentPage.astro";
             </div>
         </Paper>
         <Paper>
-            <PaperTitle>
-                <h2 id="stamps">Stamps</h2>
-            </PaperTitle>
+            <PaperTitle el="h2" title="Stamps" />
             <div class="stamps-grid">
                 <Blinkie type="stamp" src="/blinkies/stamps/vinyl-scratch.png" alt="Vinyl Scratch" />
                 <Blinkie type="stamp" src="/blinkies/stamps/dj-pon3.gif" alt="Vinyl Scratch" />
@@ -218,9 +214,7 @@ import ContentPage from "$layouts/ContentPage.astro";
             </div>
         </Paper>
         <Paper>
-            <PaperTitle>
-                <h2 id="buttons">Buttons</h2>
-            </PaperTitle>
+            <PaperTitle el="h2" title="Buttons" />
             <div class="buttons-grid">
                 <Blinkie type="button" src="/blinkies/buttons/pride-rainbow.png" alt="Rainbow pride flag" />
                 <Blinkie type="button" src="/blinkies/buttons/pride-aroace.png" alt="Aroace pride flag" />
