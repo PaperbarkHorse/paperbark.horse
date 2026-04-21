@@ -59,11 +59,30 @@ import Content from "$components/elements/text/Content.astro";
             <PaperTitle>
                 <h2 id="webrings">Webrings</h2>
             </PaperTitle>
+            <div class="placeholder-content">
+                <p>I'm not part of any webrings yet...</p>
+            </div>
         </Paper>
         <Paper>
             <PaperTitle>
                 <h2 id="neighbours">Neighbours</h2>
             </PaperTitle>
+            <div class="placeholder-content">
+                <p>It's a little quiet around here right now...</p>
+            </div>
         </Paper>
     </Fragment>
 </ContentPage>
+
+<style lang="scss">
+    .placeholder-content {
+        display: flex;
+        flex-direction: column;
+
+        padding-block: 2rem;
+        gap: 1rem;
+
+        text-align: center;
+        font-style: italic;
+    }
+</style>
