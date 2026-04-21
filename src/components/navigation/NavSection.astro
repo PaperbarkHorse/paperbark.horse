@@ -1,0 +1,43 @@
+---
+interface Props {
+    name: string;
+}
+
+const { name } = Astro.props;
+---
+
+<div class="nav-section">
+    <span class="nav-section-title">{name}</span>
+    <ul>
+        <slot />
+    </ul>
+</div>
+
+<style lang="scss">
+    .nav-section {
+        display: flex;
+        flex-direction: column;
+
+        gap: 0.25rem;
+
+        .nav-section-title {
+            --paper-title-size: 1.1rem;
+
+            margin-left: -0.5rem;
+            margin-right: 0.5rem;
+            padding-left: 1rem;
+            padding-right: calc(var(--paper-title-size) + 0.5rem);
+            padding-block: 0.5rem;
+
+            background-color: var(--cutie-mark-orange);
+
+            font-size: 1rem;
+            font-weight: var(--font-bold);
+            line-height: 1.1;
+            color: var(--text-white);
+
+            z-index: 1;
+            clip-path: polygon(0 0, 100% 0, calc(100% - var(--paper-title-size)) 50%, 100% 100%, 0 100%);
+        }
+    }
+</style>

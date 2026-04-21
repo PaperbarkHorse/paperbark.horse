@@ -1,16 +1,31 @@
 ---
-import ContentBlock from "$components/blocks/ContentBlock.astro";
 import Paper from "$components/containers/Paper.astro";
-import Blinkie from "$components/elements/images/Blinkie.astro";
 import PaperTitle from "$components/elements/text/PaperTitle.astro";
-import Page from "$layouts/Page.astro";
+import NavSection from "$components/navigation/NavSection.astro";
+import NavItem from "$components/navigation/NavItem.astro";
+import Blinkie from "$components/elements/images/Blinkie.astro";
+import ContentPage from "$layouts/ContentPage.astro";
 ---
 
-<Page title="Blinkies">
-    <ContentBlock>
+<ContentPage title="Blinkies">
+    <Fragment slot="navigation">
+        <NavSection name="Navigation">
+            <NavItem name="Return home" href="/" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="contents">
+        <NavSection name="On This Page">
+            <NavItem name="Blinkies" href="#blinkies" />
+            <NavItem name="Stamps" href="#stamps" />
+            <NavItem name="Buttons" href="#buttons" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="main">
         <Paper>
             <PaperTitle>
-                <h1>Blinkies</h1>
+                <h1 id="blinkies">Blinkies</h1>
             </PaperTitle>
             <div class="blinkies-grid">
                 <div class="blinkie-grid">
@@ -101,12 +116,9 @@ import Page from "$layouts/Page.astro";
                 </div>
             </div>
         </Paper>
-    </ContentBlock>
-
-    <ContentBlock>
         <Paper>
             <PaperTitle>
-                <h2>Stamps</h2>
+                <h2 id="stamps">Stamps</h2>
             </PaperTitle>
             <div class="stamps-grid">
                 <Blinkie type="stamp" src="/blinkies/stamps/vinyl-scratch.png" alt="Vinyl Scratch" />
@@ -205,12 +217,9 @@ import Page from "$layouts/Page.astro";
                 <Blinkie type="stamp" src="/blinkies/stamps/paint-dot-net.jpg" alt="I use Paint.NET" />
             </div>
         </Paper>
-    </ContentBlock>
-
-    <ContentBlock>
         <Paper>
             <PaperTitle>
-                <h2>Buttons</h2>
+                <h2 id="buttons">Buttons</h2>
             </PaperTitle>
             <div class="buttons-grid">
                 <Blinkie type="button" src="/blinkies/buttons/pride-rainbow.png" alt="Rainbow pride flag" />
@@ -316,8 +325,8 @@ import Page from "$layouts/Page.astro";
                 <Blinkie type="button" src="/blinkies/buttons/css-is-awesome.png" alt="CSS is awesome" />
             </div>
         </Paper>
-    </ContentBlock>
-</Page>
+    </Fragment>
+</ContentPage>
 
 <style lang="scss">
     .blinkie-grid,

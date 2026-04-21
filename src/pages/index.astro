@@ -1,141 +1,69 @@
 ---
-import Page from "$layouts/Page.astro";
-import SiteBanner from "$components/blocks/SiteBanner.astro";
+import ContentPage from "$layouts/ContentPage.astro";
+import NavSection from "$components/navigation/NavSection.astro";
+import NavItem from "$components/navigation/NavItem.astro";
+import SiteBanner from "$components/site/SiteBanner.astro";
 import Paper from "$components/containers/Paper.astro";
-import Content from "$components/elements/text/Content.astro";
-import ArrowButton from "$components/elements/buttons/ArrowButton.astro";
-import ContentBlock from "$components/blocks/ContentBlock.astro";
-import StickyNote from "$components/containers/StickyNote.astro";
 import PaperTitle from "$components/elements/text/PaperTitle.astro";
-import Polaroid from "$components/elements/images/Polaroid.astro";
+import Content from "$components/elements/text/Content.astro";
 ---
 
-<Page title="Home" navigation={false}>
-    <SiteBanner />
-    <ContentBlock width="30rem">
-        <StickyNote color="green">
-            <Content theme="sticky-note">
-                <h2>My name has changed!</h2>
-                <p>
-                    Since March 2026, I've started using the name <strong>"Paperbark"</strong> online instead of
-                    <strong>"Quasar"</strong>.
-                </p>
-                <div class="button-container">
-                    <ArrowButton href="/name-change" color="white">Find out more</ArrowButton>
-                </div>
+<ContentPage title="Home">
+    <Fragment slot="navigation">
+        <NavSection name="Explore">
+            <NavItem name="Home" href="/" />
+            <NavItem name="Socials" href="/socials" />
+            <NavItem name="Guestbook" href="/guestbook" />
+        </NavSection>
+        <NavSection name="Creations">
+            <NavItem name="Characters" href="/ocs" />
+            <NavItem name="Playlists" href="/playlists" />
+            <NavItem name="Shrines" href="/shrines" />
+        </NavSection>
+        <NavSection name="Favourites">
+            <NavItem name="Music" href="/music" />
+            <NavItem name="Media" href="/media" />
+            <NavItem name="Links" href="/links" />
+            <NavItem name="Blinkies" href="/blinkies" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="contents">
+        <NavSection name="On This Page">
+            <NavItem name="Welcome" href="#welcome" />
+            <NavItem name="About" href="#about" />
+            <NavItem name="Webrings" href="#webrings" />
+            <NavItem name="Neighbours" href="#neighbours" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="header">
+        <SiteBanner />
+    </Fragment>
+
+    <Fragment slot="main">
+        <Paper>
+            <PaperTitle>
+                <h1 id="welcome">Welcome</h1>
+            </PaperTitle>
+            <Content>
+                <p>Hey there, I'm Paperbark! Welcome to my website!</p>
             </Content>
-        </StickyNote>
-    </ContentBlock>
-    <ContentBlock>
-        <ContentBlock>
-            <Paper>
-                <PaperTitle>
-                    <h2>Welcome</h2>
-                </PaperTitle>
-                <Content theme="paper">
-                    <p>Hey there, I'm Paperbark!</p>
-                </Content>
-            </Paper>
-        </ContentBlock>
-        <ContentBlock />
-        <ContentBlock>
-            <Paper>
-                <PaperTitle>
-                    <h2>Explore</h2>
-                </PaperTitle>
-                <nav class="nav-list">
-                    <ArrowButton href="/playlists">Playlists</ArrowButton>
-                    <ArrowButton href="/shrines">Shrines</ArrowButton>
-                    <ArrowButton href="/blinkies">Blinkies</ArrowButton>
-                    <ArrowButton href="/socials">Socials</ArrowButton>
-                </nav>
-            </Paper>
-        </ContentBlock>
-        <ContentBlock>
-            <Paper>
-                <PaperTitle>
-                    <h2>My OCs</h2>
-                </PaperTitle>
-                <div class="polaroid-grid">
-                    <a href="/ocs/paperbark" class="grid-item group">
-                        <Polaroid src="/images/ocs/paperbark/profile.jpg" angle="-4deg" dynamic={true} />
-                        <div class="item-details">
-                            <span class="item-title">Paperbark</span>
-                            <span class="item-description">Archivist pony</span>
-                        </div>
-                    </a>
-                    <a href="/ocs/quasar" class="grid-item group">
-                        <Polaroid src="/images/ocs/quasar/profile.jpg" angle="2deg" dynamic={true} />
-                        <div class="item-details">
-                            <span class="item-title">Quasar</span>
-                            <span class="item-description">The dog</span>
-                        </div>
-                    </a>
-                    <a href="/ocs/cocoa-butter" class="grid-item group">
-                        <Polaroid src="/images/ocs/cocoa-butter/profile.jpg" angle="-3deg" dynamic={true} />
-                        <div class="item-details">
-                            <span class="item-title">Cocoa Butter</span>
-                            <span class="item-description">Highlands cow</span>
-                        </div>
-                    </a>
-                    <a href="/ocs/gasoline" class="grid-item group">
-                        <Polaroid src="/images/ocs/gasoline/profile.jpg" angle="4deg" dynamic={true} />
-                        <div class="item-details">
-                            <span class="item-title">Gasoline</span>
-                            <span class="item-description">Highly flammable</span>
-                        </div>
-                    </a>
-                    <a href="/ocs/maple-scruff" class="grid-item group">
-                        <Polaroid src="/images/ocs/maple-scruff/profile.jpg" angle="-2deg" dynamic={true} />
-                        <div class="item-details">
-                            <span class="item-title">Maple Scruff</span>
-                            <span class="item-description">My first pony OC</span>
-                        </div>
-                    </a>
-                </div>
-            </Paper>
-        </ContentBlock>
-    </ContentBlock>
-</Page>
-
-<style lang="scss">
-    .polaroid-grid {
-        --polaroid-width: min(100%, 12.5rem);
-
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
-        align-items: center;
-
-        gap: 1rem;
-
-        .grid-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            padding: 0.6rem;
-            gap: 1rem;
-
-            text-align: center;
-
-            .item-details {
-                display: flex;
-                flex-direction: column;
-                align-self: normal;
-            }
-
-            .item-title {
-                font-weight: var(--font-semibold);
-            }
-        }
-    }
-
-    .nav-list {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: flex-start;
-
-        gap: 1rem;
-    }
-</style>
+        </Paper>
+        <Paper>
+            <PaperTitle>
+                <h2 id="about">About</h2>
+            </PaperTitle>
+        </Paper>
+        <Paper>
+            <PaperTitle>
+                <h2 id="webrings">Webrings</h2>
+            </PaperTitle>
+        </Paper>
+        <Paper>
+            <PaperTitle>
+                <h2 id="neighbours">Neighbours</h2>
+            </PaperTitle>
+        </Paper>
+    </Fragment>
+</ContentPage>

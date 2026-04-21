@@ -1,17 +1,8 @@
----
-interface Props {
-    theme?: "default" | "paper" | "sticky-note";
-    style?: string;
-}
-
-const { theme = "default", style } = Astro.props;
----
-
-<div class="content" {style} class:list={[`theme-${theme}`]}>
+<div class="content">
     <slot />
 </div>
 
-<style>
+<style lang="scss" is:global>
     .content {
         --content-gap: 1.25em;
 
@@ -121,7 +112,19 @@ const { theme = "default", style } = Astro.props;
         }
     }
 
-    .content.theme-paper {
+    @media screen and (min-width: 550px) {
+        .content {
+            > .float {
+                max-width: 20ch;
+                float: right;
+
+                margin-left: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+    
+    .theme-paper .content {
         > :is(p, ul, ol, table, figure) a[href] {
             background-color: var(--highlighter-yellow);
             mix-blend-mode: multiply;
@@ -143,7 +146,7 @@ const { theme = "default", style } = Astro.props;
         }
     }
 
-    .content.theme-sticky-note {
+    .theme-sticky-note .content {
         --content-gap: 1em;
 
         > h1,
@@ -159,18 +162,6 @@ const { theme = "default", style } = Astro.props;
 
         > .button-container {
             justify-content: center;
-        }
-    }
-
-    @media screen and (min-width: 550px) {
-        .content {
-            > .float {
-                max-width: 20ch;
-                float: right;
-
-                margin-left: 0.5rem;
-                margin-bottom: 0.5rem;
-            }
         }
     }
 </style>

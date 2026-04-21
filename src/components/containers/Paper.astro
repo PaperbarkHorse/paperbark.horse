@@ -6,12 +6,12 @@ interface Props {
 const { padding = true } = Astro.props;
 ---
 
-<div class:list={["paper-block", { padding }]}>
+<div class:list={["paper", "theme-paper", { padding }]}>
     <slot />
 </div>
 
 <style lang="scss">
-    .paper-block {
+    .paper {
         --paper-edge-width: 1.7rem;
         --paper-margin-line-width: 0.2rem;
 

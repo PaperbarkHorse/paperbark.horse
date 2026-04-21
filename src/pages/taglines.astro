@@ -1,11 +1,11 @@
 ---
-import CenterBlock from "$components/blocks/CenterBlock.astro";
-import ContentBlock from "$components/blocks/ContentBlock.astro";
+import ContentPage from "$layouts/ContentPage.astro";
 import Paper from "$components/containers/Paper.astro";
+import PaperTitle from "$components/elements/text/PaperTitle.astro";
+import NavSection from "$components/navigation/NavSection.astro";
+import NavItem from "$components/navigation/NavItem.astro";
 import StickyNote from "$components/containers/StickyNote.astro";
 import Content from "$components/elements/text/Content.astro";
-import PaperTitle from "$components/elements/text/PaperTitle.astro";
-import Page from "$layouts/Page.astro";
 import { getCollection } from "astro:content";
 
 function prettifyQuote(text: string, type: string): string {
@@ -30,11 +30,23 @@ const quotes = (await getCollection("tagline"))
     });
 ---
 
-<Page title="Taglines">
-    <ContentBlock>
+<ContentPage title="Taglines">
+    <Fragment slot="navigation">
+        <NavSection name="Navigation">
+            <NavItem name="Return home" href="/" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="contents">
+        <NavSection name="On This Page">
+            <NavItem name="Taglines" href="#taglines" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="main">
         <Paper>
             <PaperTitle>
-                <h1>Taglines</h1>
+                <h1 id="taglines">Taglines</h1>
             </PaperTitle>
             <Content theme="paper">
                 <p>
@@ -49,8 +61,6 @@ const quotes = (await getCollection("tagline"))
                 <p></p>
             </Content>
         </Paper>
-    </ContentBlock>
-    <CenterBlock>
         <div class="tagline-list">
             {
                 quotes.map((quote) => (
@@ -65,8 +75,8 @@ const quotes = (await getCollection("tagline"))
                 ))
             }
         </div>
-    </CenterBlock>
-</Page>
+    </Fragment>
+</ContentPage>
 
 <style lang="scss">
     .tagline-list {

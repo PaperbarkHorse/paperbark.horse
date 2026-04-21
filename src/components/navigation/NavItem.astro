@@ -1,0 +1,35 @@
+---
+interface Props {
+    name: string;
+    href: string;
+    external?: boolean;
+}
+
+let { name, href, external } = Astro.props;
+
+if (external === undefined) {
+    let url = new URL(href, Astro.site);
+    external = url.host !== Astro.site?.host;
+}
+---
+
+<li class="nav-item">
+    <a {href} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
+        {name}
+    </a>
+</li>
+
+<style lang="scss">
+    .nav-item {
+        a {
+            display: flex;
+            padding: 0.4rem 0.5rem;
+
+            line-height: 1.1;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+</style>

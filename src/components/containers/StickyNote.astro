@@ -7,7 +7,7 @@ interface Props {
 const { padding = true, color = "yellow" } = Astro.props;
 ---
 
-<div class:list={["sticky-note", `sticky-note-color-${color}`, { padding }]}>
+<div class:list={["sticky-note", "theme-sticky-note", `sticky-note-color-${color}`, { padding }]}>
     <div class="sticky-note-inner">
         <slot />
     </div>
@@ -76,5 +76,11 @@ const { padding = true, color = "yellow" } = Astro.props;
 
             background-color: rgba(0, 0, 0, 0.08);
         }
+    }
+</style>
+
+<style lang="scss" is:global>
+    .main > .sticky-note {
+        margin-inline: 1rem;
     }
 </style>
