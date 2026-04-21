@@ -1,0 +1,17 @@
+---
+interface Props {
+    href: string;
+    external?: boolean;
+}
+
+let { href, external } = Astro.props;
+
+if (external === undefined) {
+    let url = new URL(href, Astro.site);
+    external = url.host !== Astro.site?.host;
+}
+---
+
+<a {href} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}
+    ><slot /></a
+>
