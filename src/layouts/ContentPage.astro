@@ -32,7 +32,7 @@ let { title } = Astro.props;
     </div>
 </Skeleton>
 
-<style lang="scss">
+<style lang="scss" is:global>
     .page-container {
         display: flex;
         flex-direction: column;
@@ -78,6 +78,24 @@ let { title } = Astro.props;
 
         &:not(:focus) {
             transform: translateY(-1000%);
+        }
+    }
+
+    @media (max-width: 800px) {
+        // TODO: Better mobile navigation
+
+        .page-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        .navigation {
+            margin-inline: 1rem;
+            margin-bottom: 1rem;
+
+            .nav-block:nth-child(2) {
+                display: none;
+            }
         }
     }
 </style>

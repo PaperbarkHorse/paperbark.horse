@@ -69,13 +69,12 @@ import Polaroid from "$components/elements/images/Polaroid.astro";
             </PaperTitle>
             <Content>
                 <p>
-                    Hey there, welcome to my website! This place is still a work in progress (and probably
-                    always will be), but I try and add new stuff quite often. Feel free to take a look around
-                    and if you'd like, you can
+                    Hey there, welcome to my website! This place is still a major work in progress, but I try
+                    and add new stuff quite often. Feel free to take a look around, and if you'd like you can
                     <Hyperlink href="https://paperbark.atabook.org/"
-                        >leave a friendly message in my guestbook</Hyperlink
+                        >leave a message in my guestbook</Hyperlink
                     >
-                    or <Hyperlink href="/socials">find me on my other socials</Hyperlink> as well!
+                    or <Hyperlink href="/socials">find me on my other socials</Hyperlink>!
                 </p>
             </Content>
         </Paper>
@@ -111,18 +110,8 @@ import Polaroid from "$components/elements/images/Polaroid.astro";
             <PaperTitle>
                 <h2 id="neighbours">Neighbours</h2>
             </PaperTitle>
-            <div class="neighbour-list">
-                <a
-                    class="neighbour"
-                    href="https://linktr.ee/sodaspaceshop"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <Polaroid
-                        src="https://ugc.production.linktr.ee/e8515bbf-9fec-4a78-b288-47b1055c6c2c_Etsy-PFP.png?io=true&size=avatar-v3_0"
-                    />
-                    <span>Soda Abyss</span>
-                </a>
+            <div class="placeholder-content">
+                <p>There's nobody here yet, but soon there will be!</p>
             </div>
         </Paper>
     </Fragment>
@@ -143,6 +132,7 @@ import Polaroid from "$components/elements/images/Polaroid.astro";
     .motd {
         max-width: 32rem;
 
+        padding: 0.5rem;
         margin-bottom: 2rem;
     }
 
