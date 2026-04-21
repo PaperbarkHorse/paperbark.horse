@@ -2,9 +2,7 @@
 import Page from "$layouts/Page.astro";
 import SiteBanner from "$components/site/SiteBanner.astro";
 import ArrowButton from "$components/elements/buttons/ArrowButton.astro";
-import CenterBlock from "$components/blocks/CenterBlock.astro";
 import Paper from "$components/containers/Paper.astro";
-import ContentBlock from "$components/blocks/ContentBlock.astro";
 import PaperTitle from "$components/elements/text/PaperTitle.astro";
 
 import DiscordIcon from "$assets/icons/discord.svg";
@@ -17,7 +15,7 @@ import GitHubIcon from "$assets/icons/github.svg";
 
 <Page title="Socials" navigation={false}>
     <SiteBanner />
-    <ContentBlock width="30rem">
+    <div class="socials-block">
         <Paper>
             <PaperTitle>
                 <h1>Social Links</h1>
@@ -109,8 +107,7 @@ import GitHubIcon from "$assets/icons/github.svg";
                 </a>
             </div>
         </Paper>
-    </ContentBlock>
-    <CenterBlock>
+
         <div class="button-container">
             <ArrowButton href="https://paperbark.atabook.org/" external={true}>
                 <span style="font-size: 1.1rem; padding: 0.2rem 0.2rem;">Sign my guestbook!</span>
@@ -119,10 +116,22 @@ import GitHubIcon from "$assets/icons/github.svg";
                 <span style="font-size: 1.1rem; padding: 0.2rem 0.2rem;">Explore the website</span>
             </ArrowButton>
         </div>
-    </CenterBlock>
+    </div>
 </Page>
 
 <style lang="scss">
+    .socials-block {
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+        max-width: 30rem;
+
+        align-self: center;
+
+        gap: 2rem;
+    }
+
     .link-group {
         display: flex;
         flex-direction: column;
