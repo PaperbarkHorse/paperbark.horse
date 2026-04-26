@@ -1,0 +1,50 @@
+---
+interface Props {
+    title: string;
+    artist: string;
+    cover: string;
+    href?: string;
+}
+
+let { title, artist, cover, href } = Astro.props;
+---
+
+<a class="album" {href} target="_blank" rel="noopener noreferrer">
+    <img src={cover} alt="" class="cover" />
+    <div class="details">
+        <span class="title">{title}</span>
+        <span class="artist">{artist}</span>
+    </div>
+</a>
+
+<style lang="scss">
+    .album {
+        display: flex;
+        flex-direction: column;
+
+        gap: 0.5rem;
+
+        .cover {
+            border-radius: 0.25rem;
+
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            gap: 0.2rem;
+
+            font-size: 0.9rem;
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        .title {
+            font-weight: var(--font-bold);
+        }
+    }
+</style>

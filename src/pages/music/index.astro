@@ -1,0 +1,62 @@
+---
+import ContentPage from "$layouts/ContentPage.astro";
+import NavSection from "$components/navigation/NavSection.astro";
+import NavItem from "$components/navigation/NavItem.astro";
+import Paper from "$components/containers/Paper.astro";
+import PaperTitle from "$components/elements/text/PaperTitle.astro";
+import Content from "$components/elements/text/Content.astro";
+import AlbumGrid from "$components/layouts/album-grid/AlbumGrid.astro";
+import Album from "$components/layouts/album-grid/Album.astro";
+import ArrowButton from "$components/elements/buttons/ArrowButton.astro";
+---
+
+<ContentPage title="Music">
+    <Fragment slot="navigation">
+        <NavSection name="Navigation">
+            <NavItem name="Return home" href="/" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="contents">
+        <NavSection name="On This Page">
+            <NavItem name="Music" href="#music" />
+            <NavItem name="Favourite Songs" href="#favourite-songs" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="main">
+        <Paper>
+            <PaperTitle el="h1" title="Music" />
+            <Content>
+                <p></p>
+                <div class="button-container">
+                    <ArrowButton href="https://www.last.fm/user/PaperbarkHorse" external={true}>
+                        Visit my last.fm
+                    </ArrowButton>
+                </div>
+            </Content>
+        </Paper>
+        <Paper>
+            <PaperTitle el="h2" title="Favourite Songs" />
+            <Content>
+                <p>
+                    <i>Last updated <time datetime="2026-04-21">21st April 2026</time></i>
+                </p>
+            </Content>
+            <AlbumGrid>
+                <Album
+                    title="brink!"
+                    artist="rawrity"
+                    href="https://rawrity.bandcamp.com/track/brink"
+                    cover="https://f4.bcbits.com/img/a1323703134_2.jpg"
+                />
+                <Album
+                    title="Seabell, Starshine"
+                    artist="replacer"
+                    href="https://replacer.bandcamp.com/track/seabell-starshine"
+                    cover="https://f4.bcbits.com/img/a0199826947_2.jpg"
+                />
+            </AlbumGrid>
+        </Paper>
+    </Fragment>
+</ContentPage>
