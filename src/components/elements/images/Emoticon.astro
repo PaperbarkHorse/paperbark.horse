@@ -1,0 +1,23 @@
+---
+interface Props {
+    src: string;
+}
+
+let { src } = Astro.props;
+---
+
+<img {src} class="emoticon" />
+
+<style lang="scss">
+    .emoticon {
+        display: inline;
+        width: 1.45em;
+
+        border-radius: 0.15em;
+
+        vertical-align: middle;
+        transform: translateY(-0.12em);
+
+        image-rendering: smooth;
+    }
+</style>
