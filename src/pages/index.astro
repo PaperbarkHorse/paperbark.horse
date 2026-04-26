@@ -13,6 +13,11 @@ import Emoticon from "$components/elements/images/Emoticon.astro";
 ---
 
 <ContentPage title="Home">
+    <Fragment slot="head">
+        <!-- furryring stylesheet -->
+        <link rel="stylesheet" href="https://furryring.neocities.org/onionring.css" />
+    </Fragment>
+
     <Fragment slot="navigation">
         <NavSection name="Explore">
             <NavItem name="Home" href="/" />
@@ -37,7 +42,7 @@ import Emoticon from "$components/elements/images/Emoticon.astro";
             <NavItem name="Welcome" href="#welcome" />
             <NavItem name="About" href="#about" />
             <NavItem name="Webrings" href="#webrings" />
-            <NavItem name="Neighbours" href="#neighbours" />
+            <!-- <NavItem name="Neighbours" href="#neighbours" /> -->
         </NavSection>
     </Fragment>
 
@@ -97,16 +102,23 @@ import Emoticon from "$components/elements/images/Emoticon.astro";
         </Paper>
         <Paper>
             <PaperTitle el="h2" title="Webrings" />
-            <div class="placeholder-content">
-                <p>I'm not part of any webrings yet...</p>
+            <div class="webring-list">
+                <!-- furryring -->
+                <div id="furryring">
+                    <script
+                        type="text/javascript"
+                        src="https://furryring.neocities.org/onionring-variables.js"></script>
+                    <script type="text/javascript" src="https://furryring.neocities.org/onionring-widget.js"
+                    ></script>
+                </div>
             </div>
         </Paper>
-        <Paper>
+        <!-- <Paper>
             <PaperTitle el="h2" title="Neighbours" />
             <div class="placeholder-content">
                 <p>There's nobody here yet, but soon there will be!</p>
             </div>
-        </Paper>
+        </Paper> -->
     </Fragment>
 </ContentPage>
 
@@ -127,6 +139,18 @@ import Emoticon from "$components/elements/images/Emoticon.astro";
 
         padding: 0.5rem;
         margin-bottom: 2rem;
+    }
+
+    .webring-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+
+        align-items: center;
+        justify-items: center;
+
+        gap: 1rem;
+
+        font-family: sans-serif;
     }
 
     .neighbour-list {

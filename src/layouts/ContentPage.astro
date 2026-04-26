@@ -12,6 +12,8 @@ let { title } = Astro.props;
 ---
 
 <Skeleton {title} bodyClass="background-carpet">
+    <Fragment slot="head"><slot name="head" /></Fragment>
+
     <a href="#main" class="skip-to-main">
         <StickyNote>Skip to main content</StickyNote>
     </a>
