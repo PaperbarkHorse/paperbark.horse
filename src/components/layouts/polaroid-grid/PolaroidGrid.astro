@@ -1,0 +1,12 @@
+<div class="polaroid-grid">
+    <slot />
+</div>
+
+<style lang="scss">
+    .polaroid-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+
+        gap: 0.5rem;
+    }
+</style>

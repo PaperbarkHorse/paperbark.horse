@@ -1,0 +1,54 @@
+---
+import Paper from "$components/containers/Paper.astro";
+import Polaroid from "$components/elements/images/Polaroid.astro";
+import Content from "$components/elements/text/Content.astro";
+import PaperTitle from "$components/elements/text/PaperTitle.astro";
+import PolaroidGrid from "$components/layouts/polaroid-grid/PolaroidGrid.astro";
+import PolaroidGridItem from "$components/layouts/polaroid-grid/PolaroidGridItem.astro";
+import NavItem from "$components/navigation/NavItem.astro";
+import NavSection from "$components/navigation/NavSection.astro";
+import ContentPage from "$layouts/ContentPage.astro";
+---
+
+<ContentPage title="My OCs">
+    <Fragment slot="navigation">
+        <NavSection name="Navigation">
+            <NavItem name="Home" href="/" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="contents">
+        <NavSection name="On This Page">
+            <NavItem name="My OCs" href="#my-ocs" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="main">
+        <Paper>
+            <PaperTitle el="h1" title="My OCs" />
+            <Content>
+                <p>Aaa</p>
+            </Content>
+            <PolaroidGrid>
+                <PolaroidGridItem
+                    title="Paperbark"
+                    src="/images/ocs/paperbark/profile.jpg"
+                    href="/ocs/paperbark"
+                    angle="-3deg"
+                />
+                <PolaroidGridItem title="Quasar" src="/images/ocs/quasar/profile.jpg" angle="1deg" />
+                <PolaroidGridItem
+                    title="Cocoa Butter"
+                    src="/images/ocs/cocoa-butter/profile.jpg"
+                    angle="-1deg"
+                />
+                <PolaroidGridItem title="Gasoline" src="/images/ocs/gasoline/profile.jpg" angle="3deg" />
+                <PolaroidGridItem
+                    title="Maple Scruff"
+                    src="/images/ocs/maple-scruff/profile.jpg"
+                    angle="-2deg"
+                />
+            </PolaroidGrid>
+        </Paper>
+    </Fragment>
+</ContentPage>

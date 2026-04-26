@@ -1,0 +1,34 @@
+---
+import Polaroid from "$components/elements/images/Polaroid.astro";
+
+interface Props {
+    src: string;
+    href?: string;
+    title?: string;
+    angle?: string;
+}
+
+let { src, href, title, angle } = Astro.props;
+---
+
+<a href={href} class="polaroid-grid-item group">
+    <Polaroid {src} dynamic={href !== undefined} {angle} />
+    {title && <span class="item-title">{title}</span>}
+</a>
+
+<style lang="scss">
+    .polaroid-grid-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        padding: 0.7rem 0.5rem;
+        gap: 1rem;
+
+        .item-title {
+            line-height: 1.1;
+            font-weight: var(--font-semibold);
+            text-align: center;
+        }
+    }
+</style>
