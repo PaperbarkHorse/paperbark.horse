@@ -8,7 +8,7 @@ interface Props {
     visualCenter?: boolean;
 }
 
-const {
+let {
     href,
     download,
     external = false,
@@ -16,6 +16,11 @@ const {
     color = "yellow",
     visualCenter = false,
 } = Astro.props;
+
+if (external === undefined) {
+    let url = new URL(href, Astro.site);
+    external = url.host !== Astro.site?.host;
+}
 ---
 
 <a
