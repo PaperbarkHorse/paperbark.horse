@@ -2,7 +2,7 @@
 interface Props {
     href: string;
     direction?: "none" | "backwards" | "forwards";
-    color?: "yellow" | "green" | "white";
+    color?: "yellow" | "green" | "white" | "blue";
     size?: "normal" | "large";
     external?: boolean;
     download?: string;
@@ -104,6 +104,10 @@ if (external === undefined) {
 
         &.sticky-note-color-white .arrow-button-inner {
             background-image: var(--sticky-note-white-gradient);
+        }
+
+        &.sticky-note-color-blue .arrow-button-inner {
+            background-image: var(--sticky-note-blue-gradient);
         }
 
         &.sticky-note-size-large .arrow-button-inner {
