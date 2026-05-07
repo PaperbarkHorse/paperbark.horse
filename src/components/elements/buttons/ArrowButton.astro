@@ -3,6 +3,7 @@ interface Props {
     href: string;
     direction?: "none" | "backwards" | "forwards";
     color?: "yellow" | "green" | "white";
+    size?: "normal" | "large";
     external?: boolean;
     download?: string;
     visualCenter?: boolean;
@@ -14,6 +15,7 @@ let {
     external = false,
     direction = "forwards",
     color = "yellow",
+    size = "normal",
     visualCenter = false,
 } = Astro.props;
 
@@ -30,6 +32,7 @@ if (external === undefined) {
         "arrow-button",
         `direction-${direction}`,
         `sticky-note-color-${color}`,
+        `sticky-note-size-${size}`,
         { "visual-center": visualCenter },
     ]}
     target={external ? "_blank" : undefined}
@@ -42,7 +45,7 @@ if (external === undefined) {
 
 <style lang="scss">
     .arrow-button {
-        --arrow-size: 1.5rem;
+        --arrow-size: 1.4em;
 
         filter: var(--filter-shadow-medium);
 
@@ -53,8 +56,8 @@ if (external === undefined) {
             align-items: center;
             justify-content: center;
 
-            padding-block: 0.5rem;
-            padding-inline: 1.25rem;
+            padding-block: 0.5em;
+            padding-inline: 1.25em;
 
             border-radius: 0.2rem;
 
@@ -66,8 +69,8 @@ if (external === undefined) {
         }
 
         &.direction-forwards .arrow-button-inner {
-            padding-left: 1.25rem;
-            padding-right: 2.25rem;
+            padding-left: 1.25em;
+            padding-right: 2.25em;
             clip-path: polygon(
                 0 0,
                 calc(100% - var(--arrow-size)) 0,
@@ -78,8 +81,8 @@ if (external === undefined) {
         }
 
         &.direction-backwards .arrow-button-inner {
-            padding-left: 2.25rem;
-            padding-right: 1.25rem;
+            padding-left: 2.25em;
+            padding-right: 1.25em;
             clip-path: polygon(0 50%, var(--arrow-size) 0, 100% 0, 100% 100%, var(--arrow-size) 100%);
         }
 
@@ -101,6 +104,11 @@ if (external === undefined) {
 
         &.sticky-note-color-white .arrow-button-inner {
             background-image: var(--sticky-note-white-gradient);
+        }
+
+        &.sticky-note-size-large .arrow-button-inner {
+            font-size: 1.2rem;
+            line-height: 1.75;
         }
     }
 </style>
