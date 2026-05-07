@@ -1,42 +1,17 @@
 ---
-import ArrowButton from "$components/elements/buttons/ArrowButton.astro";
 import Skeleton from "./Skeleton.astro";
 
 interface Props {
-    title: string;
-    navigation?: boolean;
-    footer?: boolean;
-    back?: { text: string; href: string; }
+    title?: string;
 }
 
-let { title, navigation = true, footer = true, back } = Astro.props;
+let { title } = Astro.props;
 ---
 
 <Skeleton {title} bodyClass="background-carpet">
     <Fragment slot="head"><slot name="head" /></Fragment>
 
-    {
-        navigation && (
-            <nav class="page-navigation">
-                { back ? 
-                    <ArrowButton href={back.href} direction="backwards">
-                        {back.text}
-                    </ArrowButton>
-                    <ArrowButton href="/" direction="none">
-                        Home
-                    </ArrowButton>
-                    :
-                    <ArrowButton href="/" direction="backwards">
-                        Return to homepage
-                    </ArrowButton>
-                }
-            </nav>
-        )
-    }
-    <main class="page-content">
-        <slot />
-    </main>
-    {footer && <footer class="page-footer" />}
+    <slot />
 </Skeleton>
 
 <style lang="scss">

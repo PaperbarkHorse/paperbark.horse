@@ -1,0 +1,50 @@
+---
+
+---
+
+<div class:list={["book-cover", "theme-book-cover"]}>
+    <slot />
+</div>
+
+<style lang="scss">
+    .book-cover {
+        --book-edge-width: 2.856rem;
+
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        width: calc(100% + (var(--book-edge-width) * 0.2));
+        min-height: 5rem;
+
+        margin-left: calc(var(--book-edge-width) * 0.2 * -1);
+
+        padding-left: var(--book-edge-width);
+        padding-bottom: calc(var(--book-edge-width) * 0.34);
+
+        border-image-source: url("/assets/book-cover.png");
+        border-image-slice: 121 fill;
+        border-image-repeat: stretch;
+        border-image-width: var(--book-edge-width);
+
+        color: var(--text-white);
+
+        filter: var(--filter-shadow-large);
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+
+            border-image-source: url("/assets/book-cover-decals.png");
+            border-image-slice: 0 0 0 121;
+            border-image-repeat: space;
+            border-image-width: var(--book-edge-width);
+
+            pointer-events: none;
+        }
+    }
+</style>
