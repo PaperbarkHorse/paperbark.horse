@@ -1,0 +1,116 @@
+---
+import Skeleton from "$layouts/Skeleton.astro";
+import BookCover from "$components/containers/BookCover.astro";
+import ArrowButton from "$components/elements/buttons/ArrowButton.astro";
+import Polaroid from "$components/elements/images/Polaroid.astro";
+import TitleSVG from "$assets/paperbark-title.svg";
+import BookCoverMark from "$assets/book-cover-mark.svg";
+---
+
+<Skeleton bodyClass="background-carpet">
+    <div class="page">
+        <div class="page-content">
+            <BookCover>
+                <div class="book-cover-content">
+                    <div class="top">
+                        <Polaroid src="/images/ocs/paperbark/profile.jpg" angle="-5deg" />
+                        <TitleSVG class="title" />
+                    </div>
+                    <div class="bottom">
+                        <ArrowButton href="/" direction="forwards" size="large"> Explore </ArrowButton>
+                    </div>
+                    <div class="decals">
+                        <BookCoverMark class="book-cover-mark" />
+                    </div>
+                </div>
+            </BookCover>
+        </div>
+    </div>
+</Skeleton>
+
+<style lang="scss" is:global>
+    .page-content .polaroid {
+        --polaroid-width: min(12.5rem, 62%);
+    }
+</style>
+
+<style lang="scss">
+    .page {
+        min-height: 100svh;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        padding: 1rem 1rem;
+    }
+
+    .page-content {
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+        max-width: 30rem;
+
+        gap: 2rem;
+    }
+
+    .book-cover-content {
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+
+        padding: 3.5rem 0.5rem;
+        gap: 5rem;
+
+        .decals {
+            position: absolute;
+            inset: 0;
+
+            pointer-events: none;
+
+            .book-cover-mark {
+                position: absolute;
+                top: 0;
+                left: 1.5rem;
+                width: 3.5rem;
+            }
+        }
+
+        .top,
+        .bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .top {
+            gap: 2rem;
+        }
+
+        .title {
+            width: 100%;
+            max-width: 25rem;
+
+            padding-inline: 1rem;
+
+            filter: var(--filter-shadow-medium);
+        }
+    }
+
+    @media screen and (max-width: 490px) {
+        .book-cover-content {
+            padding: 2.5rem 0.5rem;
+            gap: 3rem;
+
+            .decals {
+                .book-cover-mark {
+                    left: 0.75rem;
+                    width: 10.75%;
+                }
+            }
+        }
+    }
+</style>
