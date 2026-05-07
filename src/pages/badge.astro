@@ -5,6 +5,7 @@ import Polaroid from "$components/elements/images/Polaroid.astro";
 import ArrowButton from "$components/elements/buttons/ArrowButton.astro";
 import Paper from "$components/containers/Paper.astro";
 import Content from "$components/elements/text/Content.astro";
+import StickyNote from "$components/containers/StickyNote.astro";
 ---
 
 <Skeleton title="Hello" bodyClass="background-carpet">
@@ -13,6 +14,22 @@ import Content from "$components/elements/text/Content.astro";
             <div class="header">
                 <Polaroid src="/images/ocs/paperbark/profile.jpg" angle="-8deg" />
                 <HelloNametag class="hello-nametag" />
+            </div>
+            <div class="block hidden" id="quasar-message">
+                <StickyNote color="yellow">
+                    <Content>
+                        <h2>You must've found an old badge...</h2>
+                        <p>
+                            I don't go by the name <strong>"Quasar"</strong> anymore, please call me
+                            <strong>"Paperbark"</strong> instead!
+                        </p>
+                        <div class="button-container">
+                            <ArrowButton href="/name-change" direction="forwards" color="white">
+                                Find out more
+                            </ArrowButton>
+                        </div>
+                    </Content>
+                </StickyNote>
             </div>
             <div class="block text-block">
                 <Paper>
@@ -37,6 +54,14 @@ import Content from "$components/elements/text/Content.astro";
         </div>
     </div>
 </Skeleton>
+
+<script>
+    const searchParams = new URLSearchParams(window.location.search);
+
+    if (searchParams.has("ref", "quasar")) {
+        document.getElementById("quasar-message")?.classList.remove("hidden");
+    }
+</script>
 
 <style lang="scss" is:global>
     .page {
