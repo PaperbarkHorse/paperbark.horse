@@ -1,0 +1,32 @@
+---
+import Paper from "$components/containers/Paper.astro";
+import PaperTitle from "$components/elements/text/PaperTitle.astro";
+import NavItem from "$components/navigation/NavItem.astro";
+import NavSection from "$components/navigation/NavSection.astro";
+import ContentPage from "$layouts/ContentPage.astro";
+---
+
+<ContentPage title="2025 Mixtape">
+    <Fragment slot="navigation">
+        <NavSection name="Navigation">
+            <NavItem name="Home" href="/" />
+            <NavItem name="Playlists" href="/playlists" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="contents">
+        <NavSection name="On This Page">
+            <NavItem name="2025 Mixtape" href="#2025-mixtape" />
+            <NavItem name="B-Side" href="#b-side" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="main">
+        <Paper>
+            <PaperTitle el="h1" title="2025 Mixtape" />
+        </Paper>
+        <Paper>
+            <PaperTitle el="h2" title="B-Side" />
+        </Paper>
+    </Fragment>
+</ContentPage>

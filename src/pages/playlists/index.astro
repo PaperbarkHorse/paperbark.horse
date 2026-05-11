@@ -1,0 +1,128 @@
+---
+import Paper from "$components/containers/Paper.astro";
+import StickyNote from "$components/containers/StickyNote.astro";
+import Content from "$components/elements/text/Content.astro";
+import Hyperlink from "$components/elements/text/Hyperlink.astro";
+import PaperTitle from "$components/elements/text/PaperTitle.astro";
+import Album from "$components/layouts/album-grid/Album.astro";
+import AlbumGrid from "$components/layouts/album-grid/AlbumGrid.astro";
+import NavItem from "$components/navigation/NavItem.astro";
+import NavSection from "$components/navigation/NavSection.astro";
+import ContentPage from "$layouts/ContentPage.astro";
+---
+
+<ContentPage title="Playlists">
+    <Fragment slot="navigation">
+        <NavSection name="Navigation">
+            <NavItem name="Home" href="/" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="contents">
+        <NavSection name="On This Page">
+            <NavItem name="Playlists" href="#playlists" />
+            <NavItem name="Featured" href="#featured" />
+            <NavItem name="Mixtapes" href="#mixtapes" />
+            <NavItem name="Others" href="#others" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="main">
+        <StickyNote>
+            <Content>
+                <span class="h2">Work in Progress</span>
+                <p>
+                    I'm still working on this section, so a lot of stuff is either incomplete or links to
+                    nowhere! Be sure to check back again soon when more things are finished.
+                </p>
+                <p>- Paperbark /)</p>
+            </Content>
+        </StickyNote>
+        <Paper>
+            <PaperTitle el="h1" title="Playlists" />
+            <Content>
+                <p>I freaking <strong>LOVE</strong> making playlists!</p>
+                <p>
+                    I listen to a lot of music that spans across a wide variety of genres, a lot of which is
+                    very niche, so playlists are a great answer to the question of "What music do you listen
+                    to?" for me. Making playlists is absolutely an underrated hobby in my opinion, and more
+                    people should do it!
+                </p>
+                <p>
+                    If you want a good place to start, check out
+                    <Hyperlink href="/playlists/starter-kit">"Paperbark's Starter Kit"</Hyperlink>, a playlist
+                    specifically made to get you up to speed with what I listen to most often and some of my
+                    all-time favourite songs. Otherwise, feel free to explore this page and have a listen to
+                    anything that takes your fancy!
+                </p>
+                <p>
+                    If you're looking for what I've been listening to more recently,
+                    <Hyperlink href="https://www.last.fm/user/PaperbarkHorse">
+                        check out my last.fm profile</Hyperlink
+                    >! All of my listens since 2025 are tracked on there, though it's much less curated than
+                    my playlists are.
+                </p>
+            </Content>
+        </Paper>
+        <Paper>
+            <PaperTitle el="h2" title="Featured" />
+            <AlbumGrid>
+                <Album title="Paperbark's Starter Kit" href="/playlists/starter-kit" />
+                <Album title="Milestones" href="/playlists/milestones" />
+            </AlbumGrid>
+        </Paper>
+        <Paper>
+            <PaperTitle el="h2" title="Mixtapes" />
+            <Content>
+                <p>
+                    Every year I like to make a new playlist featuring all of my favourite and most meaningful
+                    songs from of the year. They make for nice time capsules of the things I've been listening
+                    to and the music that makes me most nostalgic for those times in my life.
+                </p>
+                <p>
+                    The first couple are a little rough since they were just an assortment of songs I threw
+                    together, but from 2025 onwards I've put a lot of thought into actually making them decent
+                    playlists that are enjoyable to listen to.
+                </p>
+                <AlbumGrid>
+                    <Album
+                        title="2025 Mixtape"
+                        href="/playlists/2025-mixtape"
+                        cover="/images/playlists/2025-mixtape.jpg"
+                    />
+                    <Album
+                        title="2024 Mixtape"
+                        href="/playlists/2024-mixtape"
+                        cover="/images/playlists/2024-mixtape.jpg"
+                    />
+                    <Album title="2023 Mixtape" href="/playlists/2023-mixtape" />
+                </AlbumGrid>
+            </Content>
+        </Paper>
+        <Paper>
+            <PaperTitle el="h2" title="Others" />
+            <Content>
+                <AlbumGrid>
+                    <Album
+                        title="UKPC Northbound"
+                        artist="October 2025"
+                        href="/playlists/ukpc-northbound"
+                        cover="/images/playlists/ukpc-northbound.jpg"
+                    />
+                    <Album
+                        title="Horse Tunes"
+                        artist="Compilation"
+                        href="/playlists/horse-tunes"
+                        cover="/images/playlists/horse-tunes.jpg"
+                    />
+                    <Album
+                        title="Waterworks Any% Speedrun"
+                        artist="Compilation"
+                        href="/playlists/waterworks-any-percent"
+                        cover="/images/playlists/waterworks-any-percent.jpg"
+                    />
+                </AlbumGrid>
+            </Content>
+        </Paper>
+    </Fragment>
+</ContentPage>
