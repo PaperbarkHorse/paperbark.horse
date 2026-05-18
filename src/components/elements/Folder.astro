@@ -16,13 +16,13 @@ const { href, labelText, labelSrc, contentImages } = Astro.props;
             <img src={contentImages[0]} alt="" class="content-image" style="--angle: 0deg; --offset: 0cqw;" />
         ) }
         { (contentImages && contentImages.length === 2) && (
-            <img src={contentImages[0]} alt="" class="content-image" style="--angle: -10deg; --offset: -10cqw;" />
-            <img src={contentImages[1]} alt="" class="content-image" style="--angle: 10deg; --offset: 10cqw;" />
+            <img src={contentImages[0]} alt="" class="content-image" style="--angle: -10deg; --offset: 10cqw;" />
+            <img src={contentImages[1]} alt="" class="content-image" style="--angle: 10deg; --offset: -10cqw;" />
         ) }
         { (contentImages && contentImages.length >= 3) && (
-            <img src={contentImages[0]} alt="" class="content-image" style="--angle: -10deg; --offset: -23cqw;" />
+            <img src={contentImages[0]} alt="" class="content-image" style="--angle: -10deg; --offset: 0cqw;" />
             <img src={contentImages[1]} alt="" class="content-image" style="--angle: 0deg; --offset: 0cqw;" />
-            <img src={contentImages[2]} alt="" class="content-image" style="--angle: 10deg; --offset: 23cqw;" />
+            <img src={contentImages[2]} alt="" class="content-image" style="--angle: 10deg; --offset: 0cqw;" />
         ) }
     </div>
     <div class="folder-front">
@@ -114,19 +114,20 @@ const { href, labelText, labelSrc, contentImages } = Astro.props;
 
     .content-image {
         position: absolute;
-        top: 50%;
-        left: 50%;
+        top: 40%;
+        left: calc(sin(var(--angle)) * 100% + 50% + var(--offset));
         height: 42cqw;
         aspect-ratio: 8 / 7;
 
-        transform: translate(-50%, -50%) rotate(var(--angle)) translate(var(--offset), -10cqw) scale(0.7);
+        transform: translate(-50%, -50%) rotate(var(--angle)) scale(0.7);
 
-        transition-property: transform;
+        transition-property: transform, top, left;
         transition-duration: 0.2s;
 
         object-fit: contain;
         object-position: 50% 50%;
         filter: var(--filter-shadow-medium);
+        user-select: none;
 
         &:nth-child(1) {
             transition-delay: 0s;
@@ -140,7 +141,9 @@ const { href, labelText, labelSrc, contentImages } = Astro.props;
         }
 
         .folder:hover &, .folder:focus-visible & {
-            transform: translate(-50%, -50%) rotate(var(--angle)) translate(var(--offset), -43cqw) scale(1);
+            top: calc(cos(var(--angle) + 180deg) * 300% + 297%);
+            left: calc(sin(var(--angle)) * 170% + 50% + var(--offset));
+            transform: translate(-50%, -50%) rotate(var(--angle)) scale(1);
         }
     }
 </style>
