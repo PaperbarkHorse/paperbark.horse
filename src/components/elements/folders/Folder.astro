@@ -1,12 +1,15 @@
 ---
+import type { SvgComponent } from 'astro/types';
+
 interface Props {
     href?: string;
     labelText?: string;
     labelSrc?: string;
+    labelSvg?: SvgComponent;
     contentImages?: [string?, string?, string?];
 }
 
-const { href, labelText, labelSrc, contentImages } = Astro.props;
+const { href, labelText, labelSrc, labelSvg: LabelSvg, contentImages } = Astro.props;
 ---
 
 <a class="folder" href={href}>
@@ -29,8 +32,13 @@ const { href, labelText, labelSrc, contentImages } = Astro.props;
         {
             labelSrc ? (
                 <img src={labelSrc} alt={labelText ?? ""} class="label-image" />
-            ) : (
-                labelText && <span class="label-text">{labelText}</span>
+            ) : LabelSvg && (
+                <LabelSvg class="label-icon" />
+            )
+        }
+        { 
+            labelText && (
+                <span class="label-text">{labelText}</span>
             )
         }
     </div>
@@ -47,6 +55,11 @@ const { href, labelText, labelSrc, contentImages } = Astro.props;
 
         perspective: 500px;
         z-index: 10;
+
+        &:not([href]) {
+            opacity: 0.5;
+            filter: grayscale(20%);
+        }
     }
 
     .folder-back {
@@ -75,8 +88,11 @@ const { href, labelText, labelSrc, contentImages } = Astro.props;
 
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+
+        padding: 3cqw;
+        gap: 2cqw;
 
         background-color: #ecd673;
 
@@ -92,18 +108,29 @@ const { href, labelText, labelSrc, contentImages } = Astro.props;
         clip-path: polygon(0% -20%, 100% -20%, 100% 100%, 0% 100%);
         z-index: 20;
 
-        .folder:hover &, .folder:focus-visible & {
+        .folder[href]:hover &, .folder[href]:focus-visible & {
             transform: rotateX(-30deg);
         }
     }
 
     .label-image {
-        width: 45cqw;
+        width: 60%;
+        height: 100%;
+        flex-grow: 1;
+
+        object-fit: contain;
+        user-select: none;
+    }
+
+    .label-icon {
+        width: 30cqw;
+        height: 30cqw;
+
+        object-fit: contain;
+        user-select: none;
     }
 
     .label-text {
-        padding: 5cqw;
-
         font-size: 12cqw;
         font-weight: var(--font-semibold);
         text-align: center;
@@ -140,7 +167,7 @@ const { href, labelText, labelSrc, contentImages } = Astro.props;
             transition-delay: 0.08s;
         }
 
-        .folder:hover &, .folder:focus-visible & {
+        .folder[href]:hover &, .folder[href]:focus-visible & {
             top: calc(cos(var(--angle) + 180deg) * 300% + 297%);
             left: calc(sin(var(--angle)) * 170% + 50% + var(--offset));
             transform: translate(-50%, -50%) rotate(var(--angle)) scale(1);

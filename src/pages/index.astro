@@ -10,7 +10,16 @@ import StickyNote from "$components/containers/StickyNote.astro";
 import ArrowButton from "$components/elements/buttons/ArrowButton.astro";
 import Hyperlink from "$components/elements/text/Hyperlink.astro";
 import Emoticon from "$components/elements/images/Emoticon.astro";
-import Folder from "$components/elements/Folder.astro";
+import Folder from "$components/elements/folders/Folder.astro";
+import FolderGrid from "$components/elements/folders/FolderGrid.astro";
+
+import HorseshoeIcon from "$assets/icons/mdi/horseshoe.svg";
+import PlaylistMusicIcon from "$assets/icons/mdi/playlist-music.svg";
+import StarIcon from "$assets/icons/mdi/star.svg";
+import MusicNoteIcon from "$assets/icons/mdi/music-note.svg";
+import GamepadIcon from "$assets/icons/mdi/gamepad-variant.svg";
+import ClapperboardIcon from "$assets/icons/mdi/clapperboard-open.svg";
+import LinkIcon from "$assets/icons/mdi/link-variant.svg";
 ---
 
 <ContentPage title="Home">
@@ -102,52 +111,66 @@ import Folder from "$components/elements/Folder.astro";
             </Content>
         </Paper>
         <Paper>
+            <PaperTitle el="h2" title="Explore" />
+            <Content>
+                <h3>Creations</h3>
+                <FolderGrid>
+                    <Folder
+                        href="/ocs"
+                        labelText="OCs"
+                        labelSvg={HorseshoeIcon}
+                        contentImages={[
+                            "/test/gasoline.png",
+                            "/test/paperbark.png",
+                            "/test/cocoa-butter.png",
+                        ]}
+                    />
+                    <Folder
+                        href="/playlists"
+                        labelText="Playlists"
+                        labelSvg={PlaylistMusicIcon}
+                        contentImages={[
+                            "/images/playlists/2025-mixtape.jpg",
+                            "/images/playlists/horse-tunes.jpg",
+                            "/images/playlists/ukpc-northbound.jpg",
+                        ]}
+                    />
+                </FolderGrid>
+
+                <h3>Collections</h3>
+                <FolderGrid>
+                    <Folder
+                        href="/blinkies"
+                        labelText="Blinkies"
+                        labelSvg={StarIcon}
+                        contentImages={[
+                            "/blinkies/stamps/dj-pon3.gif",
+                            "/blinkies/stamps/antonymph.gif",
+                            "/blinkies/stamps/nyan-cat.gif",
+                        ]}
+                    />
+                    <Folder labelText="Links" labelSvg={LinkIcon} contentImages={[]} />
+                </FolderGrid>
+
+                <h3>Favourites</h3>
+                <FolderGrid>
+                    <Folder labelText="Music" labelSvg={MusicNoteIcon} contentImages={[]} />
+                    <Folder labelText="Games" labelSvg={GamepadIcon} contentImages={[]} />
+                    <Folder labelText="Media" labelSvg={ClapperboardIcon} contentImages={[]} />
+                </FolderGrid>
+            </Content>
+        </Paper>
+        <Paper>
             <PaperTitle el="h2" title="Webrings" />
             <div class="webring-list">
                 <!-- furryring -->
                 <div id="furryring">
-                    <script
+                    <!-- <script
                         type="text/javascript"
                         src="https://furryring.neocities.org/onionring-variables.js"></script>
                     <script type="text/javascript" src="https://furryring.neocities.org/onionring-widget.js"
-                    ></script>
+                    ></script> -->
                 </div>
-            </div>
-        </Paper>
-        <!-- <Paper>
-            <PaperTitle el="h2" title="Neighbours" />
-            <div class="placeholder-content">
-                <p>There's nobody here yet, but soon there will be!</p>
-            </div>
-        </Paper> -->
-        <Paper>
-            <PaperTitle el="h2" title="Folders" />
-            <div class="folder-grid">
-                <Folder
-                    href="/ocs"
-                    labelText="Original Characters"
-                    contentImages={["/test/gasoline.png", "/test/paperbark.png", "/test/cocoa-butter.png"]}
-                />
-                <Folder
-                    href="/playlists"
-                    labelText="Playlists"
-                    contentImages={[
-                        "/images/playlists/2025-mixtape.jpg",
-                        "/images/playlists/horse-tunes.jpg",
-                        "/images/playlists/ukpc-northbound.jpg",
-                    ]}
-                />
-                <Folder
-                    href="/blinkies"
-                    labelText="Blinkies"
-                    contentImages={[
-                        "/blinkies/stamps/dj-pon3.gif",
-                        "/blinkies/stamps/antonymph.gif",
-                        "/blinkies/stamps/nyan-cat.gif",
-                    ]}
-                />
-                <Folder labelText="Horses" contentImages={["/Twilight Huh.png", "/VinylFront.png"]} />
-                <Folder labelText="?" contentImages={["/mod-check.gif"]} />
             </div>
         </Paper>
     </Fragment>
@@ -180,32 +203,5 @@ import Folder from "$components/elements/Folder.astro";
         justify-items: center;
 
         gap: 1rem;
-    }
-
-    .neighbour-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
-
-        gap: 1rem;
-
-        .neighbour {
-            display: flex;
-            flex-direction: column;
-
-            align-items: center;
-
-            gap: 0.5rem;
-
-            font-weight: var(--font-semibold);
-            text-align: center;
-        }
-    }
-
-    .folder-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
-
-        gap: 2rem;
-        padding: 0.5rem;
     }
 </style>
