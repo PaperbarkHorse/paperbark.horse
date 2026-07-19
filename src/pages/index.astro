@@ -41,6 +41,7 @@ import Emoticon from "$components/elements/images/Emoticon.astro";
         <NavSection name="On This Page">
             <NavItem name="Welcome" href="#welcome" />
             <NavItem name="About" href="#about" />
+            <NavItem name="The Noticeboard" href="#the-noticeboard" />
             <NavItem name="Webrings" href="#webrings" />
             <!-- <NavItem name="Neighbours" href="#neighbours" /> -->
         </NavSection>
@@ -49,22 +50,12 @@ import Emoticon from "$components/elements/images/Emoticon.astro";
     <Fragment slot="header">
         <SiteBanner />
 
-        <div class="motd">
+        <!-- <div class="motd">
             <StickyNote color="green">
                 <Content>
-                    <h2>My name has changed!</h2>
-                    <p>
-                        Since March 2026, I now go by the name <strong>"Paperbark"</strong> online instead of my
-                        previous name <strong>"Quasar."</strong>
-                    </p>
-                    <div class="button-container">
-                        <ArrowButton href="/name-change" direction="forwards" color="white">
-                            Read more
-                        </ArrowButton>
-                    </div>
                 </Content>
             </StickyNote>
-        </div>
+        </div> -->
     </Fragment>
 
     <Fragment slot="main">
@@ -84,7 +75,7 @@ import Emoticon from "$components/elements/images/Emoticon.astro";
         <Paper>
             <PaperTitle el="h2" title="About" />
             <Content>
-                <p>I'm Paperbark!</p>
+                <p>Hey there, I'm Paperbark!</p>
                 <ul>
                     <li>Pronouns are "He/Him" or "They/Them"</li>
                     <li>
@@ -95,10 +86,48 @@ import Emoticon from "$components/elements/images/Emoticon.astro";
                         <Emoticon src="/images/emoticons/vinyl-nod.gif" />
                     </li>
                     <li>I'm a furry and a fursuiter</li>
-                    <li>Lover of plushies, pooltoys, and anything else that's soft and cuddly</li>
-                    <li>Hugs are 100% encouraged!</li>
+                    <li>Lover of plushies, pooltoys, and anything else soft and cuddly</li>
+                    <li>Programmer and AV enthusiast</li>
+                    <li>Tech lead for the Hampshire Community Critters meets</li>
+                    <li>Hugs are 100% encouraged, but please ask first!</li>
                 </ul>
             </Content>
+        </Paper>
+        <Paper>
+            <PaperTitle el="h2" title="The Noticeboard" />
+            <div class="articles">
+                <article>
+                    <Content>
+                        <h2>Paperbark's Starter Kit</h2>
+                        <time datetime="2026-07-19">19<sup>th</sup> July 2026</time>
+                        <p>
+                            People always ask me what music I listen to, and it's always a tough question to
+                            answer because my music taste is... well, an absolute mess.
+                        </p>
+                        <p>
+                            So I made a playlist that acts as an introduction to some of my favourite songs,
+                            artists, and genres - one which perfectly demonstrates how weird the music I
+                            listen to is!
+                        </p>
+                        <div class="button-container">
+                            <ArrowButton href="/playlists/starter-kit">Check out the playlist</ArrowButton>
+                        </div>
+                    </Content>
+                </article>
+                <article>
+                    <Content>
+                        <h2>My Name Has Changed!</h2>
+                        <time datetime="2026-03-23">23<sup>rd</sup> March 2026</time>
+                        <p>
+                            Since March 2026, I now go by the name <strong>"Paperbark"</strong> online instead of
+                            my previous name <strong>"Quasar."</strong>
+                        </p>
+                        <div class="button-container">
+                            <ArrowButton href="/name-change">Read more</ArrowButton>
+                        </div>
+                    </Content>
+                </article>
+            </div>
         </Paper>
         <Paper>
             <PaperTitle el="h2" title="Webrings" />
@@ -167,6 +196,17 @@ import Emoticon from "$components/elements/images/Emoticon.astro";
 
             font-weight: var(--font-semibold);
             text-align: center;
+        }
+    }
+
+    .articles {
+        display: flex;
+        flex-direction: column;
+
+        > article:not(:last-child) {
+            padding-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 0.2rem solid #00000011;
         }
     }
 </style>
