@@ -7,4 +7,5 @@ import svelte from "@astrojs/svelte";
 export default defineConfig({
     site: "https://paperbark.horse",
     integrations: [svelte()],
+    compressHTML: true,
 });
