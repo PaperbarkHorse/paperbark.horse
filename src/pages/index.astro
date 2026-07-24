@@ -14,6 +14,12 @@ import Emoticon from "$components/elements/images/Emoticon.astro";
 
 <ContentPage title="Home">
     <Fragment slot="head">
+        <meta property="og:title" content="Paperbark" />
+        <meta property="og:image" content={new URL("/images/ocs/paperbark/profile.jpg", Astro.url)} />
+        <meta property="og:url" content={Astro.url} />
+        <meta property="og:type" content="profile" />
+        <meta property="profile:username" content="Paperbark" />
+
         <!-- furryring stylesheet -->
         <link rel="stylesheet" href="https://furryring.neocities.org/onionring.css" />
     </Fragment>

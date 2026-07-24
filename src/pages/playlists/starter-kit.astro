@@ -9,6 +9,18 @@ import Content from "$components/elements/text/Content.astro";
 ---
 
 <ContentPage title="Paperbark's Starter Kit">
+    <Fragment slot="head">
+        <meta property="og:title" content="Paperbark's Starter Kit" />
+        <meta
+            property="og:description"
+            content="Hey Paperbark, what music do you listen to? This playlist should help answer that!"
+        />
+        <meta property="og:image" content={new URL("/images/playlists/starter-kit.jpg", Astro.url)} />
+        <meta property="og:url" content={Astro.url} />
+        <meta property="og:type" content="music.playlist" />
+        <meta property="music:creator" content={new URL("/", Astro.url)} />
+    </Fragment>
+
     <Fragment slot="navigation">
         <NavSection name="Navigation">
             <NavItem name="Home" href="/" />
