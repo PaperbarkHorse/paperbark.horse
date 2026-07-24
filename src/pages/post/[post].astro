@@ -23,12 +23,19 @@ export const getStaticPaths = (async ({ paginate }) => {
 
 const { post } = Astro.props;
 const { Content, headings } = await render(post);
+
+if (post.data.url) {
+    return Astro.redirect(post.data.url);
+}
 ---
 
 <ContentPage title={post.data.title}>
     <Fragment slot="head">
         <meta property="og:title" content={post.data.title} />
-        <!-- <meta property="og:image" content="" /> -->
+        <meta
+            property="og:image"
+            content={new URL(post.data.image ?? "/images/post-default.png", Astro.url)}
+        />
         <meta property="og:url" content={Astro.url} />
         <meta property="og:type" content="article" />
         <meta property="article:published_time" content={post.data.published.toISOString()} />
