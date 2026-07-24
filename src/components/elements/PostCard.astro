@@ -2,9 +2,10 @@
 import { getCollection } from "astro:content";
 import ArrowButton from "./buttons/ArrowButton.astro";
 import Content from "./text/Content.astro";
+import type { CollectionEntry } from "astro:content";
 
 interface Props {
-    post: any;
+    post: CollectionEntry<"post">;
     embedded?: boolean;
 }
 
