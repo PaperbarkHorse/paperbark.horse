@@ -7,8 +7,8 @@ interface Props {
 let { href, external } = Astro.props;
 
 if (external === undefined) {
-    let url = new URL(href, Astro.site);
-    external = url.host !== Astro.site?.host;
+    let url = new URL(href, Astro.url);
+    external = url.host !== Astro.url.host;
 }
 ---
 

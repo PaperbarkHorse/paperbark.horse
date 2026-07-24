@@ -22,8 +22,8 @@ let {
 let external = false;
 
 if (href) {
-    let url = new URL(href, Astro.site);
-    external = url.host !== Astro.site?.host;
+    let url = new URL(href, Astro.url);
+    external = url.host !== Astro.url.host;
 }
 ---
 
