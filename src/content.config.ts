@@ -18,15 +18,28 @@ const post = defineCollection({
     schema: z.object({
         title: z.string(),
         slug: z.string(),
+
         published: z.coerce.date(),
         updated: z.coerce.date().optional(),
-        unlisted: z.boolean().default(false),
-        showcase: z.boolean().default(true),
+
+        tags: z.array(z.string()).default([]),
         summary: z.array(z.string()).optional(),
         image: z.string().optional(),
+
+        unlisted: z.boolean().default(false),
+        showcase: z.boolean().default(true),
+
         url: z.string().optional(),
         action: z.string().optional(),
     }),
 });
 
-export const collections = { tagline, post };
+const tag = defineCollection({
+    loader: file("./src/content/tags.json"),
+    schema: z.object({
+        name: z.string(),
+        infers: z.array(z.string()).default([]),
+    }),
+});
+
+export const collections = { tagline, post, tag };

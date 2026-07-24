@@ -1,0 +1,12 @@
+{
+    "blog": {
+        "name": "Blog"
+    },
+    "project": {
+        "name": "Project"
+    },
+    "playlist": {
+        "name": "Playlist",
+        "infers": ["project"]
+    }
+}

@@ -1,4 +1,5 @@
 ---
+import { getCollection } from "astro:content";
 import ArrowButton from "./buttons/ArrowButton.astro";
 import Content from "./text/Content.astro";
 
@@ -8,6 +9,8 @@ interface Props {
 }
 
 let { post, embedded = false } = Astro.props;
+
+let allTags = await getCollection("tag");
 ---
 
 <div class:list={["postcard", { embedded }]}>
@@ -31,6 +34,15 @@ let { post, embedded = false } = Astro.props;
                 })
             }
         </time>
+        {
+            post.data.tags && (
+                <div class="tags">
+                    {post.data.tags.map((tag: string) => (
+                        <div class="tag">{allTags.find((t) => t.id === tag)?.data.name ?? tag}</div>
+                    ))}
+                </div>
+            )
+        }
         {
             post.data.summary && (
                 <div class="summary">
@@ -99,6 +111,30 @@ let { post, embedded = false } = Astro.props;
 
             .summary {
                 margin-top: 1rem;
+            }
+        }
+
+        .tags {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            margin-top: 0.25rem;
+            gap: 0.25rem;
+
+            .tag {
+                display: flex;
+                flex-direction: row;
+
+                padding: 0.1rem 0.4rem;
+
+                border-radius: 0.2rem;
+
+                background: var(--sticky-note-blue-gradient);
+
+                font-size: 0.8rem;
+
+                user-select: none;
             }
         }
 
