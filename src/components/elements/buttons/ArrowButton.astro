@@ -1,25 +1,27 @@
 ---
 interface Props {
-    href: string;
+    href?: string;
     direction?: "none" | "backwards" | "forwards";
     color?: "yellow" | "green" | "white" | "blue";
     size?: "normal" | "large";
-    external?: boolean;
     download?: string;
     visualCenter?: boolean;
+    disabled?: boolean;
 }
 
 let {
     href,
     download,
-    external = false,
     direction = "forwards",
     color = "yellow",
     size = "normal",
     visualCenter = false,
+    disabled = false,
 } = Astro.props;
 
-if (external === undefined) {
+let external = false;
+
+if (href) {
     let url = new URL(href, Astro.site);
     external = url.host !== Astro.site?.host;
 }
@@ -33,7 +35,7 @@ if (external === undefined) {
         `direction-${direction}`,
         `sticky-note-color-${color}`,
         `sticky-note-size-${size}`,
-        { "visual-center": visualCenter },
+        { "visual-center": visualCenter, disabled },
     ]}
     target={external ? "_blank" : undefined}
     rel={external ? "noreferrer noopener" : undefined}
@@ -48,6 +50,7 @@ if (external === undefined) {
         --arrow-size: 1.4em;
 
         filter: var(--filter-shadow-medium);
+        user-select: none;
 
         .arrow-button-inner {
             position: relative;
@@ -113,6 +116,10 @@ if (external === undefined) {
         &.sticky-note-size-large .arrow-button-inner {
             font-size: 1.2rem;
             line-height: 1.75;
+        }
+
+        &.disabled {
+            opacity: 0.3;
         }
     }
 </style>

@@ -1,0 +1,30 @@
+---
+interface Props {
+    src: string;
+    alt?: string;
+}
+
+let { src, alt = "" } = Astro.props;
+---
+
+<div class="doc-image">
+    <img {src} {alt} />
+</div>
+
+<style lang="scss">
+    .doc-image {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            display: block;
+            max-width: min(30rem, 100%);
+            max-height: min(25rem, 80vh);
+
+            border: 0.5rem solid white;
+            box-shadow: var(--shadow-medium);
+        }
+    }
+</style>

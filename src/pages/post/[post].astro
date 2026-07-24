@@ -1,0 +1,57 @@
+---
+import type { GetStaticPaths } from "astro";
+import NavItem from "$components/navigation/NavItem.astro";
+import NavSection from "$components/navigation/NavSection.astro";
+import ContentPage from "$layouts/ContentPage.astro";
+import { render } from "astro:content";
+import { getCollection } from "astro:content";
+
+export const getStaticPaths = (async ({ paginate }) => {
+    let posts = await getCollection("post");
+
+    return posts.map((post) => {
+        return {
+            params: {
+                post: post.data.slug,
+            },
+            props: {
+                post,
+            },
+        };
+    });
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+---
+
+<ContentPage title={post.data.title}>
+    <Fragment slot="head">
+        <meta property="og:title" content={post.data.title} />
+        <!-- <meta property="og:image" content="" /> -->
+        <meta property="og:url" content={Astro.url} />
+        <meta property="og:type" content="article" />
+        <meta property="article:published_time" content={post.data.published.toISOString()} />
+        <meta property="article:author" content={new URL("/", Astro.url)} />
+
+        <!-- furryring stylesheet -->
+        <link rel="stylesheet" href="https://furryring.neocities.org/onionring.css" />
+    </Fragment>
+
+    <Fragment slot="navigation">
+        <NavSection name="Explore">
+            <NavItem name="Home" href="/" />
+            <NavItem name="Posts" href="/posts" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="contents">
+        <NavSection name="On This Page">
+            {headings.map((heading) => <NavItem name={heading.text} href={`#${heading.slug}`} />)}
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="main">
+        <Content post={post} />
+    </Fragment>
+</ContentPage>

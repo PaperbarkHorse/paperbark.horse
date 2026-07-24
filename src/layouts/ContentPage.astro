@@ -22,9 +22,13 @@ let { title } = Astro.props;
         <NavBlock>
             <slot name="navigation" />
         </NavBlock>
-        <NavBlock>
-            <slot name="contents" />
-        </NavBlock>
+        {
+            Astro.slots.has("contents") && (
+                <NavBlock>
+                    <slot name="contents" />
+                </NavBlock>
+            )
+        }
     </MobileNavigation>
 
     <div class="page-container">
@@ -34,9 +38,13 @@ let { title } = Astro.props;
                 <NavBlock>
                     <slot name="navigation" />
                 </NavBlock>
-                <NavBlock>
-                    <slot name="contents" />
-                </NavBlock>
+                {
+                    Astro.slots.has("contents") && (
+                        <NavBlock>
+                            <slot name="contents" />
+                        </NavBlock>
+                    )
+                }
             </div>
             <main class="main" id="main" tabindex="-1">
                 <slot name="main" />

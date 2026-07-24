@@ -134,6 +134,33 @@
     }
 
     .theme-paper .content {
+        margin-bottom: 0.5rem;
+
+        > h1,
+        h2 {
+            --paper-title-size: 1.8rem;
+
+            width: fit-content;
+            align-self: flex-start;
+
+            margin-left: calc(var(--paper-edge-width) * -1 - 1.2rem);
+            padding-left: calc(var(--paper-edge-width) + 1.2rem);
+            padding-right: calc(var(--paper-title-size) + 1rem);
+            padding-block: 0.5rem;
+
+            background-color: var(--cutie-mark-orange);
+
+            font-size: 2rem;
+            font-weight: var(--font-semibold);
+            line-height: 1.1;
+            color: var(--text-white);
+
+            z-index: 1;
+            clip-path: polygon(0 0, 100% 0, calc(100% - var(--paper-title-size)) 50%, 100% 100%, 0 100%);
+
+            scroll-margin-top: 2rem;
+        }
+
         > :is(p, ul, ol, table, figure) a[href] {
             background-color: var(--highlighter-yellow);
             mix-blend-mode: multiply;

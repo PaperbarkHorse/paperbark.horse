@@ -1,0 +1,11 @@
+---
+import Hyperlink from "$components/elements/text/Hyperlink.astro";
+
+interface Props {
+    href: string;
+}
+
+let { href } = Astro.props;
+---
+
+<Hyperlink {href}><slot /></Hyperlink>

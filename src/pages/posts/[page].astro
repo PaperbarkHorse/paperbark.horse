@@ -1,0 +1,43 @@
+---
+import type { GetStaticPaths } from "astro";
+import ContentPage from "$layouts/ContentPage.astro";
+import { getCollection } from "astro:content";
+import NavSection from "$components/navigation/NavSection.astro";
+import NavItem from "$components/navigation/NavItem.astro";
+import PostCard from "$components/elements/PostCard.astro";
+import Pagination from "$components/elements/buttons/Pagination.astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+    let posts = await getCollection("post");
+
+    return paginate(
+        posts
+            .filter((post) => !post.data.unlisted)
+            .toSorted((a, b) => b.data.published.getTime() - a.data.published.getTime())
+            .map((post) => {
+                return {
+                    post,
+                };
+            }),
+        {
+            pageSize: 20,
+        },
+    );
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<ContentPage title="Posts">
+    <Fragment slot="navigation">
+        <NavSection name="Explore">
+            <NavItem name="Home" href="/" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="main">
+        {page.data.map(({ post }) => <PostCard {post} />)}
+
+        <Pagination {page} />
+    </Fragment>
+</ContentPage>

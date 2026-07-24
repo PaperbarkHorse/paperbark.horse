@@ -1,0 +1,140 @@
+---
+import ArrowButton from "./buttons/ArrowButton.astro";
+import Content from "./text/Content.astro";
+
+interface Props {
+    post: any;
+    embedded?: boolean;
+}
+
+let { post, embedded = false } = Astro.props;
+---
+
+<div class:list={["postcard", { embedded }]}>
+    <div class="picture">
+        {
+            post.data.image ? (
+                <img src={post.data.image} alt="" class="post-image" />
+            ) : (
+                <img src="/images/post-default.png" alt="" class="post-image" />
+            )
+        }
+    </div>
+    <div class="details">
+        <span class="title">{post.data.title}</span>
+        <time datetime={post.data.published.toISOString()} class="published">
+            {
+                post.data.published.toLocaleString("en-GB", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                })
+            }
+        </time>
+        {
+            post.data.summary && (
+                <div class="summary">
+                    <Content>
+                        {post.data.summary.map((line: string) => (
+                            <p>{line}</p>
+                        ))}
+                    </Content>
+                </div>
+            )
+        }
+    </div>
+    <div class="actions">
+        <ArrowButton href={new URL(post.data.url ?? `/post/${post.data.slug}`, Astro.url).toString()}>
+            {post.data.action ?? "Read more"}
+        </ArrowButton>
+    </div>
+</div>
+
+<style lang="scss">
+    .postcard {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto 1fr;
+        grid-template-areas:
+            "details picture"
+            "details actions";
+
+        padding: 1rem;
+        gap: 1rem;
+
+        border-radius: 0.25rem;
+
+        background-color: var(--paper-white);
+
+        box-shadow: var(--shadow-large);
+
+        &.embedded {
+            padding: 0;
+            box-shadow: none;
+
+            .details {
+                border-right: none;
+                padding-right: 0;
+            }
+        }
+
+        .details {
+            grid-area: details;
+
+            display: flex;
+            flex-direction: column;
+
+            border-right: 0.2rem solid rgb(0, 0, 0, 10%);
+            padding-right: 1rem;
+
+            .title {
+                font-size: 1.5rem;
+                font-weight: var(--font-semibold);
+                line-height: 1.1;
+            }
+
+            .published {
+                font-style: italic;
+            }
+
+            .summary {
+                margin-top: 1rem;
+            }
+        }
+
+        .picture {
+            grid-area: picture;
+
+            display: flex;
+            flex-direction: column;
+
+            align-self: center;
+
+            .post-image {
+                width: 100%;
+                border-radius: 0.25rem;
+            }
+        }
+
+        .actions {
+            grid-area: actions;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        @container (width < 550px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto auto;
+            grid-template-areas:
+                "picture"
+                "details"
+                "actions";
+
+            .details {
+                border-right: 0;
+                padding-right: 0;
+            }
+        }
+    }
+</style>

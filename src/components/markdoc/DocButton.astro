@@ -1,0 +1,15 @@
+---
+import ArrowButton from "$components/elements/buttons/ArrowButton.astro";
+
+interface Props {
+    href: string;
+}
+
+let { href } = Astro.props;
+---
+
+<div class="button-container">
+    <ArrowButton {href}>
+        <slot />
+    </ArrowButton>
+</div>

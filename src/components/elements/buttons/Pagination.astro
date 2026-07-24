@@ -1,0 +1,48 @@
+---
+import type { Page } from "astro";
+import ArrowButton from "./ArrowButton.astro";
+
+interface Props {
+    page: Page;
+}
+
+let { page } = Astro.props;
+---
+
+<div class="pagination">
+    {
+        page.url.prev ? (
+            <ArrowButton href={page.url.prev} direction="backwards">
+                Prev
+            </ArrowButton>
+        ) : (
+            <ArrowButton disabled={true} direction="backwards">
+                Prev
+            </ArrowButton>
+        )
+    }
+    <ArrowButton direction="none">{page.currentPage} of {page.lastPage}</ArrowButton>
+    {
+        page.url.next ? (
+            <ArrowButton href={page.url.next} direction="forwards">
+                Next
+            </ArrowButton>
+        ) : (
+            <ArrowButton disabled={true} direction="forwards">
+                Next
+            </ArrowButton>
+        )
+    }
+</div>
+
+<style>
+    .pagination {
+        display: flex;
+        flex-direction: row;
+
+        justify-content: center;
+        align-items: center;
+
+        gap: 0.5rem;
+    }
+</style>

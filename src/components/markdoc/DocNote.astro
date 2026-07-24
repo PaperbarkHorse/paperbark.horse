@@ -1,0 +1,18 @@
+---
+import StickyNote from "$components/containers/StickyNote.astro";
+import Content from "$components/elements/text/Content.astro";
+---
+
+<div class="note">
+    <StickyNote>
+        <Content>
+            <slot />
+        </Content>
+    </StickyNote>
+</div>
+
+<style lang="scss">
+    .note {
+        padding-inline: 1rem;
+    }
+</style>

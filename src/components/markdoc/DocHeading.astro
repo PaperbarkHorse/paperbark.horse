@@ -1,0 +1,14 @@
+---
+interface Props {
+    level: number;
+    id: string;
+}
+
+let { level, id } = Astro.props;
+
+const Element = `h${level}`;
+---
+
+<Element id={id}>
+    <slot />
+</Element>

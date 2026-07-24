@@ -6,10 +6,16 @@ import SiteBanner from "$components/site/SiteBanner.astro";
 import Paper from "$components/containers/Paper.astro";
 import PaperTitle from "$components/elements/text/PaperTitle.astro";
 import Content from "$components/elements/text/Content.astro";
-import StickyNote from "$components/containers/StickyNote.astro";
 import ArrowButton from "$components/elements/buttons/ArrowButton.astro";
 import Hyperlink from "$components/elements/text/Hyperlink.astro";
 import Emoticon from "$components/elements/images/Emoticon.astro";
+import { getCollection } from "astro:content";
+import PostCard from "$components/elements/PostCard.astro";
+
+let posts = (await getCollection("post"))
+    .filter((post) => post.data.showcase && !post.data.unlisted)
+    .toSorted((a, b) => b.data.published.getTime() - a.data.published.getTime())
+    .slice(0, 3);
 ---
 
 <ContentPage title="Home">
@@ -28,6 +34,7 @@ import Emoticon from "$components/elements/images/Emoticon.astro";
         <NavSection name="Explore">
             <NavItem name="Home" href="/" />
             <NavItem name="Socials" href="/socials" />
+            <NavItem name="Posts" href="/posts" />
             <NavItem name="Guestbook" href="https://paperbark.atabook.org/" />
         </NavSection>
         <NavSection name="Creations">
@@ -102,36 +109,16 @@ import Emoticon from "$components/elements/images/Emoticon.astro";
         <Paper>
             <PaperTitle el="h2" title="The Noticeboard" />
             <div class="articles">
-                <article>
-                    <Content>
-                        <h2>Paperbark's Starter Kit</h2>
-                        <time datetime="2026-07-19">19<sup>th</sup> July 2026</time>
-                        <p>
-                            People always ask me what music I listen to, and it's always a tough question to
-                            answer because my music taste is... well, an absolute mess.
-                        </p>
-                        <p>
-                            So I made a playlist as an introduction to some of my favourite songs, artists,
-                            and genres - one which perfectly encapsulates kind of the stuff I listen to!
-                        </p>
-                        <div class="button-container">
-                            <ArrowButton href="/playlists/starter-kit">Check out the playlist</ArrowButton>
+                {
+                    posts.map((post) => (
+                        <div>
+                            <PostCard {post} embedded={true} />
                         </div>
-                    </Content>
-                </article>
-                <article>
-                    <Content>
-                        <h2>My Name Has Changed!</h2>
-                        <time datetime="2026-03-23">23<sup>rd</sup> March 2026</time>
-                        <p>
-                            Since March 2026, I now go by the name <strong>"Paperbark"</strong> online instead of
-                            my previous name <strong>"Quasar."</strong>
-                        </p>
-                        <div class="button-container">
-                            <ArrowButton href="/name-change">Read more</ArrowButton>
-                        </div>
-                    </Content>
-                </article>
+                    ))
+                }
+                <div class="actions">
+                    <ArrowButton href="/posts">Read more posts</ArrowButton>
+                </div>
             </div>
         </Paper>
         <Paper>
@@ -208,10 +195,16 @@ import Emoticon from "$components/elements/images/Emoticon.astro";
         display: flex;
         flex-direction: column;
 
-        > article:not(:last-child) {
-            padding-bottom: 2rem;
+        > :not(:last-child) {
+            padding-bottom: 1.5rem;
             margin-bottom: 1.5rem;
             border-bottom: 0.2rem solid #00000011;
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 0.5rem;
         }
     }
 </style>

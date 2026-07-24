@@ -1,0 +1,47 @@
+---
+interface Props {
+    post: any;
+}
+
+let { post } = Astro.props;
+---
+
+<div class="post-meta">
+    <span class="published">
+        Published
+        <time datetime={post.data.published.toISOString()}>
+            {
+                post.data.published.toLocaleString("en-GB", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                })
+            }
+        </time>
+    </span>
+    {
+        post.data.updated && (
+            <span class="updated">
+                Edited
+                <time datetime={post.data.updated.toISOString()}>
+                    {post.data.updated.toLocaleString("en-GB", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                    })}
+                </time>
+            </span>
+        )
+    }
+</div>
+
+<style lang="scss">
+    .post-meta {
+        --content-gap: 0.5em;
+
+        display: flex;
+        flex-direction: column;
+
+        font-style: italic;
+    }
+</style>
