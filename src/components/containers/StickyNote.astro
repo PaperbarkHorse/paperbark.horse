@@ -39,9 +39,6 @@ const { padding = true, color = "yellow" } = Astro.props;
     }
 
     .sticky-note-inner {
-        --sticky-note-fold-size: 1.2rem;
-        --sticky-note-corner-radius: 0.2rem;
-
         position: relative;
 
         border-radius: var(--sticky-note-corner-radius);
@@ -84,6 +81,11 @@ const { padding = true, color = "yellow" } = Astro.props;
 </style>
 
 <style lang="scss" is:global>
+    :root {
+        --sticky-note-fold-size: 1.2rem;
+        --sticky-note-corner-radius: 0.2rem;
+    }
+
     .main > .sticky-note {
         margin-inline: 1rem;
     }

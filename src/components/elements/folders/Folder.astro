@@ -1,0 +1,176 @@
+---
+import type { SvgComponent } from 'astro/types';
+
+interface Props {
+    href?: string;
+    labelText?: string;
+    labelSrc?: string;
+    labelSvg?: SvgComponent;
+    contentImages?: [string?, string?, string?];
+}
+
+const { href, labelText, labelSrc, labelSvg: LabelSvg, contentImages } = Astro.props;
+---
+
+<a class="folder" href={href}>
+    <div class="folder-back"></div>
+    <div class="folder-content">
+        { (contentImages && contentImages.length === 1) && (
+            <img src={contentImages[0]} alt="" class="content-image" style="--angle: 0deg; --offset: 0cqw;" />
+        ) }
+        { (contentImages && contentImages.length === 2) && (
+            <img src={contentImages[0]} alt="" class="content-image" style="--angle: -10deg; --offset: 10cqw;" />
+            <img src={contentImages[1]} alt="" class="content-image" style="--angle: 10deg; --offset: -10cqw;" />
+        ) }
+        { (contentImages && contentImages.length >= 3) && (
+            <img src={contentImages[0]} alt="" class="content-image" style="--angle: -10deg; --offset: 0cqw;" />
+            <img src={contentImages[1]} alt="" class="content-image" style="--angle: 0deg; --offset: 0cqw;" />
+            <img src={contentImages[2]} alt="" class="content-image" style="--angle: 10deg; --offset: 0cqw;" />
+        ) }
+    </div>
+    <div class="folder-front">
+        {
+            labelSrc ? (
+                <img src={labelSrc} alt={labelText ?? ""} class="label-image" />
+            ) : LabelSvg && (
+                <LabelSvg class="label-icon" />
+            )
+        }
+        { 
+            labelText && (
+                <span class="label-text">{labelText}</span>
+            )
+        }
+    </div>
+</a>
+
+<style lang="scss">
+    .folder {
+        position: relative;
+
+        container-type: inline-size;
+
+        width: 100%;
+        aspect-ratio: 5 / 4;
+
+        perspective: 500px;
+        z-index: 10;
+
+        &:not([href]) {
+            opacity: 0.5;
+            filter: grayscale(20%);
+        }
+    }
+
+    .folder-back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        background-color: #dfc75f;
+
+        clip-path: polygon(0% 0%, 40% 0%, 45% 10%, 100% 10%, 100% 100%, 0% 100%);
+    }
+
+    .folder-content {
+        position: absolute;
+        inset: 0;
+    }
+
+    .folder-front {
+        position: absolute;
+        top: 15%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        padding: 3cqw;
+        gap: 2cqw;
+
+        background-color: #ecd673;
+
+        color: #725e03;
+
+        transform-origin: bottom center;
+        transform: rotateX(0deg);
+
+        transition-property: transform;
+        transition-duration: 0.2s;
+
+        box-shadow: var(--shadow-medium);
+        clip-path: polygon(0% -20%, 100% -20%, 100% 100%, 0% 100%);
+        z-index: 20;
+
+        .folder[href]:hover &, .folder[href]:focus-visible & {
+            transform: rotateX(-30deg);
+        }
+    }
+
+    .label-image {
+        width: 60%;
+        height: 100%;
+        flex-grow: 1;
+
+        object-fit: contain;
+        user-select: none;
+    }
+
+    .label-icon {
+        width: 30cqw;
+        height: 30cqw;
+
+        object-fit: contain;
+        user-select: none;
+    }
+
+    .label-text {
+        font-size: 12cqw;
+        font-weight: var(--font-semibold);
+        text-align: center;
+        line-height: 1.2;
+
+        user-select: none;
+    }
+
+    .content-image {
+        position: absolute;
+        top: 40%;
+        left: calc(sin(var(--angle)) * 100% + 50% + var(--offset));
+        height: 42cqw;
+        aspect-ratio: 8 / 7;
+
+        transform: translate(-50%, -50%) rotate(var(--angle)) scale(0.7);
+
+        transition-property: transform, top, left;
+        transition-duration: 0.2s;
+
+        object-fit: contain;
+        object-position: 50% 50%;
+        filter: var(--filter-shadow-medium);
+        user-select: none;
+
+        &:nth-child(1) {
+            transition-delay: 0s;
+        }
+        &:nth-child(2) {
+            transition-delay: 0.04s;
+            z-index: 1;
+        }
+        &:nth-child(3) {
+            transition-delay: 0.08s;
+        }
+
+        .folder[href]:hover &, .folder[href]:focus-visible & {
+            top: calc(cos(var(--angle) + 180deg) * 300% + 297%);
+            left: calc(sin(var(--angle)) * 170% + 50% + var(--offset));
+            transform: translate(-50%, -50%) rotate(var(--angle)) scale(1);
+        }
+    }
+</style>

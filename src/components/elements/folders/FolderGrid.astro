@@ -1,0 +1,17 @@
+---
+
+---
+
+<div class="folder-grid">
+    <slot />
+</div>
+
+<style lang="scss">
+    .folder-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+
+        gap: 2rem;
+        padding: 0.5rem;
+    }
+</style>

@@ -1,0 +1,387 @@
+---
+import Paper from "$components/containers/Paper.astro";
+import PaperTitle from "$components/elements/text/PaperTitle.astro";
+import NavSection from "$components/navigation/NavSection.astro";
+import NavItem from "$components/navigation/NavItem.astro";
+import ContentPage from "$layouts/ContentPage.astro";
+import ArrowButton from "$components/elements/buttons/ArrowButton.astro";
+import Content from "$components/elements/text/Content.astro";
+import Hyperlink from "$components/elements/text/Hyperlink.astro";
+---
+
+<ContentPage title="2025 Mixtape">
+    <Fragment slot="head">
+        <meta property="og:title" content="2025 Mixtape" />
+        <meta
+            property="og:description"
+            content="This is a collection of all my favourite songs from 2025, compiled into one handy mixtape for your listening pleasure! I hope you enjoy it, and get some insight into the music I listened to this year."
+        />
+        <meta property="og:image" content={new URL("/images/playlists/2025-mixtape.jpg", Astro.url)} />
+        <meta property="og:url" content={Astro.url} />
+        <meta property="og:type" content="music.playlist" />
+        <meta property="music:creator" content={new URL("/", Astro.url)} />
+    </Fragment>
+
+    <Fragment slot="navigation">
+        <NavSection name="Navigation">
+            <NavItem name="Home" href="/" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="contents">
+        <NavSection name="On This Page">
+            <NavItem name="2025 Mixtape" href="#2025-mixtape" />
+            <NavItem name="B-Side" href="#b-side" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="main">
+        <Paper>
+            <PaperTitle el="h1" title="2025 Mixtape" />
+            <Content>
+                <div class="info">
+                    <img src="/images/playlists/2025-mixtape.jpg" alt="" class="cover-image" />
+                    <div class="details">
+                        <table>
+                            <tr>
+                                <th>Tracks</th>
+                                <td>23</td>
+                            </tr>
+                            <tr>
+                                <th>Duration</th>
+                                <td>1hr 28mins</td>
+                            </tr>
+                            <tr>
+                                <th>Created</th>
+                                <td><time datetime="2025-12-31">31 December 2025</time></td>
+                            </tr>
+                        </table>
+                        <div class="links">
+                            <ArrowButton
+                                href="https://www.youtube.com/playlist?list=PL8y8Ix0Lvt5rt69JNh3sxYahAuGCOjeSz"
+                                external={true}
+                                direction="none"
+                            >
+                                Listen on YouTube
+                            </ArrowButton>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    This is a collection of all my favourite songs from 2025, compiled into one handy mixtape
+                    for your listening pleasure! I hope you enjoy it, and get some insight into the music I
+                    listened to this year.
+                </p>
+                <p>
+                    <strong>Note:</strong> this mixtape was made <Hyperlink href="/post/my-name-has-changed"
+                        >before I changed my name to Paperbark</Hyperlink
+                    >, hence why it's called "Quasar's Mixtape".
+                </p>
+                <ol class="track-list">
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Although the Sky</span>
+                            <span class="artist">Dorkus64</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Meet & Tweet</span>
+                            <span class="artist">Julian "Zorsy" Sanchez</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Burnt Clouds</span>
+                            <span class="artist">Twilike Wonder, Sylvver & Nexgen</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Sinking Ships (µThunder & FritzyBeat Remix)</span>
+                            <span class="artist">FiMFlamFilosophy</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Song for an Earth Pony</span>
+                            <span class="artist">replacer</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">We Got This Together</span>
+                            <span class="artist">Daniel Ingram</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Heavenbound</span>
+                            <span class="artist">Foozogz & PrinceWhateverer</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">brink!</span>
+                            <span class="artist">rawrity</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Daybreaker</span>
+                            <span class="artist">Vylet Pony</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Nightmare Night</span>
+                            <span class="artist">Vylet Pony</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">All That Matters (Coco Tundra Remix)</span>
+                            <span class="artist">Sound Bandit & Algo At All</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Dawning Light (Age Of Vinyl & Tw3Lv3 Remix)</span>
+                            <span class="artist">Nevermourn & Kyradeen</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">When The Heart There Lies</span>
+                            <span class="artist">ExplodingPonyToast</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">The Third Sanctuary</span>
+                            <span class="artist">Toby Fox</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Dual Headed Hydranoid (ft. Namii & SadisticTushi)</span>
+                            <span class="artist">Vylet Pony</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Welcome Back</span>
+                            <span class="artist">fizzd</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Die Anywhere Else</span>
+                            <span class="artist">Alec Holowka and Scott Benson</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Buy Nothing Day</span>
+                            <span class="artist">The Go! Team</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Bitter Times</span>
+                            <span class="artist">celesti whispers, Patricia Taxxon</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Before We Part</span>
+                            <span class="artist">Jensen Stiles & MathematicPony</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Through Your Heart (2025)</span>
+                            <span class="artist">Soren Ember</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">At The End Of The Day</span>
+                            <span class="artist">Wandering Artist</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">A Digital Flower Field</span>
+                            <span class="artist">Vylet Pony </span>
+                        </div>
+                    </li>
+                </ol>
+            </Content>
+        </Paper>
+        <Paper>
+            <PaperTitle el="h1" title="B-Side" />
+            <Content>
+                <div class="info">
+                    <img src="/images/playlists/2025-mixtape-b-side.jpg" alt="" class="cover-image" />
+                    <div class="details">
+                        <table>
+                            <tr>
+                                <th>Tracks</th>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <th>Duration</th>
+                                <td>44mins</td>
+                            </tr>
+                            <tr>
+                                <th>Created</th>
+                                <td><time datetime="2025-12-31">31 December 2025</time></td>
+                            </tr>
+                        </table>
+                        <div class="links">
+                            <ArrowButton
+                                href="https://www.youtube.com/playlist?list=PL8y8Ix0Lvt5pZh6TU54G8zVHorbx8ZphR"
+                                external={true}
+                                direction="none"
+                            >
+                                Listen on YouTube
+                            </ArrowButton>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    Some songs didn't quite make the cut for the main mixtape, but are definitely worth a
+                    mention. Thankfully there's still space for them on the b-side!
+                </p>
+                <ol class="track-list">
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Brightdawn</span>
+                            <span class="artist">Trey Husk, John Kenza & Koa</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Neigh Anything (feat. Melody Note)</span>
+                            <span class="artist">Sim Gretina, FritzyBeat & µThunder</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Twinkle Twirl's Great Dance Recital</span>
+                            <span class="artist">Ethan Toavs</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Mid-Rain Sunshine</span>
+                            <span class="artist">Darkspeen Shore & Skyshard</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Waltz for the Night (feat. Feather)</span>
+                            <span class="artist">replacer</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">It's Raining Now</span>
+                            <span class="artist">Homage & TCB</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Connected (feat. MelodyBrony & dbPony)</span>
+                            <span class="artist">PrinceWhateverer</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Sunk Cost Fallacy</span>
+                            <span class="artist">Fox Stevenson</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">Night At The Bay</span>
+                            <span class="artist">Skyshard & Darkspeen Shore</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="track-entry">
+                            <span class="title">As The Thunder Rolls By</span>
+                            <span class="artist">4EverfreeBrony</span>
+                        </div>
+                    </li>
+                </ol>
+            </Content>
+        </Paper>
+    </Fragment>
+</ContentPage>
+
+<style lang="scss">
+    .info {
+        display: grid;
+        grid-template-columns: 4fr 3fr;
+        align-items: start;
+
+        gap: 1rem;
+
+        .cover-image {
+            width: 100%;
+            max-width: 25rem;
+            border-radius: 0.33rem;
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        table th {
+            text-align: right;
+            padding-right: 0.5rem;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        @container (width < 570px) {
+            grid-template-columns: 1fr;
+            justify-items: center;
+        }
+    }
+
+    .track-list {
+        --content-gap: 2em;
+
+        list-style: decimal;
+        padding-left: 1rem;
+
+        li:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+
+        .track-entry {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+
+            .title {
+                font-weight: var(--font-bold);
+            }
+
+            .title,
+            .artist {
+                line-height: 1.2;
+            }
+        }
+    }
+</style>
