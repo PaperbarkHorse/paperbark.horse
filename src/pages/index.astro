@@ -11,11 +11,16 @@ import Hyperlink from "$components/elements/text/Hyperlink.astro";
 import Emoticon from "$components/elements/images/Emoticon.astro";
 import { getCollection } from "astro:content";
 import PostCard from "$components/elements/PostCard.astro";
+import PolaroidGrid from "$components/layouts/polaroid-grid/PolaroidGrid.astro";
+import PolaroidGridItem from "$components/layouts/polaroid-grid/PolaroidGridItem.astro";
+import Blinkie from "$components/elements/images/Blinkie.astro";
 
 let posts = (await getCollection("post"))
     .filter((post) => post.data.showcase && !post.data.unlisted)
     .toSorted((a, b) => b.data.published.getTime() - a.data.published.getTime())
     .slice(0, 3);
+
+const buttonSnippet = `<a href="https://paperbark.horse" target="_blank" rel="noopener noreferrer"><img src="https://paperbark.horse/88x31-button.png" alt="Paperbark" /></a>`;
 ---
 
 <ContentPage title="Home">
@@ -56,7 +61,7 @@ let posts = (await getCollection("post"))
             <NavItem name="About" href="#about" />
             <NavItem name="The Noticeboard" href="#the-noticeboard" />
             <NavItem name="Webrings" href="#webrings" />
-            <!-- <NavItem name="Neighbours" href="#neighbours" /> -->
+            <NavItem name="Neighbours" href="#neighbours" />
         </NavSection>
     </Fragment>
 
@@ -124,6 +129,23 @@ let posts = (await getCollection("post"))
         <Paper>
             <PaperTitle el="h2" title="Webrings" />
             <div class="webring-list">
+                <!-- PonyRing -->
+                <div>
+                    <center>
+                        <a href="https://silversneasel.neocities.org/ponyring/main">
+                            <b>
+                                PonyRing!<br />
+                                <img
+                                    src="https://silversneasel.neocities.org/pictures/ponyring/widget/g4-1.png"
+                                    height="90"
+                                />
+                            </b>
+                        </a>
+                        <a href="https://silversneasel.neocities.org/ponyring/main?action=previous">&lt;-</a>
+                        <a href="https://silversneasel.neocities.org/ponyring/main?action=random">random</a>
+                        <a href="https://silversneasel.neocities.org/ponyring/main?action=next">-&gt;</a>
+                    </center>
+                </div>
                 <!-- furryring -->
                 <div id="furryring">
                     <script
@@ -134,12 +156,37 @@ let posts = (await getCollection("post"))
                 </div>
             </div>
         </Paper>
-        <!-- <Paper>
+        <Paper>
             <PaperTitle el="h2" title="Neighbours" />
-            <div class="placeholder-content">
-                <p>There's nobody here yet, but soon there will be!</p>
+            <PolaroidGrid>
+                <PolaroidGridItem
+                    src="/images/neighbours/soda-abyss.jpg"
+                    href="https://linktr.ee/sodaspaceshop"
+                    title="Soda Abyss"
+                    angle="-2deg"
+                />
+            </PolaroidGrid>
+            <!-- <div class="buttons-grid" style="margin-top: 1rem;">
+                <Blinkie type="button" href="" src="" />
+            </div> -->
+            <div class="neighbour-cta">
+                <div class="neighbour-cta-content">
+                    <Content>
+                        <h3>Add me to your site!</h3>
+                        <div class="self-button">
+                            <img src="/88x31-button.png" alt="" />
+                            <textarea readonly>{buttonSnippet}</textarea>
+                        </div>
+                        <p>Hotlinking my 88x31 button is allowed!</p>
+                        <p>
+                            Be sure to <Hyperlink href="https://paperbark.atabook.org/"
+                                >leave a message</Hyperlink
+                            > if you link back to my site, I'd love to see your website too and feature it here!
+                        </p>
+                    </Content>
+                </div>
             </div>
-        </Paper> -->
+        </Paper>
     </Fragment>
 </ContentPage>
 
@@ -191,6 +238,44 @@ let posts = (await getCollection("post"))
         }
     }
 
+    .neighbour-cta {
+        text-align: center;
+
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+        border-top: 0.2rem solid #00000011;
+
+        .neighbour-cta-content {
+            max-width: 30rem;
+            margin: 0 auto;
+        }
+
+        .self-button {
+            display: grid;
+            grid-template-columns: auto 1fr;
+
+            gap: 0.5rem;
+
+            @container (width < 500px) {
+                grid-template-columns: 1fr;
+                justify-items: center;
+            }
+
+            img {
+                width: 146px;
+                image-rendering: pixelated;
+            }
+
+            textarea {
+                width: 100%;
+
+                resize: none;
+                text-wrap: nowrap;
+                scrollbar-width: thin;
+            }
+        }
+    }
+
     .articles {
         display: flex;
         flex-direction: column;
@@ -206,5 +291,12 @@ let posts = (await getCollection("post"))
             flex-direction: row;
             margin-bottom: 0.5rem;
         }
+    }
+
+    .buttons-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(146px, 1fr));
+        justify-items: center;
+        gap: 0.25rem;
     }
 </style>

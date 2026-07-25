@@ -6,12 +6,23 @@ interface Props {
     href?: string;
     title?: string;
     angle?: string;
+    external?: boolean;
 }
 
-let { src, href, title, angle } = Astro.props;
+let { src, href, title, angle, external } = Astro.props;
+
+if (href && external === undefined) {
+    let url = new URL(href, Astro.url);
+    external = url.host !== Astro.url.host;
+}
 ---
 
-<a href={href} class="polaroid-grid-item group">
+<a
+    href={href}
+    target={external ? "_blank" : undefined}
+    rel={external ? "noopener noreferrer" : undefined}
+    class="polaroid-grid-item group"
+>
     <Polaroid {src} dynamic={href !== undefined} {angle} />
     {title && <span class="item-title">{title}</span>}
 </a>
