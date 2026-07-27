@@ -214,6 +214,8 @@
             grid-template-areas:
                 "details"
                 "pony";
+
+            padding-top: 1rem;
         }
 
         .details {
