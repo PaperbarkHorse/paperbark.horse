@@ -1,8 +1,36 @@
 <script lang="ts">
-    import type { ComponentProps } from "svelte";
+    import { onMount, type ComponentProps } from "svelte";
     import ActivityPony from "./ActivityPony.svelte";
 
-    let activity: any = $state(null);
+    let activities: any = $state(null);
+    let updateTime: number = $state(0);
+
+    let activity = $derived.by(() => {
+        if (activities === null || activities === undefined) return null;
+        return activities[0] ?? null;
+    });
+
+    let musicProgress = $derived.by(() => {
+        if (!activity) return null;
+        if (activity.type !== "music") return null;
+        if (!activity.player?.currentTime || !activity.player?.duration) return null;
+        if (updateTime <= 0) return null; // Trigger Svelte to re-run every update
+
+        let duration: number = activity.player.duration;
+        let current: number = Math.min(
+            Math.max(
+                Date.now() - activity.player.currentTime.timestamp + activity.player.currentTime.position,
+                0,
+            ),
+            activity.player.duration,
+        );
+
+        return {
+            current,
+            duration,
+            progress: current / duration,
+        };
+    });
 
     const idleLines = {
         awake: [
@@ -46,6 +74,9 @@
         if (activity?.type === "music") {
             return "Listening to music";
         }
+        if (activity?.type === "finding-music") {
+            return "Choosing a song";
+        }
 
         let lines = idleLines[wakeSate] ?? ["Away from keyboard"];
         return lines[Math.floor(Math.random() * lines.length)];
@@ -53,7 +84,22 @@
 
     let animation: ComponentProps<typeof ActivityPony>["animation"] = $derived.by(() => {
         if (activity?.type === "music") {
-            return "sit-dance";
+            if (activity.metadata?.["music.high-volume"] === true) {
+                let move = Math.floor(updateTime / 10000) % 2;
+
+                switch (move) {
+                    case 0:
+                        return "dance-5-hype";
+                    case 1:
+                        return "dance-3";
+                }
+            }
+
+            return "dance-sit";
+        }
+
+        if (activity?.type === "finding-music") {
+            return "dance-sit";
         }
 
         if (wakeSate === "asleep") {
@@ -68,6 +114,33 @@
 
         return "sit";
     });
+
+    onMount(() => {
+        let eventSource = new EventSource("https://api.paperbark.horse/activity/current/live");
+
+        eventSource.addEventListener("message", (event) => {
+            let data = JSON.parse(event.data);
+
+            if (data.event === "activity-update") {
+                console.log(`Live activity updated`);
+                console.log(data);
+                activities = data.activities;
+            }
+        });
+
+        eventSource.addEventListener("error", (event) => {
+            console.error(`Live activity error`);
+        });
+
+        let updateInterval = setInterval(() => {
+            updateTime = Date.now();
+        }, 100);
+
+        return () => {
+            clearInterval(updateInterval);
+            eventSource.close();
+        };
+    });
 </script>
 
 <div class="activity">
@@ -76,28 +149,43 @@
             <h2 class="title">Paperbark is currently...</h2>
             <span class="activity-name">{activityName}</span>
         </div>
-        {#if !activity}
-            <div class="offline-info">
-                I'm offline right now. Check back later when I'm doing something more interesting!
-            </div>
-        {/if}
-        {#if activity?.type === "music"}
-            <div class="music-playback">
-                <img
-                    src="https://lastfm.freetls.fastly.net/i/u/770x0/f9729c85a26975ec348c96d4dd234621.jpg#f9729c85a26975ec348c96d4dd234621"
-                    alt=""
-                    class="cover-image"
-                />
-                <div class="music-info">
-                    <div class="music-details">
-                        <span class="music-title">Bart Trip</span>
-                        <span class="music-artist">Vylet Pony</span>
-                        <!-- <span class="music-album"></span> -->
-                    </div>
-                    <div class="music-progress">
-                        <div class="music-progress-bar"></div>
+        {#if activity}
+            {#if activity.type === "music"}
+                <div class="music-playback">
+                    <img
+                        src={activity.track?.cover ?? "/images/default-cover-art.png"}
+                        alt=""
+                        class="cover-image"
+                    />
+                    <div class="music-info">
+                        <div class="music-details">
+                            {#if activity.track?.title}
+                                <span class="music-title" title={activity.track.title}>
+                                    {activity.track.title}
+                                </span>
+                            {/if}
+                            {#if activity.track?.artist}
+                                <span class="music-artist" title={activity.track.artist}>
+                                    {activity.track.artist}
+                                </span>
+                            {/if}
+                            {#if activity.track?.album && activity.track?.album !== activity.track?.title}
+                                <span class="music-album" title={activity.track.album}>
+                                    {activity.track.album}
+                                </span>
+                            {/if}
+                        </div>
+                        {#if musicProgress}
+                            <div class="music-progress" style:--progress={musicProgress.progress}>
+                                <div class="music-progress-bar"></div>
+                            </div>
+                        {/if}
                     </div>
                 </div>
+            {/if}
+        {:else}
+            <div class="offline-info">
+                I'm offline right now. Check back later when I'm doing something more interesting!
             </div>
         {/if}
     </div>
@@ -120,10 +208,11 @@
         flex-direction: column;
         justify-content: center;
         grid-area: details;
+        min-width: 0;
 
-        gap: 1.5rem;
+        gap: 1rem;
 
-        line-height: 1.1;
+        line-height: 1.15;
 
         .detail-header {
             display: flex;
@@ -155,7 +244,7 @@
         flex-direction: row;
         align-items: center;
 
-        gap: 0.5rem;
+        gap: 0.75rem;
 
         .music-info {
             display: flex;
@@ -165,15 +254,27 @@
 
             gap: 0.5rem;
 
+            line-height: 1.075;
+
+            overflow: hidden;
+
             .music-details {
                 display: flex;
                 flex-direction: column;
-
-                gap: 0.2rem;
+                flex-grow: 1;
             }
 
             .music-title {
-                font-weight: var(--font-semibold);
+                font-weight: var(--font-bold);
+            }
+
+            .music-title,
+            .music-artist,
+            .music-album {
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                line-height: 1.25;
+                overflow: hidden;
             }
         }
 
@@ -196,7 +297,7 @@
             overflow: hidden;
 
             .music-progress-bar {
-                width: 30%;
+                width: calc(var(--progress, 0) * 100%);
                 height: 100%;
 
                 background-color: hsl(213, 83%, 57%);

@@ -16,12 +16,28 @@
             src: "/images/activity/eepy.gif",
             width: 44,
         },
-        "sit-dance": {
-            src: "/images/activity/sit-dance.gif",
+        "dance-sit": {
+            src: "/images/activity/dance-sit.gif",
             width: 43,
+        },
+        "dance-sit-2": {
+            src: "/images/activity/dance-sit-2.gif",
+            width: 44,
+        },
+        "dance-3": {
+            src: "/images/activity/dance-3.gif",
+            width: 45,
+        },
+        "dance-4": {
+            src: "/images/activity/dance-4.gif",
+            width: 54,
         },
         "dance-5": {
             src: "/images/activity/dance-5.gif",
+            width: 45,
+        },
+        "dance-5-hype": {
+            src: "/images/activity/dance-5-hype.gif",
             width: 45,
         },
     } as const;
@@ -97,7 +113,9 @@
 
 <div class="pony-container" style:--pony-pixel-width={ponyPixelWidth}>
     <div class="pony-inner">
-        <img class="pony-image" src={ponySrc} alt="" bind:this={ponyEl} />
+        {#key ponySrc}
+            <img class="pony-image" src={ponySrc} alt="" bind:this={ponyEl} />
+        {/key}
     </div>
 </div>
 
