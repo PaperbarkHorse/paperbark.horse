@@ -1,12 +1,13 @@
 ---
 interface Props {
     padding?: boolean;
+    id?: string;
 }
 
-const { padding = true } = Astro.props;
+const { padding = true, id } = Astro.props;
 ---
 
-<div class:list={["paper", "theme-paper", { padding }]}>
+<div class:list={["paper", "theme-paper", { padding }]} {id}>
     <slot />
 </div>
 
@@ -32,6 +33,7 @@ const { padding = true } = Astro.props;
         background-color: var(--paper-white);
 
         box-shadow: var(--shadow-large);
+        scroll-margin-top: 1rem;
 
         &::before {
             content: "";

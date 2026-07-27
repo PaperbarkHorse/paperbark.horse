@@ -1,0 +1,36 @@
+---
+import Paper from "$components/containers/Paper.astro";
+import Activity from "./Activity.svelte";
+---
+
+<Paper id="activity">
+    <Activity client:only="svelte" />
+    <noscript>
+        <div class="activity-fallback">
+            <img class="pt-image" src="/images/activity/sleep.gif" alt="" />
+            <span>JavaScript must be enabled to see what I'm up to</span>
+        </div>
+    </noscript>
+</Paper>
+
+<style lang="scss">
+    .activity-fallback {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        min-height: 10rem;
+
+        gap: 1rem;
+
+        text-align: center;
+
+        .pt-image {
+            width: 100%;
+            max-width: 8rem;
+
+            image-rendering: pixelated;
+        }
+    }
+</style>
