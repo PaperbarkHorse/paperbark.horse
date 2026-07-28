@@ -160,11 +160,19 @@
         {#if activity}
             {#if activity.type === "music"}
                 <div class="music-playback">
-                    <img
-                        src={activity.track?.cover ?? "/images/default-cover-art.png"}
-                        alt=""
-                        class="cover-image"
-                    />
+                    <div class="cover-image">
+                        <img
+                            src={activity.track?.cover ?? "/images/default-cover-art.png"}
+                            alt=""
+                            class="cover-image"
+                        />
+                        {#if activity.metadata?.["music.favourite"] === true}
+                            <div class="favourite-heart">
+                                <div class="shadow">&hearts;</div>
+                                <div class="foreground">&hearts;</div>
+                            </div>
+                        {/if}
+                    </div>
                     <div class="music-info">
                         <div class="music-details">
                             {#if activity.track?.title}
@@ -287,12 +295,16 @@
         }
 
         .cover-image {
-            width: 5rem;
-            aspect-ratio: 1 / 1;
+            position: relative;
 
-            border-radius: 0.25rem;
+            > img {
+                width: 5rem;
+                aspect-ratio: 1 / 1;
 
-            object-fit: cover;
+                border-radius: 0.25rem;
+
+                object-fit: cover;
+            }
         }
 
         .music-progress {
@@ -317,6 +329,44 @@
         grid-area: pony;
     }
 
+    .favourite-heart {
+        position: absolute;
+        bottom: 0.4rem;
+        right: 0.3rem;
+
+        transform: rotate(5deg);
+
+        .foreground,
+        .shadow {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+
+            font-size: 2.5rem;
+            line-height: 0.7;
+
+            user-select: none;
+            pointer-events: none;
+
+            animation-duration: 0.6s;
+            animation-iteration-count: infinite;
+        }
+
+        .shadow {
+            color: white;
+
+            animation-name: favourite-heart-shadow;
+        }
+
+        .foreground {
+            color: hsl(0, 92%, 60%);
+            -webkit-text-stroke: 0.1rem white;
+            text-shadow: 2px 2px 5px rgb(0, 0, 0, 20%);
+
+            animation-name: favourite-heart-pulse;
+        }
+    }
+
     @container (width < 550px) {
         .activity {
             grid-template-columns: 1fr;
@@ -334,6 +384,29 @@
         .activity-pony {
             max-width: min(10rem, 60cqw);
             justify-self: center;
+        }
+    }
+
+    @keyframes favourite-heart-pulse {
+        0% {
+            transform: translate(50%, 50%) scale(1);
+        }
+        10% {
+            transform: translate(50%, 50%) scale(1.1);
+        }
+        100% {
+            transform: translate(50%, 50%) scale(1);
+        }
+    }
+
+    @keyframes favourite-heart-shadow {
+        0% {
+            opacity: 1;
+            transform: translate(50%, 50%) scale(1.1);
+        }
+        100% {
+            opacity: 0;
+            transform: translate(50%, 50%) scale(2.2);
         }
     }
 </style>
