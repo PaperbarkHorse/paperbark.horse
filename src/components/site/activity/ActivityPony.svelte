@@ -129,13 +129,6 @@
             <img class="pony-image" src={ponySrc} alt="" bind:this={ponyEl} />
         {/key}
     </div>
-
-    {#each sitStateSrcs as src}
-        <img {src} alt="" class="hidden-preload-image" />
-    {/each}
-    {#each Object.values(animations) as animation}
-        <img src={animation.src} alt="" class="hidden-preload-image" />
-    {/each}
 </div>
 
 <style lang="scss">
@@ -159,9 +152,5 @@
     .pony-image {
         width: calc(var(--pony-pixel-width) / var(--pony-pixel-max-width) * 100cqw);
         image-rendering: pixelated;
-    }
-
-    .hidden-preload-image {
-        display: none;
     }
 </style>

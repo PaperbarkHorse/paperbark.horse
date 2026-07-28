@@ -168,8 +168,12 @@
                         />
                         {#if activity.metadata?.["music.favourite"] === true}
                             <div class="favourite-heart">
-                                <div class="shadow">&hearts;</div>
-                                <div class="foreground">&hearts;</div>
+                                <div class="shadow">
+                                    <img src="/assets/icons/favourite-heart-shadow.svg" alt="" />
+                                </div>
+                                <div class="foreground">
+                                    <img src="/assets/icons/favourite-heart.svg" alt="" />
+                                </div>
                             </div>
                         {/if}
                     </div>
@@ -332,7 +336,7 @@
     .favourite-heart {
         position: absolute;
         bottom: 0.4rem;
-        right: 0.3rem;
+        right: 0.35rem;
 
         transform: rotate(5deg);
 
@@ -341,6 +345,8 @@
             position: absolute;
             bottom: 0;
             right: 0;
+            width: 1.7rem;
+            aspect-ratio: 1 / 1;
 
             font-size: 2.5rem;
             line-height: 0.7;
@@ -353,17 +359,17 @@
         }
 
         .shadow {
-            color: white;
-
             animation-name: favourite-heart-shadow;
         }
 
         .foreground {
-            color: hsl(0, 92%, 60%);
-            -webkit-text-stroke: 0.1rem white;
-            text-shadow: 2px 2px 5px rgb(0, 0, 0, 20%);
-
+            filter: drop-shadow(0.12rem 0.12rem 0.2rem rgb(0, 0, 0, 20%));
             animation-name: favourite-heart-pulse;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
         }
     }
 
