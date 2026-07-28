@@ -51,7 +51,7 @@
             "Catching Zzz's",
         ],
         morning: ["Waking up", "Crawling out of bed", "Fighting bed gravity"],
-        evening: ["Getting a little sleepy", "All tuckered out", "Ready for bed", "Getting pretty tired"],
+        evening: ["Feeling a little sleepy", "All tuckered out", "Ready for bed", "Feeling pretty tired"],
     };
 
     let wakeSate: "awake" | "asleep" | "morning" | "evening" = $derived.by(() => {
