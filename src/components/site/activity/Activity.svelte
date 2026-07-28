@@ -190,9 +190,18 @@
                                 </span>
                             {/if}
                             {#if activity.track?.album && activity.track?.album !== activity.track?.title}
-                                <span class="music-album" title={activity.track.album}>
-                                    {activity.track.album}
-                                </span>
+                                {#if activity.track.albumArtist && activity.track.albumArtist !== activity.track.artist}
+                                    <span
+                                        class="music-album"
+                                        title={`${activity.track.albumArtist} - ${activity.track.album}`}
+                                    >
+                                        {activity.track.albumArtist} - {activity.track.album}
+                                    </span>
+                                {:else}
+                                    <span class="music-album" title={activity.track.album}>
+                                        {activity.track.album}
+                                    </span>
+                                {/if}
                             {/if}
                         </div>
                         {#if musicProgress}
