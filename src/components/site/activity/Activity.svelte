@@ -95,11 +95,19 @@
                 }
             }
 
+            if (wakeSate === "asleep") {
+                return "dance-sleep";
+            }
+
             return "dance-sit";
         }
 
         if (activity?.type === "finding-music") {
-            return "dance-sit";
+            if (wakeSate === "asleep") {
+                return "finding-music-sleepy";
+            }
+
+            return "finding-music";
         }
 
         if (wakeSate === "asleep") {

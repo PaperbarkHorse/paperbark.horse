@@ -40,6 +40,18 @@
             src: "/images/activity/dance-5-hype.gif",
             width: 45,
         },
+        "dance-sleep": {
+            src: "/images/activity/dance-sleep.gif",
+            width: 49,
+        },
+        "finding-music": {
+            src: "/images/activity/finding-music.gif",
+            width: 42,
+        },
+        "finding-music-sleepy": {
+            src: "/images/activity/finding-music-sleepy.gif",
+            width: 42,
+        },
     } as const;
 
     const sitStateSrcs = [
@@ -117,6 +129,13 @@
             <img class="pony-image" src={ponySrc} alt="" bind:this={ponyEl} />
         {/key}
     </div>
+
+    {#each sitStateSrcs as src}
+        <img {src} alt="" class="hidden-preload-image" />
+    {/each}
+    {#each Object.values(animations) as animation}
+        <img src={animation.src} alt="" class="hidden-preload-image" />
+    {/each}
 </div>
 
 <style lang="scss">
@@ -140,5 +159,9 @@
     .pony-image {
         width: calc(var(--pony-pixel-width) / var(--pony-pixel-max-width) * 100cqw);
         image-rendering: pixelated;
+    }
+
+    .hidden-preload-image {
+        display: none;
     }
 </style>
