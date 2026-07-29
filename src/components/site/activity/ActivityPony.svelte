@@ -125,9 +125,7 @@
 
 <div class="pony-container" style:--pony-pixel-width={ponyPixelWidth}>
     <div class="pony-inner">
-        {#key ponySrc}
-            <img class="pony-image" src={ponySrc} alt="" bind:this={ponyEl} />
-        {/key}
+        <img class="pony-image" src={ponySrc} alt="" bind:this={ponyEl} />
     </div>
 </div>
 
