@@ -1,6 +1,7 @@
 ---
 import "$styles/site.scss";
 import "$styles/fonts/lexend.scss";
+import VisitorCounter from "$components/site/visitors/VisitorCounter.svelte";
 
 interface Props {
     title?: string;
@@ -22,6 +23,7 @@ let { title, bodyClass } = Astro.props;
         <slot name="head" />
     </head>
     <body class={bodyClass}>
+        <VisitorCounter key="paperbark.horse" client:only="svelte" />
         <slot />
     </body>
 </html>
