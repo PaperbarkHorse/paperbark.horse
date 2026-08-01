@@ -102,80 +102,76 @@ let duration = formatDuration(totalDuration);
     <Fragment slot="main">
         <Paper>
             <PaperTitle el="h1" title={playlist.name} id="playlist" />
-            <div class="info">
-                <img src={playlist.cover} alt="" class="cover-image" />
-                <div class="details">
-                    <table>
-                        {
-                            playlist.disks.length > 1 && (
-                                <tr>
-                                    <th>Disks</th>
-                                    <td>{playlist.disks.length}</td>
-                                </tr>
-                            )
-                        }
-                        {
-                            totalTracks > 0 && (
-                                <tr>
-                                    <th>Tracks</th>
-                                    <td>{totalTracks}</td>
-                                </tr>
-                            )
-                        }
-                        {
-                            totalDuration > 0 && (
-                                <tr>
-                                    <th>Duration</th>
-                                    <td>{duration}</td>
-                                </tr>
-                            )
-                        }
-                        {
-                            playlist.created && (
-                                <tr>
-                                    <th>Created</th>
-                                    <td>
-                                        <Date date={playlist.created} />
-                                    </td>
-                                </tr>
-                            )
-                        }
-                        {
-                            playlist.updated && (
-                                <tr>
-                                    <th>Updated</th>
-                                    <td>
-                                        <Date date={playlist.updated} />
-                                    </td>
-                                </tr>
-                            )
-                        }
-                    </table>
-                    <div class="links">
-                        {
-                            playlist.links?.youtube && (
-                                <ArrowButton href={playlist.links.youtube} direction="none">
-                                    Listen on YouTube
-                                </ArrowButton>
-                            )
-                        }
-                        {
-                            playlist.links?.spotify && (
-                                <ArrowButton href={playlist.links.spotify} direction="none">
-                                    Listen on Spotify
-                                </ArrowButton>
-                            )
-                        }
+            <Content>
+                <div class="info">
+                    <img src={playlist.cover} alt="" class="cover-image" />
+                    <div class="details">
+                        <table>
+                            {
+                                playlist.disks.length > 1 && (
+                                    <tr>
+                                        <th>Disks</th>
+                                        <td>{playlist.disks.length}</td>
+                                    </tr>
+                                )
+                            }
+                            {
+                                totalTracks > 0 && (
+                                    <tr>
+                                        <th>Tracks</th>
+                                        <td>{totalTracks}</td>
+                                    </tr>
+                                )
+                            }
+                            {
+                                totalDuration > 0 && (
+                                    <tr>
+                                        <th>Duration</th>
+                                        <td>{duration}</td>
+                                    </tr>
+                                )
+                            }
+                            {
+                                playlist.created && (
+                                    <tr>
+                                        <th>Created</th>
+                                        <td>
+                                            <Date date={playlist.created} />
+                                        </td>
+                                    </tr>
+                                )
+                            }
+                            {
+                                playlist.updated && (
+                                    <tr>
+                                        <th>Updated</th>
+                                        <td>
+                                            <Date date={playlist.updated} />
+                                        </td>
+                                    </tr>
+                                )
+                            }
+                        </table>
+                        <div class="links">
+                            {
+                                playlist.links?.youtube && (
+                                    <ArrowButton href={playlist.links.youtube} direction="none">
+                                        Listen on YouTube
+                                    </ArrowButton>
+                                )
+                            }
+                            {
+                                playlist.links?.spotify && (
+                                    <ArrowButton href={playlist.links.spotify} direction="none">
+                                        Listen on Spotify
+                                    </ArrowButton>
+                                )
+                            }
+                        </div>
                     </div>
                 </div>
-                {
-                    Astro.slots["playlist-description"] && (
-                        <Content>
-                            <slot name="playlist-description" />
-                        </Content>
-                    )
-                }
-            </div>
+                {Astro.slots["playlist-description"] && <slot name="playlist-description" />}
+            </Content>
         </Paper>
         {
             playlist.disks.map((disk, diskIndex) => (
