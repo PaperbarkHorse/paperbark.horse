@@ -6,9 +6,13 @@ import PlaylistPage from "$layouts/PlaylistPage.astro";
     playlist={{
         name: "Paperbark's Starter Kit",
         cover: "/images/playlists/starter-kit.jpg",
-        links: {
-            youtube: "https://youtube.com/playlist?list=PLKE30wIx6G9A&si=xOi2liH1QKxc20uk",
-        },
+        links: [
+            {
+                service: "youtube",
+                label: "Listen on YouTube",
+                url: "https://youtube.com/playlist?list=PLKE30wIx6G9A&si=xOi2liH1QKxc20uk",
+            },
+        ],
         created: "2026-07-19",
         updated: "2026-07-29",
         duration: 5640,

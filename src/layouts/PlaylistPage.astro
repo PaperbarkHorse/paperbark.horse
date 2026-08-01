@@ -11,10 +11,7 @@ import ContentPage from "./ContentPage.astro";
 type Playlist = {
     name: string;
     cover: string;
-    links: {
-        youtube?: string;
-        spotify?: string;
-    };
+    links?: Link[];
     created?: string;
     updated?: string;
     duration?: number;
@@ -23,7 +20,9 @@ type Playlist = {
 
 type PlaylistDisk = {
     label?: string;
-    ordered: boolean;
+    cover?: string;
+    links?: Link[];
+    ordered?: boolean;
     tracks: PlaylistTrack[];
 };
 
@@ -31,11 +30,13 @@ type PlaylistTrack = {
     title: string;
     artist: string;
     duration?: number;
-    links?: {
-        youtube?: string;
-        spotify?: string;
-        bandcamp?: string;
-    };
+    links?: Link[];
+};
+
+type Link = {
+    service: "youtube" | "spotify" | "bandcamp" | null;
+    label: string;
+    url: string;
 };
 
 interface Props {
@@ -154,18 +155,11 @@ let duration = formatDuration(totalDuration);
                         </table>
                         <div class="links">
                             {
-                                playlist.links?.youtube && (
-                                    <ArrowButton href={playlist.links.youtube} direction="none">
-                                        Listen on YouTube
+                                playlist.links?.map((link) => (
+                                    <ArrowButton href={link.url} direction="none">
+                                        {link.label}
                                     </ArrowButton>
-                                )
-                            }
-                            {
-                                playlist.links?.spotify && (
-                                    <ArrowButton href={playlist.links.spotify} direction="none">
-                                        Listen on Spotify
-                                    </ArrowButton>
-                                )
+                                ))
                             }
                         </div>
                     </div>
@@ -184,6 +178,20 @@ let duration = formatDuration(totalDuration);
                         id={`disk-${diskIndex + 1}`}
                     />
                     <Content>
+                        <div class="info">
+                            {disk.cover && <img src={disk.cover} alt="" class="cover-image" />}
+                            {disk.links && (
+                                <div class="details">
+                                    <div class="links">
+                                        {disk.links?.map((link) => (
+                                            <ArrowButton href={link.url} direction="none">
+                                                {link.label}
+                                            </ArrowButton>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
                         {Astro.slots[`disk-${diskIndex + 1}-description`] && (
                             <slot name={`disk-${diskIndex + 1}-description`} />
                         )}
@@ -207,7 +215,8 @@ let duration = formatDuration(totalDuration);
 <style lang="scss">
     .info {
         display: grid;
-        grid-template-columns: 4fr 3fr;
+        grid-template-columns: 3fr 4fr;
+        grid-template-areas: "details cover";
         align-items: start;
 
         gap: 1rem;
@@ -215,14 +224,18 @@ let duration = formatDuration(totalDuration);
         .cover-image {
             width: 100%;
             max-width: 25rem;
+            grid-area: cover;
+
             border-radius: 0.33rem;
         }
 
         .details {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
             width: 100%;
+            grid-area: details;
+
+            gap: 1rem;
         }
 
         table th {
@@ -243,6 +256,7 @@ let duration = formatDuration(totalDuration);
     }
 
     .track-list {
+        --content-gap: 1rem;
         list-style: decimal;
         padding-left: 1rem;
 

@@ -7,9 +7,178 @@ import ContentPage from "$layouts/ContentPage.astro";
 import ArrowButton from "$components/elements/buttons/ArrowButton.astro";
 import Content from "$components/elements/text/Content.astro";
 import Hyperlink from "$components/elements/text/Hyperlink.astro";
+import PlaylistPage from "$layouts/PlaylistPage.astro";
 ---
 
-<ContentPage title="2025 Mixtape">
+<PlaylistPage
+    playlist={{
+        name: "2025 Mixtape",
+        cover: "/images/playlists/2025-mixtape.jpg",
+        created: "2025-12-31",
+        disks: [
+            {
+                label: "Mixtape",
+                cover: "/images/playlists/2025-mixtape.jpg",
+                links: [
+                    {
+                        service: "youtube",
+                        label: "Listen on YouTube",
+                        url: "https://www.youtube.com/playlist?list=PL8y8Ix0Lvt5rt69JNh3sxYahAuGCOjeSz",
+                    },
+                ],
+                tracks: [
+                    {
+                        title: "Although the Sky",
+                        artist: "Dorkus64",
+                    },
+                    {
+                        title: "Meet & Tweet",
+                        artist: 'Julian "Zorsy" Sanchez',
+                    },
+                    {
+                        title: "Burnt Clouds",
+                        artist: "Twilike Wonder, Sylvver & Nexgen",
+                    },
+                    {
+                        title: "Sinking Ships (µThunder & FritzyBeat Remix)",
+                        artist: "FiMFlamFilosophy",
+                    },
+                    {
+                        title: "Song for an Earth Pony",
+                        artist: "replacer",
+                    },
+                    {
+                        title: "We Got This Together",
+                        artist: "Daniel Ingram",
+                    },
+                    {
+                        title: "Heavenbound",
+                        artist: "Foozogz & PrinceWhateverer",
+                    },
+                    {
+                        title: "brink!",
+                        artist: "rawrity",
+                    },
+                    {
+                        title: "Daybreaker",
+                        artist: "Vylet Pony",
+                    },
+                    {
+                        title: "Nightmare Night",
+                        artist: "Vylet Pony",
+                    },
+                    {
+                        title: "All That Matters (Coco Tundra Remix)",
+                        artist: "Sound Bandit & Algo At All",
+                    },
+                    {
+                        title: "Dawning Light (Age Of Vinyl & Tw3Lv3 Remix)",
+                        artist: "Nevermourn & Kyradeen",
+                    },
+                    {
+                        title: "When The Heart There Lies",
+                        artist: "ExplodingPonyToast",
+                    },
+                    {
+                        title: "The Third Sanctuary",
+                        artist: "Toby Fox",
+                    },
+                    {
+                        title: "Dual Headed Hydranoid (ft. Namii & SadisticTushi)",
+                        artist: "Vylet Pony",
+                    },
+                    {
+                        title: "Welcome Back",
+                        artist: "fizzd",
+                    },
+                    {
+                        title: "Die Anywhere Else",
+                        artist: "Alec Holowka and Scott Benson",
+                    },
+                    {
+                        title: "Buy Nothing Day",
+                        artist: "The Go! Team",
+                    },
+                    {
+                        title: "Bitter Times",
+                        artist: "celesti whispers, Patricia Taxxon",
+                    },
+                    {
+                        title: "Before We Part",
+                        artist: "Jensen Stiles & MathematicPony",
+                    },
+                    {
+                        title: "Through Your Heart (2025)",
+                        artist: "Soren Ember",
+                    },
+                    {
+                        title: "At The End Of The Day",
+                        artist: "Wandering Artist",
+                    },
+                    {
+                        title: "A Digital Flower Field",
+                        artist: "Vylet Pony",
+                    },
+                ],
+            },
+            {
+                label: "B-Side",
+                cover: "/images/playlists/2025-mixtape-b-side.jpg",
+                links: [
+                    {
+                        service: "youtube",
+                        label: "Listen on YouTube",
+                        url: "https://www.youtube.com/playlist?list=PL8y8Ix0Lvt5pZh6TU54G8zVHorbx8ZphR",
+                    },
+                ],
+                tracks: [
+                    {
+                        title: "Brightdawn",
+                        artist: "Trey Husk, John Kenza & Koa",
+                    },
+                    {
+                        title: "Neigh Anything (feat. Melody Note)",
+                        artist: "Sim Gretina, FritzyBeat & µThunder",
+                    },
+                    {
+                        title: "Twinkle Twirl's Great Dance Recital",
+                        artist: "Ethan Toavs",
+                    },
+                    {
+                        title: "Mid-Rain Sunshine",
+                        artist: "Darkspeen Shore & Skyshard",
+                    },
+                    {
+                        title: "Waltz for the Night (feat. Feather)",
+                        artist: "replacer",
+                    },
+                    {
+                        title: "It's Raining Now",
+                        artist: "Homage & TCB",
+                    },
+                    {
+                        title: "Connected (feat. MelodyBrony & dbPony)",
+                        artist: "PrinceWhateverer",
+                    },
+                    {
+                        title: "Sunk Cost Fallacy",
+                        artist: "Fox Stevenson",
+                    },
+                    {
+                        title: "Night At The Bay",
+                        artist: "Skyshard & Darkspeen Shore",
+                    },
+                    {
+                        title: "As The Thunder Rolls By",
+                        artist: "4EverfreeBrony",
+                    },
+                ],
+            },
+        ],
+    }}
+/>
+
+<!-- <ContentPage title="2025 Mixtape">
     <Fragment slot="head">
         <meta property="og:title" content="2025 Mixtape" />
         <meta
@@ -384,4 +553,4 @@ import Hyperlink from "$components/elements/text/Hyperlink.astro";
             }
         }
     }
-</style>
+</style> -->
