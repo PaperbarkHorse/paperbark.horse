@@ -232,7 +232,8 @@
     },
     "50": {
         "type": "text",
-        "text": "Over 18,000 scrobbles!"
+        "text": "Over 23,000 scrobbles!",
+        "href": "https://paperbark.horse/lastfm"
     },
     "51": {
         "type": "quote",
@@ -666,5 +667,23 @@
         "type": "quote",
         "text": "The body is round",
         "href": "https://www.youtube.com/watch?v=JyOuM-xVvOI"
+    },
+    "154": {
+        "type": "text",
+        "text": "Why generate when you can create!"
+    },
+    "155": {
+        "type": "text",
+        "text": "Nothing artificial or intelligent here!"
+    },
+    "156": {
+        "type": "quote",
+        "text": "If you want to find that delicious pencil of yours, go look elsewhere!",
+        "href": "https://img.getfn.io/images/07250e4f89c71dbeeb891c34eb055dd276e3c857dc13288a8675e9d6746b7d5e_1.jpg"
+    },
+    "157": {
+        "type": "text",
+        "text": "Plenty of playlists!",
+        "href": "/playlists"
     }
 }
