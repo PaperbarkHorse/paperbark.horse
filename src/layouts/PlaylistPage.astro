@@ -1,0 +1,272 @@
+---
+import Paper from "$components/containers/Paper.astro";
+import ArrowButton from "$components/elements/buttons/ArrowButton.astro";
+import Content from "$components/elements/text/Content.astro";
+import Date from "$components/elements/text/Date.astro";
+import PaperTitle from "$components/elements/text/PaperTitle.astro";
+import NavItem from "$components/navigation/NavItem.astro";
+import NavSection from "$components/navigation/NavSection.astro";
+import ContentPage from "./ContentPage.astro";
+
+type Playlist = {
+    name: string;
+    cover: string;
+    links: {
+        youtube?: string;
+        spotify?: string;
+    };
+    created?: string;
+    updated?: string;
+    duration?: number;
+    disks: PlaylistDisk[];
+};
+
+type PlaylistDisk = {
+    label?: string;
+    ordered: boolean;
+    tracks: PlaylistTrack[];
+};
+
+type PlaylistTrack = {
+    title: string;
+    artist: string;
+    duration?: number;
+    links?: {
+        youtube?: string;
+        spotify?: string;
+        bandcamp?: string;
+    };
+};
+
+interface Props {
+    playlist: Playlist;
+}
+
+const { playlist } = Astro.props;
+
+function formatDuration(time: number) {
+    let mins = Math.floor(time / 60) % 60;
+    let hours = Math.floor(time / 3600);
+
+    if (hours >= 1) {
+        return `${hours}${hours !== 1 ? "hrs" : "hr"} ${mins}${mins !== 1 ? "mins" : "min"}`;
+    } else {
+        return `${mins}mins`;
+    }
+}
+
+let totalTracks = playlist.disks.reduce((acc, disk) => acc + disk.tracks.length, 0);
+let totalDuration =
+    playlist.duration ??
+    playlist.disks.reduce(
+        (acc, disk) => acc + disk.tracks.reduce((acc, track) => acc + (track.duration ?? 0), 0),
+        0,
+    );
+let duration = formatDuration(totalDuration);
+---
+
+<ContentPage title={playlist.name}>
+    <Fragment slot="head">
+        <meta property="og:title" content={playlist.name} />
+        <!-- TODO: Convert description slot to text for OpenGraph -->
+        <meta property="og:description" content="" />
+        <meta property="og:image" content={new URL(playlist.cover, Astro.url)} />
+        <meta property="og:url" content={Astro.url} />
+        <meta property="og:type" content="music.playlist" />
+        <meta property="music:creator" content={new URL("/", Astro.url)} />
+    </Fragment>
+
+    <Fragment slot="navigation">
+        <NavSection name="Navigation">
+            <NavItem name="Home" href="/" />
+            <NavItem name="Playlists" href="/playlists" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="contents">
+        <NavSection name="On This Page">
+            <NavItem name={playlist.name} href="#playlist" />
+            {
+                playlist.disks.map((disk, diskIndex) => (
+                    <NavItem
+                        name={
+                            playlist.disks.length > 1 ? (disk.label ?? `Disk ${diskIndex + 1}`) : "Tracklist"
+                        }
+                        href={`#disk-${diskIndex + 1}`}
+                    />
+                ))
+            }
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="main">
+        <Paper>
+            <PaperTitle el="h1" title={playlist.name} id="playlist" />
+            <div class="info">
+                <img src={playlist.cover} alt="" class="cover-image" />
+                <div class="details">
+                    <table>
+                        {
+                            playlist.disks.length > 1 && (
+                                <tr>
+                                    <th>Disks</th>
+                                    <td>{playlist.disks.length}</td>
+                                </tr>
+                            )
+                        }
+                        {
+                            totalTracks > 0 && (
+                                <tr>
+                                    <th>Tracks</th>
+                                    <td>{totalTracks}</td>
+                                </tr>
+                            )
+                        }
+                        {
+                            totalDuration > 0 && (
+                                <tr>
+                                    <th>Duration</th>
+                                    <td>{duration}</td>
+                                </tr>
+                            )
+                        }
+                        {
+                            playlist.created && (
+                                <tr>
+                                    <th>Created</th>
+                                    <td>
+                                        <Date date={playlist.created} />
+                                    </td>
+                                </tr>
+                            )
+                        }
+                        {
+                            playlist.updated && (
+                                <tr>
+                                    <th>Updated</th>
+                                    <td>
+                                        <Date date={playlist.updated} />
+                                    </td>
+                                </tr>
+                            )
+                        }
+                    </table>
+                    <div class="links">
+                        {
+                            playlist.links?.youtube && (
+                                <ArrowButton href={playlist.links.youtube} direction="none">
+                                    Listen on YouTube
+                                </ArrowButton>
+                            )
+                        }
+                        {
+                            playlist.links?.spotify && (
+                                <ArrowButton href={playlist.links.spotify} direction="none">
+                                    Listen on Spotify
+                                </ArrowButton>
+                            )
+                        }
+                    </div>
+                </div>
+                {
+                    Astro.slots["playlist-description"] && (
+                        <Content>
+                            <slot name="playlist-description" />
+                        </Content>
+                    )
+                }
+            </div>
+        </Paper>
+        {
+            playlist.disks.map((disk, diskIndex) => (
+                <Paper>
+                    <PaperTitle
+                        el="h2"
+                        title={
+                            disk.label ?? (playlist.disks.length > 1 ? `Disk ${diskIndex + 1}` : "Tracklist")
+                        }
+                        id={`disk-${diskIndex + 1}`}
+                    />
+                    <Content>
+                        {Astro.slots[`disk-${diskIndex + 1}-description`] && (
+                            <slot name={`disk-${diskIndex + 1}-description`} />
+                        )}
+                        <ol class="track-list">
+                            {disk.tracks.map((track, trackIndex) => (
+                                <li>
+                                    <div class="track-entry">
+                                        <span class="title">{track.title}</span>
+                                        <span class="artist">{track.artist}</span>
+                                    </div>
+                                </li>
+                            ))}
+                        </ol>
+                    </Content>
+                </Paper>
+            ))
+        }
+    </Fragment>
+</ContentPage>
+
+<style lang="scss">
+    .info {
+        display: grid;
+        grid-template-columns: 4fr 3fr;
+        align-items: start;
+
+        gap: 1rem;
+
+        .cover-image {
+            width: 100%;
+            max-width: 25rem;
+            border-radius: 0.33rem;
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        table th {
+            text-align: right;
+            padding-right: 0.5rem;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        @container (width < 570px) {
+            grid-template-columns: 1fr;
+            justify-items: center;
+        }
+    }
+
+    .track-list {
+        list-style: decimal;
+        padding-left: 1rem;
+
+        li:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+
+        .track-entry {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+
+            .title {
+                font-weight: var(--font-bold);
+            }
+
+            .title,
+            .artist {
+                line-height: 1.2;
+            }
+        }
+    }
+</style>

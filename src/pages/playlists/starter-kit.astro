@@ -1,284 +1,121 @@
 ---
-import Paper from "$components/containers/Paper.astro";
-import PaperTitle from "$components/elements/text/PaperTitle.astro";
-import NavSection from "$components/navigation/NavSection.astro";
-import NavItem from "$components/navigation/NavItem.astro";
-import ContentPage from "$layouts/ContentPage.astro";
-import ArrowButton from "$components/elements/buttons/ArrowButton.astro";
-import Content from "$components/elements/text/Content.astro";
+import PlaylistPage from "$layouts/PlaylistPage.astro";
 ---
 
-<ContentPage title="Paperbark's Starter Kit">
-    <Fragment slot="head">
-        <meta property="og:title" content="Paperbark's Starter Kit" />
-        <meta
-            property="og:description"
-            content="Hey Paperbark, what music do you listen to? This playlist should help answer that!"
-        />
-        <meta property="og:image" content={new URL("/images/playlists/starter-kit.jpg", Astro.url)} />
-        <meta property="og:url" content={Astro.url} />
-        <meta property="og:type" content="music.playlist" />
-        <meta property="music:creator" content={new URL("/", Astro.url)} />
+<PlaylistPage
+    playlist={{
+        name: "Paperbark's Starter Kit",
+        cover: "/images/playlists/starter-kit.jpg",
+        links: {
+            youtube: "https://youtube.com/playlist?list=PLKE30wIx6G9A&si=xOi2liH1QKxc20uk",
+        },
+        created: "2026-07-19",
+        updated: "2026-07-29",
+        duration: 5640,
+        disks: [
+            {
+                ordered: true,
+                tracks: [
+                    {
+                        title: "brink",
+                        artist: "rawrity",
+                    },
+                    {
+                        title: "Creature City",
+                        artist: "Vylet Pony",
+                    },
+                    {
+                        title: "When The Heart There Lies",
+                        artist: "ExplodingPonyToast",
+                    },
+                    {
+                        title: "BIRDBRAIN (with OK Glass",
+                        artist: "Jamie Paige",
+                    },
+                    {
+                        title: "All Eyes On Me",
+                        artist: "Fox Stevenson",
+                    },
+                    {
+                        title: "The Third Sanctuary",
+                        artist: "Toby Fox",
+                    },
+                    {
+                        title: "Planetarium",
+                        artist: "Squarepusher",
+                    },
+                    {
+                        title: "81 Special",
+                        artist: "Caravan Palace",
+                    },
+                    {
+                        title: "Who Knew",
+                        artist: "The Correspondents",
+                    },
+                    {
+                        title: "Bart Trip",
+                        artist: "Vylet Pony",
+                    },
+                    {
+                        title: "Seabell, Starshine",
+                        artist: "replacer",
+                    },
+                    {
+                        title: "Good Time",
+                        artist: "Owl City",
+                    },
+                    {
+                        title: "The One Moment",
+                        artist: "OK Go",
+                    },
+                    {
+                        title: "Buy Nothing Day",
+                        artist: "The Go! Team",
+                    },
+                    {
+                        title: "Elemental",
+                        artist: "PrinceWhateverer",
+                    },
+                    {
+                        title: "Mail It In",
+                        artist: "4EverfreeBrony",
+                    },
+                    {
+                        title: "Dawning Light (Age Of Vinyl & Tw3lv3 Remix",
+                        artist: "Nevermourn & Kyradeen",
+                    },
+                    {
+                        title: "Blossoms",
+                        artist: "Meltt",
+                    },
+                    {
+                        title: "Infotain Me",
+                        artist: "Ochre",
+                    },
+                    {
+                        title: "Mid-Rain Sunshine",
+                        artist: "Darkspeen Shore & Skyshard",
+                    },
+                    {
+                        title: "You Have Friends In Maretime Bay",
+                        artist: "Wandering Artist",
+                    },
+                    {
+                        title: "Back to You",
+                        artist: "WRLD, Keepsake & Laszlo",
+                    },
+                ],
+            },
+        ],
+    }}
+>
+    <Fragment slot="playlist-description">
+        <p><em>"Hey Paperbark, what kind of music do you listen to?"</em></p>
+        <p>Uhh, it's complicated...</p>
+        <p>
+            ...but maybe this super awesome hour and a half playlist with some of my favourite songs in will
+            help answer that question!
+        </p>
+        <p>Or it might not, my music taste is a crazy thing.</p>
     </Fragment>
-
-    <Fragment slot="navigation">
-        <NavSection name="Navigation">
-            <NavItem name="Home" href="/" />
-        </NavSection>
-    </Fragment>
-
-    <Fragment slot="contents">
-        <NavSection name="On This Page">
-            <NavItem name="Paperbark's Starter Kit" href="#paperbarks-starter-kit" />
-            <NavItem name="Tracklist" href="#tracklist" />
-        </NavSection>
-    </Fragment>
-
-    <Fragment slot="main">
-        <Paper>
-            <PaperTitle el="h1" title="Paperbark's Starter Kit" />
-            <Content>
-                <div class="info">
-                    <img src="/images/playlists/starter-kit.jpg" alt="" class="cover-image" />
-                    <div class="details">
-                        <table>
-                            <tr>
-                                <th>Tracks</th>
-                                <td>22</td>
-                            </tr>
-                            <tr>
-                                <th>Duration</th>
-                                <td>1hr 34mins</td>
-                            </tr>
-                            <tr>
-                                <th>Created</th>
-                                <td><time datetime="2026-07-19">19 July 2026</time></td>
-                            </tr>
-                            <tr>
-                                <th>Updated</th>
-                                <td><time datetime="2026-07-29">29 July 2026</time></td>
-                            </tr>
-                        </table>
-                        <div class="links">
-                            <ArrowButton
-                                href="https://youtube.com/playlist?list=PLKE30wIx6G9A&si=xOi2liH1QKxc20uk"
-                                external={true}
-                                direction="none"
-                            >
-                                Listen on YouTube
-                            </ArrowButton>
-                        </div>
-                    </div>
-                </div>
-
-                <p><em>"Hey Paperbark, what kind of music do you listen to?"</em></p>
-                <p>Uhh, it's complicated...</p>
-                <p>
-                    ...but maybe this super awesome hour and a half playlist with some of my favourite songs
-                    in will help answer that question!
-                </p>
-                <p>Or it might not, my music taste is a crazy thing.</p>
-            </Content>
-        </Paper>
-        <Paper>
-            <PaperTitle el="h2" title="Tracklist" />
-            <ol class="track-list">
-                <li>
-                    <div class="track-entry">
-                        <span class="title">brink!</span>
-                        <span class="artist">rawrity</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">Creature City</span>
-                        <span class="artist">Vylet Pony</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">When The Heart There Lies</span>
-                        <span class="artist">ExplodingPonyToast</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">BIRDBRAIN (with OK Glass)</span>
-                        <span class="artist">Jamie Paige</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">All Eyes On Me</span>
-                        <span class="artist">Fox Stevenson</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">The Third Sanctuary</span>
-                        <span class="artist">Toby Fox</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">Planetarium</span>
-                        <span class="artist">Squarepusher</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">81 Special</span>
-                        <span class="artist">Caravan Palace</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">Who Knew</span>
-                        <span class="artist">The Correspondents</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">Bart Trip</span>
-                        <span class="artist">Vylet Pony</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">Seabell, Starshine</span>
-                        <span class="artist">replacer</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">Good Time</span>
-                        <span class="artist">Owl City</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">The One Moment</span>
-                        <span class="artist">OK Go</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">Buy Nothing Day</span>
-                        <span class="artist">The Go! Team</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">Elemental</span>
-                        <span class="artist">PrinceWhateverer</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">Mail It In</span>
-                        <span class="artist">4EverfreeBrony</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">Dawning Light (Age Of Vinyl & Tw3lv3 Remix)</span>
-                        <span class="artist">Nevermourn & Kyradeen</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">Blossoms</span>
-                        <span class="artist">Meltt</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">Infotain Me</span>
-                        <span class="artist">Ochre</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">Mid-Rain Sunshine</span>
-                        <span class="artist">Darkspeen Shore & Skyshard</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">You Have Friends In Maretime Bay</span>
-                        <span class="artist">Wandering Artist</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="track-entry">
-                        <span class="title">Back to You</span>
-                        <span class="artist">WRLD, Keepsake & Laszlo</span>
-                    </div>
-                </li>
-            </ol>
-        </Paper>
-    </Fragment>
-</ContentPage>
-
-<style lang="scss">
-    .info {
-        display: grid;
-        grid-template-columns: 4fr 3fr;
-        align-items: start;
-
-        gap: 1rem;
-
-        .cover-image {
-            width: 100%;
-            max-width: 25rem;
-            border-radius: 0.33rem;
-        }
-
-        .details {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            width: 100%;
-        }
-
-        table th {
-            text-align: right;
-            padding-right: 0.5rem;
-        }
-
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        @container (width < 570px) {
-            grid-template-columns: 1fr;
-            justify-items: center;
-        }
-    }
-
-    .track-list {
-        list-style: decimal;
-        padding-left: 1rem;
-
-        li:not(:last-child) {
-            margin-bottom: 1rem;
-        }
-
-        .track-entry {
-            display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
-
-            .title {
-                font-weight: var(--font-bold);
-            }
-
-            .title,
-            .artist {
-                line-height: 1.2;
-            }
-        }
-    }
-</style>
+</PlaylistPage>
