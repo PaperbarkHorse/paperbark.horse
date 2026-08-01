@@ -1,0 +1,83 @@
+---
+import Paper from "$components/containers/Paper.astro";
+import Polaroid from "$components/elements/images/Polaroid.astro";
+import PaperTitle from "$components/elements/text/PaperTitle.astro";
+
+interface Props {
+    name: string;
+    image: string;
+}
+
+let { name, image } = Astro.props;
+---
+
+<Paper>
+    <div class="character-summary">
+        <div class="title-container">
+            <PaperTitle el="h1" title={name} />
+        </div>
+        <div class="polaroid-container">
+            <Polaroid src={image} angle="3deg" width="100%" />
+        </div>
+        <div class="info-container">
+            <slot name="info" />
+        </div>
+        <div class="description-container">
+            <slot name="description" />
+        </div>
+    </div>
+</Paper>
+
+<style lang="scss">
+    .character-summary {
+        display: grid;
+        justify-items: start;
+
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "title polaroid"
+            "info polaroid"
+            "description description";
+    }
+
+    .title-container {
+        grid-area: title;
+    }
+
+    .polaroid-container {
+        width: 100%;
+        max-width: 12.5rem;
+        grid-area: polaroid;
+
+        justify-self: center;
+
+        padding: 0.5rem;
+    }
+
+    .info-container {
+        grid-area: info;
+    }
+
+    .description-container {
+        grid-area: description;
+
+        margin-top: 1.5rem;
+    }
+
+    @container (width < 35rem) {
+        .character-summary {
+            grid-template-columns: 1fr;
+            grid-template-areas:
+                "title"
+                "polaroid"
+                "info"
+                "description";
+        }
+
+        .polaroid-container {
+            max-width: 15rem;
+
+            margin-bottom: 1rem;
+        }
+    }
+</style>

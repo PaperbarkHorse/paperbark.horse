@@ -1,6 +1,7 @@
 ---
 import Paper from "$components/containers/Paper.astro";
-import Polaroid from "$components/elements/images/Polaroid.astro";
+import StickyNote from "$components/containers/StickyNote.astro";
+import ArrowButton from "$components/elements/buttons/ArrowButton.astro";
 import Content from "$components/elements/text/Content.astro";
 import PaperTitle from "$components/elements/text/PaperTitle.astro";
 import PolaroidGrid from "$components/layouts/polaroid-grid/PolaroidGrid.astro";
@@ -24,31 +25,54 @@ import ContentPage from "$layouts/ContentPage.astro";
     </Fragment>
 
     <Fragment slot="main">
+        <StickyNote>
+            <Content>
+                <h2>Work in Progress</h2>
+                <p>
+                    I'm still working on this section, so a lot of stuff is either incomplete or doesn't have
+                    a proper page yet! Be sure to check back again soon when more things are finished.
+                </p>
+                <p>- Paperbark /)</p>
+            </Content>
+        </StickyNote>
         <Paper>
             <PaperTitle el="h1" title="My OCs" />
             <Content>
-                <p>Aaa</p>
+                <PolaroidGrid>
+                    <PolaroidGridItem
+                        title="Paperbark"
+                        src="/images/ocs/paperbark/profile.jpg"
+                        href="/ocs/paperbark"
+                        angle="-3deg"
+                    />
+                    <PolaroidGridItem
+                        title="Quasar"
+                        src="/images/ocs/quasar/profile.jpg"
+                        angle="1deg"
+                        href="https://toyhou.se/39037381.quasar"
+                    />
+                    <PolaroidGridItem
+                        title="Cocoa Butter"
+                        src="/images/ocs/cocoa-butter/profile.jpg"
+                        angle="-1deg"
+                        href="https://toyhou.se/39048266.cocoa-butter"
+                    />
+                    <PolaroidGridItem
+                        title="Gasoline"
+                        src="/images/ocs/gasoline/profile.jpg"
+                        angle="3deg"
+                        href="https://toyhou.se/39065970.gasoline"
+                    />
+                    <PolaroidGridItem
+                        title="Maple Scruff"
+                        src="/images/ocs/maple-scruff/profile.jpg"
+                        angle="-2deg"
+                    />
+                </PolaroidGrid>
+                <div class="button-container">
+                    <ArrowButton href="https://toyhou.se/Paperbark">Visit my Toyhouse</ArrowButton>
+                </div>
             </Content>
-            <PolaroidGrid>
-                <PolaroidGridItem
-                    title="Paperbark"
-                    src="/images/ocs/paperbark/profile.jpg"
-                    href="/ocs/paperbark"
-                    angle="-3deg"
-                />
-                <PolaroidGridItem title="Quasar" src="/images/ocs/quasar/profile.jpg" angle="1deg" />
-                <PolaroidGridItem
-                    title="Cocoa Butter"
-                    src="/images/ocs/cocoa-butter/profile.jpg"
-                    angle="-1deg"
-                />
-                <PolaroidGridItem title="Gasoline" src="/images/ocs/gasoline/profile.jpg" angle="3deg" />
-                <PolaroidGridItem
-                    title="Maple Scruff"
-                    src="/images/ocs/maple-scruff/profile.jpg"
-                    angle="-2deg"
-                />
-            </PolaroidGrid>
         </Paper>
     </Fragment>
 </ContentPage>

@@ -1,0 +1,164 @@
+---
+import CharacterSummary from "$components/blocks/CharacterSummary.astro";
+import Content from "$components/elements/text/Content.astro";
+import NavItem from "$components/navigation/NavItem.astro";
+import NavSection from "$components/navigation/NavSection.astro";
+import ContentPage from "$layouts/ContentPage.astro";
+import Infobox from "$components/elements/infobox/Infobox.astro";
+import InfoboxField from "$components/elements/infobox/InfoboxField.astro";
+import Date from "$components/elements/text/Date.astro";
+import Paper from "$components/containers/Paper.astro";
+import PaperTitle from "$components/elements/text/PaperTitle.astro";
+import Gallery from "$components/elements/gallery/Gallery.astro";
+import GalleryImage from "$components/elements/gallery/GalleryImage.astro";
+import ArrowButton from "$components/elements/buttons/ArrowButton.astro";
+import StickyNote from "$components/containers/StickyNote.astro";
+---
+
+<ContentPage title="Paperbark">
+    <Fragment slot="navigation">
+        <NavSection name="Navigation">
+            <NavItem name="Home" href="/" />
+            <NavItem name="OCs" href="/ocs" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="contents">
+        <NavSection name="On This Page">
+            <NavItem name="Paperbark" href="#paperbark" />
+            <NavItem name="Character" href="#character" />
+            <NavItem name="Cutie Mark" href="#cutie-mark" />
+            <NavItem name="History" href="#history" />
+            <NavItem name="Gallery" href="#gallery" />
+            <NavItem name="Pony Town Outfits" href="#pony-town-outfits" />
+        </NavSection>
+    </Fragment>
+
+    <Fragment slot="main">
+        <CharacterSummary name="Paperbark" image="/images/ocs/paperbark/profile.jpg">
+            <Fragment slot="info">
+                <Infobox>
+                    <InfoboxField label="Created">
+                        <Date date="2024-06-24" />
+                    </InfoboxField>
+                    <InfoboxField label="Pronouns">They / Them</InfoboxField>
+                    <InfoboxField label="Universe">My Little Pony: Friendship is Magic</InfoboxField>
+                    <InfoboxField label="Species">Unicorn pony</InfoboxField>
+                    <InfoboxField label="Age">Young adult</InfoboxField>
+                    <InfoboxField label="Cutie mark">Bookmark</InfoboxField>
+                </Infobox>
+            </Fragment>
+            <Fragment slot="description">
+                <Content>
+                    <div class="button-container">
+                        <ArrowButton href="https://toyhou.se/39037018.paperbark">
+                            View on Toyhouse
+                        </ArrowButton>
+                    </div>
+                </Content>
+            </Fragment>
+        </CharacterSummary>
+        <Paper>
+            <PaperTitle el="h2" title="Character" />
+            <Content>
+                <p>
+                    Paperbark is a gentle, reserved pony who loves to preserve memories for themself and other
+                    ponies to revisit when they want to experience the special moments in their lives again.
+                    They usually keep to themself, despite attending a lot of social gatherings, existing
+                    mostly in the background and collecting artifacts for their scrapbooks of memories.
+                </p>
+                <p>
+                    They are selectively mute, being almost silent in public and around large groups, though
+                    occasionally make faint noises when they're especially happy or stressed out by something.
+                    When they do talk, it is usually only with close friends or others they trust, and they
+                    speak with a very soft, quiet voice which could easily be drowned out by background noise.
+                </p>
+                <p>
+                    When spending time with friends, they prefer being in a quiet space with plenty of soft
+                    furnishings and things to cuddle, like plushies. They are rather affectionate with others
+                    they trust and enjoy hugs.
+                </p>
+                <p>
+                    Paperbark often wears a long red scarf tied tightly around their neck as they find the
+                    feeling of it comforting and helps them to stay calm while outside and around others.
+                    Other wearables which put firm pressure against them also work, including inflatable
+                    armbands, which they like to wear during the hot months or at the swimming pool when they
+                    can't have their scarf.
+                </p>
+            </Content>
+        </Paper>
+        <Paper>
+            <PaperTitle el="h2" title="Cutie Mark" />
+            <Content>
+                <p>
+                    Paperbark's cutie mark is a symbol of a red bookmark, meant to represent how they mark
+                    moments in time to be revisited later with their scrapbooks.
+                </p>
+                <p>
+                    They received their cutie mark while taking a group photo with all of their friends at an
+                    event. As they set the timer on the camera and got into frame, they realised just how
+                    special the moment was and wanted to hold onto that feeling forever, then just as the
+                    camera flashed their cutie mark appeared - the moment preserved forever in that photo and
+                    surrounded by their friends.
+                </p>
+            </Content>
+        </Paper>
+        <Paper>
+            <PaperTitle el="h2" title="History" />
+            <Content>
+                <p>
+                    Paperbark was created as an OC in Pony Town on <Date date="2024-06-24" />. They initially
+                    did not have much significance, but over time became a representation of the more
+                    sentimental parts of my personality and the view of myself as a quiet introverted person.
+                </p>
+                <p>
+                    It took two months for them to be given a proper name (originally just being a
+                    placeholder), with their personality and name finally being decided in August 2024, though
+                    they did not have a design for their cutie mark until almost a year later.
+                </p>
+            </Content>
+        </Paper>
+        <Paper>
+            <PaperTitle el="h2" title="Gallery" />
+            <Content>
+                <StickyNote>
+                    <Content>
+                        <p>
+                            I'm still working on this section, but for now you can check out all the art of
+                            Paperbark over on Toyhouse!
+                        </p>
+                    </Content>
+                </StickyNote>
+                <div class="button-container">
+                    <ArrowButton href="https://toyhou.se/39037018.paperbark/gallery">
+                        Full gallery on Toyhouse
+                    </ArrowButton>
+                </div>
+            </Content>
+        </Paper>
+        <Paper>
+            <PaperTitle el="h2" title="Pony Town Outfits" />
+            <Gallery>
+                <GalleryImage src="/images/ocs/paperbark/outfits/base.png">Base</GalleryImage>
+                <GalleryImage src="/images/ocs/paperbark/outfits/av.png">AV Tech</GalleryImage>
+                <GalleryImage src="/images/ocs/paperbark/outfits/av-armbands.png">
+                    AV Tech with inflatable armbands
+                </GalleryImage>
+                <GalleryImage src="/images/ocs/paperbark/outfits/swimming.png">Sopping wet</GalleryImage>
+                <GalleryImage src="/images/ocs/paperbark/outfits/pirate.png">Pirate</GalleryImage>
+                <GalleryImage src="/images/ocs/paperbark/outfits/pride-2025.png">Pride 2025</GalleryImage>
+                <GalleryImage src="/images/ocs/paperbark/outfits/halloween-2025.png"
+                    >Wizard (Halloween 2025)</GalleryImage
+                >
+                <GalleryImage src="/images/ocs/paperbark/outfits/winter-2025.png">Winter 2025</GalleryImage>
+                <GalleryImage src="/images/ocs/paperbark/outfits/christmas-2025-alt.png"
+                    >Christmas 2025</GalleryImage
+                >
+                <GalleryImage src="/images/ocs/paperbark/outfits/christmas-2025.png"
+                    >Christmas 2025 (Alternate)</GalleryImage
+                >
+                <GalleryImage src="/images/ocs/paperbark/outfits/formal.png">Formal attire</GalleryImage>
+            </Gallery>
+        </Paper>
+    </Fragment>
+</ContentPage>

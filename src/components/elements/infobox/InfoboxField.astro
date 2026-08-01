@@ -1,0 +1,31 @@
+---
+interface Props {
+    label: string;
+}
+
+let { label } = Astro.props;
+---
+
+<div class="infobox-field">
+    <div class="label">{label}</div>
+    <div class="field">
+        <slot />
+    </div>
+</div>
+
+<style lang="scss">
+    .infobox-field {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+
+        .label {
+            font-weight: var(--font-semibold);
+        }
+
+        .label,
+        .field {
+            padding: 0.25rem;
+            line-height: 1.2;
+        }
+    }
+</style>
