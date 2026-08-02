@@ -1,9 +1,32 @@
 ---
+import { undefined } from "astro:schema";
+import Content from "../text/Content.astro";
 
+interface Props {
+    images: { src: string; caption?: string }[];
+    lightbox?: string;
+}
+
+const { images, lightbox } = Astro.props;
 ---
 
 <div class="gallery">
-    <slot />
+    {
+        images.map((image) => (
+            <figure class="gallery-image">
+                <button data-lightbox={lightbox ?? undefined}>
+                    <img src={image.src} alt="" />
+                </button>
+                {image.caption && (
+                    <figcaption>
+                        <Content theme="paper">
+                            <p>{image.caption}</p>
+                        </Content>
+                    </figcaption>
+                )}
+            </figure>
+        ))
+    }
 </div>
 
 <style lang="scss">
@@ -14,5 +37,33 @@
         gap: 0.5rem;
 
         text-align: center;
+    }
+
+    .gallery-image {
+        display: flex;
+        flex-direction: column;
+
+        gap: 0.5rem;
+        padding: 0.5rem;
+
+        border-radius: 0.5rem;
+
+        background-color: rgba(0, 0, 0, 0.04);
+
+        img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: contain;
+        }
+
+        figcaption {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            flex-grow: 1;
+
+            line-height: 1.25;
+        }
     }
 </style>

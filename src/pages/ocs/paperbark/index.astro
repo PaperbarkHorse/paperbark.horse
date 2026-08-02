@@ -120,45 +120,48 @@ import StickyNote from "$components/containers/StickyNote.astro";
         </Paper>
         <Paper>
             <PaperTitle el="h2" title="Gallery" />
-            <Content>
-                <StickyNote>
-                    <Content>
-                        <p>
-                            I'm still working on this section, but for now you can check out all the art of
-                            Paperbark over on Toyhouse!
-                        </p>
-                    </Content>
-                </StickyNote>
-                <div class="button-container">
-                    <ArrowButton href="https://toyhou.se/39037018.paperbark/gallery">
-                        Full gallery on Toyhouse
-                    </ArrowButton>
-                </div>
-            </Content>
+            <Gallery
+                lightbox="gallery"
+                images={[
+                    { src: "https://f2.toyhou.se/file/f2-toyhou-se/images/123544305_f7SDoPe37nvq4yb.png" },
+                    { src: "https://f2.toyhou.se/file/f2-toyhou-se/images/121332089_M6vw8JRPOLJUuCA.png" },
+                    { src: "https://f2.toyhou.se/file/f2-toyhou-se/images/119035459_hV0pRPEZyatjCz9.png" },
+                    { src: "https://f2.toyhou.se/file/f2-toyhou-se/images/119035341_UHSqU37izF749CD.png" },
+                    { src: "https://f2.toyhou.se/file/f2-toyhou-se/images/119035524_2NJbgZiHGO9xScp.jpg" },
+                    { src: "https://f2.toyhou.se/file/f2-toyhou-se/images/119035326_xZdTe4hlqNyTHXV.png" },
+                ]}
+            />
         </Paper>
         <Paper>
             <PaperTitle el="h2" title="Pony Town Outfits" />
-            <Gallery>
-                <GalleryImage src="/images/ocs/paperbark/outfits/base.png">Base</GalleryImage>
-                <GalleryImage src="/images/ocs/paperbark/outfits/av.png">AV Tech</GalleryImage>
-                <GalleryImage src="/images/ocs/paperbark/outfits/av-armbands.png">
-                    AV Tech with inflatable armbands
-                </GalleryImage>
-                <GalleryImage src="/images/ocs/paperbark/outfits/swimming.png">Sopping wet</GalleryImage>
-                <GalleryImage src="/images/ocs/paperbark/outfits/pirate.png">Pirate</GalleryImage>
-                <GalleryImage src="/images/ocs/paperbark/outfits/pride-2025.png">Pride 2025</GalleryImage>
-                <GalleryImage src="/images/ocs/paperbark/outfits/halloween-2025.png"
-                    >Wizard (Halloween 2025)</GalleryImage
-                >
-                <GalleryImage src="/images/ocs/paperbark/outfits/winter-2025.png">Winter 2025</GalleryImage>
-                <GalleryImage src="/images/ocs/paperbark/outfits/christmas-2025-alt.png"
-                    >Christmas 2025</GalleryImage
-                >
-                <GalleryImage src="/images/ocs/paperbark/outfits/christmas-2025.png"
-                    >Christmas 2025 (Alternate)</GalleryImage
-                >
-                <GalleryImage src="/images/ocs/paperbark/outfits/formal.png">Formal attire</GalleryImage>
-            </Gallery>
+            <Gallery
+                lightbox="pony-town-outfits"
+                images={[
+                    { src: "/images/ocs/paperbark/outfits/base.png", caption: "Base" },
+                    { src: "/images/ocs/paperbark/outfits/av.png", caption: "AV Tech" },
+                    {
+                        src: "/images/ocs/paperbark/outfits/av-armbands.png",
+                        caption: "AV Tech with inflatable armbands",
+                    },
+                    { src: "/images/ocs/paperbark/outfits/swimming.png", caption: "Sopping wet" },
+                    { src: "/images/ocs/paperbark/outfits/pirate.png", caption: "Pirate" },
+                    { src: "/images/ocs/paperbark/outfits/pride-2025.png", caption: "Pride 2025" },
+                    {
+                        src: "/images/ocs/paperbark/outfits/halloween-2025.png",
+                        caption: "Wizard (Halloween 2025)",
+                    },
+                    { src: "/images/ocs/paperbark/outfits/winter-2025.png", caption: "Winter 2025" },
+                    {
+                        src: "/images/ocs/paperbark/outfits/christmas-2025-alt.png",
+                        caption: "Christmas 2025",
+                    },
+                    {
+                        src: "/images/ocs/paperbark/outfits/christmas-2025.png",
+                        caption: "Christmas 2025 (Alternate)",
+                    },
+                    { src: "/images/ocs/paperbark/outfits/formal.png", caption: "Formal attire" },
+                ]}
+            />
         </Paper>
     </Fragment>
 </ContentPage>

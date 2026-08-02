@@ -8,7 +8,9 @@ let { src, alt = "" } = Astro.props;
 ---
 
 <div class="doc-image">
-    <img {src} {alt} />
+    <button data-lightbox="doc">
+        <img {src} {alt} />
+    </button>
 </div>
 
 <style lang="scss">
@@ -17,6 +19,10 @@ let { src, alt = "" } = Astro.props;
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        button {
+            display: flex;
+        }
 
         img {
             display: block;

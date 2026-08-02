@@ -2,13 +2,15 @@
 import "$styles/site.scss";
 import "$styles/fonts/lexend.scss";
 import VisitorCounter from "$components/site/visitors/VisitorCounter.svelte";
+import Lightbox from "$components/site/lightbox/Lightbox.svelte";
 
 interface Props {
     title?: string;
     bodyClass?: string;
+    lightbox?: boolean;
 }
 
-let { title, bodyClass } = Astro.props;
+let { title, bodyClass, lightbox = true } = Astro.props;
 ---
 
 <html lang="en">
@@ -25,5 +27,6 @@ let { title, bodyClass } = Astro.props;
     <body class={bodyClass}>
         <VisitorCounter key="paperbark.horse" client:only="svelte" />
         <slot />
+        {lightbox && <Lightbox client:only="svelte" />}
     </body>
 </html>
