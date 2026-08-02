@@ -74,6 +74,9 @@
         if (activity?.type === "music") {
             return "Listening to music";
         }
+        if (activity?.type === "radio") {
+            return "Listening to the radio";
+        }
         if (activity?.type === "finding-music") {
             return "Choosing a song";
         }
@@ -83,7 +86,7 @@
     });
 
     let animation: ComponentProps<typeof ActivityPony>["animation"] = $derived.by(() => {
-        if (activity?.type === "music") {
+        if (activity?.type === "music" || activity?.type === "radio") {
             if (activity.metadata?.["music.high-volume"] === true) {
                 let move = Math.floor(updateTime / 10000) % 2;
 
@@ -158,7 +161,7 @@
             <span class="activity-name">{activityName}</span>
         </div>
         {#if activity}
-            {#if activity.type === "music"}
+            {#if activity.type === "music" && activity.track}
                 <div class="music-playback">
                     <div class="cover-image">
                         <img
@@ -209,6 +212,48 @@
                                 <div class="music-progress-bar"></div>
                             </div>
                         {/if}
+                    </div>
+                </div>
+            {/if}
+            {#if activity.type === "radio" && activity.radio}
+                <div class="music-playback">
+                    <div class="cover-image">
+                        <img
+                            src={activity.track?.cover ??
+                                activity.radio?.cover ??
+                                "/images/default-cover-art.png"}
+                            alt=""
+                            class="cover-image"
+                        />
+                    </div>
+                    <div class="music-info">
+                        <div class="music-details">
+                            {#if activity.track?.title}
+                                <span class="music-title" title={activity.track.title}>
+                                    {activity.track.title}
+                                </span>
+                            {/if}
+                            {#if activity.track?.artist}
+                                <span class="music-artist" title={activity.track.artist}>
+                                    {activity.track.artist}
+                                </span>
+                            {/if}
+                            {#if activity.radio?.name}
+                                <span class="music-album" title={activity.radio?.name}>
+                                    {#if activity.radio?.url}
+                                        <a
+                                            href={activity.radio.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            {activity.radio?.name}
+                                        </a>
+                                    {:else}
+                                        {activity.radio?.name}
+                                    {/if}
+                                </span>
+                            {/if}
+                        </div>
                     </div>
                 </div>
             {/if}
