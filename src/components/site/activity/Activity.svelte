@@ -57,10 +57,10 @@
     let wakeSate: "awake" | "asleep" | "morning" | "evening" = $derived.by(() => {
         let hour = new Date().getUTCHours();
 
-        if (hour >= 1 && hour < 3) {
+        if (hour >= 0 && hour < 2) {
             return "evening";
         }
-        if (hour >= 3 && hour < 11) {
+        if (hour >= 2 && hour < 11) {
             return "asleep";
         }
         if (hour >= 11 && hour < 13) {
