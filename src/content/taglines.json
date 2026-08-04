@@ -685,5 +685,9 @@
         "type": "text",
         "text": "Plenty of playlists!",
         "href": "/playlists"
+    },
+    "158": {
+        "type": "quote",
+        "text": "Even a broken clock is right once a day"
     }
 }
