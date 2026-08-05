@@ -426,7 +426,8 @@
     },
     "95": {
         "type": "text",
-        "text": "Check out my mixtapes!"
+        "text": "Check out my mixtapes!",
+        "href": "/playlists"
     },
     "96": {
         "type": "quote",
@@ -616,47 +617,58 @@
     },
     "141": {
         "type": "quote",
-        "text": "Mysterious wind!"
+        "text": "Mysterious wind!",
+        "href": "https://www.youtube.com/watch?v=mo0vqT84N4I"
     },
     "142": {
         "type": "quote",
-        "text": "Hey guys, I think I found a glue!"
+        "text": "Hey guys, I think I found a glue!",
+        "href": "https://www.youtube.com/watch?v=mo0vqT84N4I"
     },
     "143": {
         "type": "quote",
-        "text": "Flowers blooms in your heart!"
+        "text": "Flowers blooms in your heart!",
+        "href": "https://www.youtube.com/watch?v=mo0vqT84N4I"
     },
     "144": {
         "type": "quote",
-        "text": "All according to plant!"
+        "text": "All according to plant!",
+        "href": "https://www.youtube.com/watch?v=mo0vqT84N4I"
     },
     "145": {
         "type": "quote",
-        "text": "Grown like a turnip!"
+        "text": "Grown like a turnip!",
+        "href": "https://www.youtube.com/watch?v=mo0vqT84N4I"
     },
     "146": {
         "type": "quote",
-        "text": "Leaf it to me!"
+        "text": "Leaf it to me!",
+        "href": "https://www.youtube.com/watch?v=mo0vqT84N4I"
     },
     "147": {
         "type": "quote",
-        "text": "Mini peppers!"
+        "text": "Mini peppers!",
+        "href": "https://www.youtube.com/watch?v=mo0vqT84N4I"
     },
     "148": {
         "type": "quote",
-        "text": "Sorry to keep you waiting!"
+        "text": "Sorry to keep you waiting!",
+        "href": "https://www.youtube.com/watch?v=mo0vqT84N4I"
     },
     "149": {
         "type": "quote",
-        "text": "This guy's your best friend!"
+        "text": "This guy's your best friend!",
+        "href": "https://www.youtube.com/watch?v=mo0vqT84N4I"
     },
     "150": {
         "type": "quote",
-        "text": "What a predictable creature!"
+        "text": "What a predictable creature!",
+        "href": "https://www.youtube.com/watch?v=mo0vqT84N4I"
     },
     "151": {
         "type": "quote",
-        "text": "Jarona!"
+        "text": "Jarona!",
+        "href": "https://www.youtube.com/watch?v=mo0vqT84N4I"
     },
     "152": {
         "type": "quote",
