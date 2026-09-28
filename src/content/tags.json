@@ -5,8 +5,18 @@
     "project": {
         "name": "Project"
     },
+    "game": {
+        "name": "Game"
+    },
     "playlist": {
         "name": "Playlist",
         "infers": ["project"]
+    },
+    "mod": {
+        "name": "Mod",
+        "infers": ["project"]
+    },
+    "lethal-company": {
+        "name": "Lethal Company"
     }
 }
