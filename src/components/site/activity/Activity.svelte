@@ -250,10 +250,10 @@
         );
     });
 
-    let kiaiTime = $derived.by(() => {
+    let partyMode = $derived.by(() => {
         return (
-            (activity?.metadata?.["site.activity.kiai"] === true || (hasTimedActions && hypeMode)) &&
-            activity?.metadata?.["site.activity.ignore-kiai"] !== true
+            (activity?.metadata?.["site.activity.party"] === true || (hasTimedActions && hypeMode)) &&
+            activity?.metadata?.["site.activity.ignore-party"] !== true
         );
     });
 
@@ -320,31 +320,31 @@
 </script>
 
 <div class="activity">
-    {#if kiaiTime}
-        <div class="kiai-effects" transition:fade={{ duration: 1000 }}>
+    {#if partyMode}
+        <div class="party-effects" transition:fade={{ duration: 1000 }}>
             <div
-                class="kiai-light"
+                class="party-light"
                 style:--light-offset="-0s"
                 style:--light-fade-offset="-0s"
                 style:--light-color="hsl(5deg, 100%, 50%)"
             >
-                <div class="kiai-light-beam"></div>
+                <div class="party-light-beam"></div>
             </div>
             <div
-                class="kiai-light"
+                class="party-light"
                 style:--light-offset="-1s"
                 style:--light-fade-offset="-1s"
                 style:--light-color="hsl(130deg, 100%, 50%)"
             >
-                <div class="kiai-light-beam"></div>
+                <div class="party-light-beam"></div>
             </div>
             <div
-                class="kiai-light"
+                class="party-light"
                 style:--light-offset="-2s"
                 style:--light-fade-offset="-2s"
                 style:--light-color="hsl(220deg, 100%, 50%)"
             >
-                <div class="kiai-light-beam"></div>
+                <div class="party-light-beam"></div>
             </div>
         </div>
     {/if}
@@ -795,7 +795,7 @@
         }
     }
 
-    .kiai-effects {
+    .party-effects {
         position: absolute;
         inset: 0;
 
@@ -805,10 +805,10 @@
         pointer-events: none;
     }
 
-    .kiai-light {
+    .party-light {
         mix-blend-mode: hard-light;
 
-        animation-name: kiai-light;
+        animation-name: party-light;
         animation-duration: 3.5s;
         animation-delay: var(--light-fade-offset);
         animation-iteration-count: infinite;
@@ -817,7 +817,7 @@
         animation-fill-mode: both;
     }
 
-    .kiai-light-beam {
+    .party-light-beam {
         position: absolute;
         top: -3rem;
         right: -1rem;
@@ -831,7 +831,7 @@
         clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%);
         pointer-events: none;
 
-        animation-name: kiai-light-beam;
+        animation-name: party-light-beam;
         animation-duration: 1.65s;
         animation-delay: var(--light-offset);
         animation-iteration-count: infinite;
@@ -840,7 +840,7 @@
         animation-fill-mode: both;
     }
 
-    @keyframes kiai-light {
+    @keyframes party-light {
         45% {
             opacity: 0;
         }
@@ -849,7 +849,7 @@
         }
     }
 
-    @keyframes kiai-light-beam {
+    @keyframes party-light-beam {
         0% {
             transform: translate(50%, -50%) rotate(15deg) translate(0, 50%);
         }
