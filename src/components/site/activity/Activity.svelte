@@ -803,6 +803,12 @@
 
         overflow: hidden;
         pointer-events: none;
+
+        @container (width < 550px) {
+            --light-angle-min: 15deg;
+            --light-angle-max: 43deg;
+            --light-beam-size: 25rem;
+        }
     }
 
     .party-light {
@@ -821,7 +827,7 @@
         position: absolute;
         top: -3rem;
         right: -1rem;
-        height: 22rem;
+        height: var(--light-beam-size, 22rem);
         aspect-ratio: 1 / 4;
 
         background: linear-gradient(180deg, var(--light-color), transparent);
@@ -851,10 +857,10 @@
 
     @keyframes party-light-beam {
         0% {
-            transform: translate(50%, -50%) rotate(15deg) translate(0, 50%);
+            transform: translate(50%, -50%) rotate(var(--light-angle-min, 15deg)) translate(0, 50%);
         }
         100% {
-            transform: translate(50%, -50%) rotate(60deg) translate(0, 50%);
+            transform: translate(50%, -50%) rotate(var(--light-angle-max, 60deg)) translate(0, 50%);
         }
     }
 
