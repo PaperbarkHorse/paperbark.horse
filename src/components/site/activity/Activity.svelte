@@ -14,17 +14,11 @@
     let musicProgress = $derived.by(() => {
         if (!activity) return null;
         if (activity.type !== "music") return null;
-        if (!activity.player?.currentTime || !activity.player?.duration) return null;
+        if (!activity.player?.playback) return null;
         if (updateTime <= 0) return null; // Trigger Svelte to re-run every update
 
-        let duration: number = activity.player.duration;
-        let current: number = Math.min(
-            Math.max(
-                Date.now() - activity.player.currentTime.timestamp + activity.player.currentTime.position,
-                0,
-            ),
-            activity.player.duration,
-        );
+        let duration: number = activity.player.playback.end - activity.player.playback.start;
+        let current: number = Math.min(Math.max(Date.now() - activity.player.playback.start, 0), duration);
 
         return {
             current,
