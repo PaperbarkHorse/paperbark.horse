@@ -385,6 +385,20 @@
                                 </div>
                             </div>
                         {/if}
+                        {#if activity.playlist && activity.playlist.cover}
+                            <a
+                                class="playlist-icon"
+                                href={activity.playlist.url}
+                                title={activity.playlist.name}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img
+                                    src={activity.playlist.cover ?? "/images/default-cover-art.png"}
+                                    alt=""
+                                />
+                            </a>
+                        {/if}
                     </div>
                     <div class="music-info">
                         <div class="music-details">
@@ -748,6 +762,43 @@
         img {
             width: 100%;
             height: 100%;
+        }
+    }
+
+    .playlist-icon {
+        position: absolute;
+        bottom: -0.45rem;
+        left: -0.45rem;
+        width: 2.2rem;
+        height: 2.2rem;
+
+        transform: rotate(-5deg);
+
+        transition: 0.2s;
+
+        > img {
+            width: 100%;
+            height: 100%;
+
+            border: 0.15rem solid white;
+            border-radius: 0.2rem;
+
+            filter: drop-shadow(0.12rem 0.12rem 0.2rem rgb(0, 0, 0, 20%));
+
+            transition: 0.2s;
+        }
+
+        &:hover {
+            bottom: -6%;
+            left: -6%;
+            width: 112%;
+            height: 112%;
+            transform: rotate(3deg);
+
+            > img {
+                border: 0.2rem solid white;
+                border-radius: 0.3rem;
+            }
         }
     }
 
