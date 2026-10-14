@@ -372,7 +372,7 @@
                             alt=""
                             class="cover-image"
                         />
-                        {#if activity.metadata?.["music.favourite"] === true}
+                        {#if activity.track?.favourite === true}
                             <div
                                 class="favourite-heart"
                                 style:--heart-pulse-rate={`${favouriteHeartPulseRate}s`}
