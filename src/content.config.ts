@@ -8,8 +8,8 @@ const tagline = defineCollection({
         type: z.enum(["text", "quote", "song"]),
         text: z.string(),
         href: z.string().nullish(),
-        force: z.boolean().default(false),
         comment: z.string().nullish(),
+        festive: z.boolean().default(false),
     }),
 });
 

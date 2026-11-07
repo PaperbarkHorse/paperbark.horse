@@ -1,7 +1,10 @@
 ---
 import Polaroid from "$components/elements/images/Polaroid.astro";
-import Tagline from "$components/site/Tagline.astro";
+import TaglineBanner from "$components/site/TaglineBanner.svelte";
 import TitleSVG from "$assets/paperbark-title.svg";
+import { getCollection } from "astro:content";
+
+const taglines = await getCollection("tagline");
 ---
 
 <div class="site-banner">
@@ -13,7 +16,7 @@ import TitleSVG from "$assets/paperbark-title.svg";
     </div>
     <div class="right">
         <TitleSVG class="title" />
-        <Tagline />
+        <TaglineBanner {taglines} client:only="svelte" />
     </div>
 </div>
 

@@ -4,30 +4,13 @@ import Paper from "$components/containers/Paper.astro";
 import PaperTitle from "$components/elements/text/PaperTitle.astro";
 import NavSection from "$components/navigation/NavSection.astro";
 import NavItem from "$components/navigation/NavItem.astro";
-import StickyNote from "$components/containers/StickyNote.astro";
 import Content from "$components/elements/text/Content.astro";
 import { getCollection } from "astro:content";
+import Tagline from "$components/site/Tagline.svelte";
 
-function prettifyQuote(text: string, type: string): string {
-    if (type === "song") {
-        return `&#9835;&nbsp;${text}&nbsp;&#9835;`;
-    } else if (type === "quote") {
-        return `&ldquo;${text}&rdquo;`;
-    } else {
-        return text;
-    }
-}
-
-const quotes = (await getCollection("tagline"))
-    .toSorted((a, b) => a.id.padStart(5, "0").localeCompare(b.id.padStart(5, "0")))
-    .map((tagline) => {
-        return {
-            id: tagline.id,
-            type: tagline.data.type,
-            text: prettifyQuote(tagline.data.text, tagline.data.type),
-            href: tagline.data.href,
-        };
-    });
+const taglines = (await getCollection("tagline")).toSorted((a, b) =>
+    a.id.padStart(5, "0").localeCompare(b.id.padStart(5, "0")),
+);
 ---
 
 <ContentPage title="Taglines">
@@ -54,22 +37,19 @@ const quotes = (await getCollection("tagline"))
                     video/webpage if you want more context!
                 </p>
                 <p>
-                    Here is the full list of all {quotes.length} taglines that can appear:
+                    Here is the full list of all {taglines.length} taglines that can appear:
                 </p>
                 <p></p>
             </Content>
         </Paper>
         <div class="tagline-list">
             {
-                quotes.map((quote) => (
-                    <a href={quote.href} class="tagline" target="_blank" rel="noreferrer noopener">
-                        <StickyNote padding={false}>
-                            <div class="tagline-inner">
-                                <Fragment set:html={quote.text} />
-                                <code class="id">{quote.id}</code>
-                            </div>
-                        </StickyNote>
-                    </a>
+                taglines.map((tagline) => (
+                    <div class="tagline-inner">
+                        <Tagline {tagline} />
+                        <code class="id">{tagline.id}</code>
+                        <span class="markers">{tagline.data.festive && <span title="Festive">🎄</span>}</span>
+                    </div>
                 ))
             }
         </div>
@@ -87,19 +67,20 @@ const quotes = (await getCollection("tagline"))
     }
 
     .tagline-inner {
-        max-width: 34ch;
-
-        padding: 1.2rem 2.5rem;
-
-        font-weight: var(--font-medium);
-        text-align: center;
-        text-wrap: balance;
-        line-height: 1.25;
+        position: relative;
 
         .id {
             position: absolute;
-            top: 0.2rem;
-            left: 0.25rem;
+            top: 0.1rem;
+            left: 0.2rem;
+            user-select: none;
+        }
+
+        .markers {
+            position: absolute;
+            top: 0.1rem;
+            right: 0.2rem;
+            user-select: none;
         }
     }
 </style>
