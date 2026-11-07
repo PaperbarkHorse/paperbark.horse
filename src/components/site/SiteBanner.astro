@@ -7,6 +7,7 @@ import TitleSVG from "$assets/paperbark-title.svg";
 <div class="site-banner">
     <div class="left">
         <Polaroid src="/images/ocs/paperbark/profile.jpg" angle="-5deg" width="100%" />
+        <img src="/images/festive-hat.png" alt="" id="festive-hat" class="hidden" />
         <button id="boop-target" title="Boop!" class="hidden" tabindex="-1"></button>
         <div id="explosion"></div>
     </div>
@@ -17,6 +18,8 @@ import TitleSVG from "$assets/paperbark-title.svg";
 </div>
 
 <script>
+    import { site } from "../../scripts/site";
+
     const boopTarget = document.getElementById("boop-target");
     const explosion = document.getElementById("explosion");
 
@@ -41,6 +44,10 @@ import TitleSVG from "$assets/paperbark-title.svg";
     if (boopTarget) {
         boopTarget.classList.remove("hidden");
         boopTarget.addEventListener("click", boop);
+    }
+
+    if (site.isFestive()) {
+        document.getElementById("festive-hat")?.classList.remove("hidden");
     }
 
     function boop() {
@@ -196,5 +203,16 @@ import TitleSVG from "$assets/paperbark-title.svg";
         pointer-events: none;
         image-rendering: pixelated;
         z-index: 50;
+    }
+
+    #festive-hat {
+        position: absolute;
+        top: -1%;
+        left: 31%;
+        width: 72%;
+        transform: rotate(17deg);
+
+        pointer-events: none;
+        user-select: none;
     }
 </style>

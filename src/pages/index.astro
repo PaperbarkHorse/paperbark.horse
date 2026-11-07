@@ -15,6 +15,7 @@ import PolaroidGrid from "$components/layouts/polaroid-grid/PolaroidGrid.astro";
 import PolaroidGridItem from "$components/layouts/polaroid-grid/PolaroidGridItem.astro";
 import ActivitySection from "$components/site/activity/ActivitySection.astro";
 import Reactions from "$components/elements/Reactions.astro";
+import Snow from "$components/site/festive/Snow.svelte";
 
 let posts = (await getCollection("post"))
     .filter((post) => post.data.showcase && !post.data.unlisted)
@@ -67,6 +68,10 @@ const buttonSnippet = `<a href="https://paperbark.horse" target="_blank" rel="no
     </Fragment>
 
     <Fragment slot="header">
+        <div id="festive-snow" class="hidden" style="display: contents;">
+            <Snow client:visible />
+        </div>
+
         <SiteBanner />
 
         <!-- <div class="motd">
@@ -192,6 +197,14 @@ const buttonSnippet = `<a href="https://paperbark.horse" target="_blank" rel="no
         </Paper>
     </Fragment>
 </ContentPage>
+
+<script>
+    import { site } from "../scripts/site";
+
+    if (site.isFestive()) {
+        document.getElementById("festive-snow")?.classList.remove("hidden");
+    }
+</script>
 
 <style lang="scss">
     .placeholder-content {

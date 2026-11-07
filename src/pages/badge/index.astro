@@ -6,13 +6,20 @@ import ArrowButton from "$components/elements/buttons/ArrowButton.astro";
 import Paper from "$components/containers/Paper.astro";
 import Content from "$components/elements/text/Content.astro";
 import StickyNote from "$components/containers/StickyNote.astro";
+import Snow from "$components/site/festive/Snow.svelte";
 ---
 
 <Skeleton title="Hello" bodyClass="background-carpet">
     <div class="page">
         <div class="page-content">
+            <div id="festive-snow" class="hidden" style="display: contents;">
+                <Snow client:visible />
+            </div>
             <div class="header">
-                <Polaroid src="/images/ocs/paperbark/profile.jpg" angle="-8deg" />
+                <div class="polaroid-container">
+                    <Polaroid src="/images/ocs/paperbark/profile.jpg" angle="-8deg" />
+                    <img src="/images/festive-hat.png" alt="" id="festive-hat" class="hidden" />
+                </div>
                 <HelloNametag class="hello-nametag" />
             </div>
             <div class="block hidden" id="quasar-message">
@@ -58,10 +65,17 @@ import StickyNote from "$components/containers/StickyNote.astro";
 </Skeleton>
 
 <script>
+    import { site } from "../../scripts/site";
+
     const searchParams = new URLSearchParams(window.location.search);
 
     if (searchParams.has("ref", "quasar")) {
         document.getElementById("quasar-message")?.classList.remove("hidden");
+    }
+
+    if (site.isFestive()) {
+        document.getElementById("festive-hat")?.classList.remove("hidden");
+        document.getElementById("festive-snow")?.classList.remove("hidden");
     }
 </script>
 
@@ -121,5 +135,21 @@ import StickyNote from "$components/containers/StickyNote.astro";
 
         padding-inline: 1rem;
         gap: 1rem;
+    }
+
+    .polaroid-container {
+        position: relative;
+        transform: translateX(5%);
+    }
+
+    #festive-hat {
+        position: absolute;
+        top: -3%;
+        left: 27%;
+        width: 72%;
+        transform: rotate(10deg);
+
+        pointer-events: none;
+        user-select: none;
     }
 </style>
