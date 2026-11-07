@@ -46,7 +46,7 @@ const taglines = (await getCollection("tagline")).toSorted((a, b) =>
             {
                 taglines.map((tagline) => (
                     <div class="tagline-inner">
-                        <Tagline {tagline} />
+                        <Tagline {tagline} client:load />
                         <code class="id">{tagline.id}</code>
                         <span class="markers">{tagline.data.festive && <span title="Festive">🎄</span>}</span>
                     </div>

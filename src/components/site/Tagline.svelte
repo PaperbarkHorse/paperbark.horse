@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { CollectionEntry } from "astro:content";
+    import TaglineSpecialAncientGlade from "./TaglineSpecialAncientGlade.svelte";
 
     let { tagline }: { tagline: CollectionEntry<"tagline"> } = $props();
 </script>
@@ -16,6 +17,11 @@
             {/if}
             {#if tagline.data.type === "song"}
                 <div class="tagline-text">&#9835;&nbsp;{@html tagline.data.text}&nbsp;&#9835;</div>
+            {/if}
+            {#if tagline.data.type === "special-ancient-glade"}
+                <div class="tagline-text">
+                    <TaglineSpecialAncientGlade />
+                </div>
             {/if}
         </div>
     </div>

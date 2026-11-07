@@ -5,7 +5,7 @@ import { defineCollection } from "astro:content";
 const tagline = defineCollection({
     loader: file("./src/content/taglines.json"),
     schema: z.object({
-        type: z.enum(["text", "quote", "song"]),
+        type: z.enum(["text", "quote", "song", "special-ancient-glade"]),
         text: z.string(),
         href: z.string().nullish(),
         comment: z.string().nullish(),

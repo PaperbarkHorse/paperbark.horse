@@ -217,8 +217,8 @@
         "href": "https://www.youtube.com/watch?v=3at_m1J1O4I"
     },
     "47": {
-        "type": "text",
-        "text": "In&nbsp;the&nbsp;ancient&nbsp;glade<br>The&nbsp;quiet&nbsp;shade<br>Across&nbsp;old&nbsp;bark<br>It's&nbsp;always&nbsp;dark"
+        "type": "special-ancient-glade",
+        "text": ""
     },
     "48": {
         "type": "quote",
