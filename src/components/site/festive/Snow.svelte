@@ -121,10 +121,18 @@
     });
 
     function init() {
+        const params = new URLSearchParams(location.search);
+
         canvas.width = window.visualViewport?.width ?? window.innerWidth;
         canvas.height = window.visualViewport?.height ?? window.innerHeight;
 
-        particleCount = Math.ceil(((canvas.width * canvas.height) / (1920 * 1080)) * 400);
+        let particleDensity = 400;
+
+        if (params.has("blizzard")) {
+            particleDensity *= 8;
+        }
+
+        particleCount = Math.ceil(((canvas.width * canvas.height) / (1920 * 1080)) * particleDensity);
 
         particles = [];
         for (let i = 0; i < particleCount; i++) {
