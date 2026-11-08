@@ -4,9 +4,9 @@ import Paper from "$components/containers/Paper.astro";
 import PaperTitle from "$components/elements/text/PaperTitle.astro";
 import NavSection from "$components/navigation/NavSection.astro";
 import NavItem from "$components/navigation/NavItem.astro";
-import Content from "$components/elements/text/Content.astro";
+import Flow from "$components/elements/text/Flow.astro";
 import { getCollection } from "astro:content";
-import Tagline from "$components/site/Tagline.svelte";
+import Tagline from "$components/site/tagline/Tagline.svelte";
 
 const taglines = (await getCollection("tagline")).toSorted((a, b) =>
     a.id.padStart(5, "0").localeCompare(b.id.padStart(5, "0")),
@@ -29,7 +29,7 @@ const taglines = (await getCollection("tagline")).toSorted((a, b) =>
     <Fragment slot="main">
         <Paper>
             <PaperTitle el="h1" title="Taglines" />
-            <Content theme="paper">
+            <Flow>
                 <p>
                     Taglines are the small bits of text which appear under my name in a sticky note
                     <a href="/">on the homepage</a>. Head over there and try giving it a refresh if you don't
@@ -40,7 +40,7 @@ const taglines = (await getCollection("tagline")).toSorted((a, b) =>
                     Here is the full list of all {taglines.length} taglines that can appear:
                 </p>
                 <p></p>
-            </Content>
+            </Flow>
         </Paper>
         <div class="tagline-list">
             {

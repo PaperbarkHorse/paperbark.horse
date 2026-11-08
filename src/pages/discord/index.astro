@@ -1,6 +1,6 @@
 ---
 import Paper from "$components/containers/Paper.astro";
-import Content from "$components/elements/text/Content.astro";
+import Flow from "$components/elements/text/Flow.astro";
 import Page from "$layouts/Page.astro";
 
 import DiscordIcon from "$assets/icons/discord.svg";
@@ -13,14 +13,14 @@ import ArrowButton from "$components/elements/buttons/ArrowButton.astro";
         <Paper>
             <div class="dialog-content">
                 <h1 class="title">Add me on Discord!</h1>
-                <Content theme="paper">
+                <Flow>
                     <ul>
                         <li>Open the Discord app</li>
                         <li>Go to your messages</li>
                         <li>Select "Add Friends"</li>
                         <li>Choose "Add by Username"</li>
                     </ul>
-                </Content>
+                </Flow>
                 <div class="discord-username">
                     <DiscordIcon style="width: 1.8rem;" />
                     <span>PaperbarkHorse</span>

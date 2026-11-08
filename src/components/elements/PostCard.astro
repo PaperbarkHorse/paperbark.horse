@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import ArrowButton from "./buttons/ArrowButton.astro";
-import Content from "./text/Content.astro";
+import Flow from "./text/Flow.astro";
 import type { CollectionEntry } from "astro:content";
 import Reactions from "./Reactions.astro";
 
@@ -48,11 +48,11 @@ let allTags = await getCollection("tag");
         {
             post.data.summary && (
                 <div class="summary">
-                    <Content>
+                    <Flow>
                         {post.data.summary.map((line: string) => (
                             <p>{line}</p>
                         ))}
-                    </Content>
+                    </Flow>
                 </div>
             )
         }

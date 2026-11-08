@@ -7,7 +7,7 @@ import { render } from "astro:content";
 import { getCollection } from "astro:content";
 import Reactions from "$components/elements/Reactions.astro";
 import StickyNote from "$components/containers/StickyNote.astro";
-import Content from "$components/elements/text/Content.astro";
+import Flow from "$components/elements/text/Flow.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
     let posts = await getCollection("post");
@@ -37,7 +37,7 @@ if (post.data.url) {
         <meta property="og:title" content={post.data.title} />
         <meta
             property="og:image"
-            content={new URL(post.data.image ?? "/images/post-default.png", Astro.url)}
+            content={post.data.image?.src ?? new URL("/images/post-default.png", Astro.url).toString()}
         />
         <meta property="og:url" content={Astro.url} />
         <meta property="og:type" content="article" />
@@ -68,14 +68,14 @@ if (post.data.url) {
             post.data.reactions && (
                 <div class="reactions-container">
                     <StickyNote color="yellow">
-                        <Content>
+                        <Flow>
                             <div class="reactions">
                                 <Reactions
                                     settings={{ theme: "outline", theme_color: "rgb(0, 0, 0)" }}
                                     {...post.data.reactions}
                                 />
                             </div>
-                        </Content>
+                        </Flow>
                     </StickyNote>
                 </div>
             )

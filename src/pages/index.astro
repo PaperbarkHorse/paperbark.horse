@@ -5,7 +5,7 @@ import NavItem from "$components/navigation/NavItem.astro";
 import SiteBanner from "$components/site/banner/SiteBanner.astro";
 import Paper from "$components/containers/Paper.astro";
 import PaperTitle from "$components/elements/text/PaperTitle.astro";
-import Content from "$components/elements/text/Content.astro";
+import Flow from "$components/elements/text/Flow.astro";
 import ArrowButton from "$components/elements/buttons/ArrowButton.astro";
 import Hyperlink from "$components/elements/text/Hyperlink.astro";
 import Emoticon from "$components/elements/images/Emoticon.astro";
@@ -76,8 +76,8 @@ const buttonSnippet = `<a href="https://paperbark.horse" target="_blank" rel="no
 
         <!-- <div class="motd">
             <StickyNote color="green">
-                <Content>
-                </Content>
+                <Flow>
+                </Flow>
             </StickyNote>
         </div> -->
     </Fragment>
@@ -85,7 +85,7 @@ const buttonSnippet = `<a href="https://paperbark.horse" target="_blank" rel="no
     <Fragment slot="main">
         <Paper>
             <PaperTitle el="h1" title="Welcome" />
-            <Content>
+            <Flow>
                 <p>
                     Hey there, welcome to my website! This place is still a major work in progress, but I try
                     and add new stuff quite often. Feel free to take a look around, and if you'd like you can
@@ -97,12 +97,12 @@ const buttonSnippet = `<a href="https://paperbark.horse" target="_blank" rel="no
                 <div class="reactions">
                     <Reactions type="manual" iid="4354" />
                 </div>
-            </Content>
+            </Flow>
         </Paper>
         <ActivitySection />
         <Paper>
             <PaperTitle el="h2" title="About" />
-            <Content>
+            <Flow>
                 <ul>
                     <li>Pronouns are "He/Him" or "They/Them"</li>
                     <li>
@@ -117,7 +117,7 @@ const buttonSnippet = `<a href="https://paperbark.horse" target="_blank" rel="no
                     <li>Programmer and AV enthusiast</li>
                     <li>Hugs are 100% encouraged, but please ask first!</li>
                 </ul>
-            </Content>
+            </Flow>
         </Paper>
         <Paper>
             <PaperTitle el="h2" title="The Noticeboard" />
@@ -179,7 +179,7 @@ const buttonSnippet = `<a href="https://paperbark.horse" target="_blank" rel="no
             </div> -->
             <div class="neighbour-cta">
                 <div class="neighbour-cta-content">
-                    <Content>
+                    <Flow>
                         <h3>Add me to your site!</h3>
                         <div class="self-button">
                             <img src="/88x31-button.png" alt="" />
@@ -191,7 +191,7 @@ const buttonSnippet = `<a href="https://paperbark.horse" target="_blank" rel="no
                                 >leave a message</Hyperlink
                             > if you link back to my site, I'd love to see your website too and feature it here!
                         </p>
-                    </Content>
+                    </Flow>
                 </div>
             </div>
         </Paper>

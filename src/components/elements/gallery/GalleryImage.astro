@@ -1,5 +1,5 @@
 ---
-import Content from "$components/elements/text/Content.astro";
+import Flow from "$components/elements/text/Flow.astro";
 
 interface Props {
     src: string;
@@ -13,11 +13,11 @@ let { src } = Astro.props;
         <img {src} alt="" />
     </a>
     <figcaption>
-        <Content theme="paper">
+        <Flow>
             <p>
                 <slot />
             </p>
-        </Content>
+        </Flow>
     </figcaption>
 </figure>
 
