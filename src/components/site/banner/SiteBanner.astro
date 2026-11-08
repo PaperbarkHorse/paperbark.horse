@@ -1,6 +1,6 @@
 ---
 import Polaroid from "$components/elements/images/Polaroid.astro";
-import TaglineBanner from "$components/site/TaglineBanner.svelte";
+import TaglineBanner from "$components/site/tagline/TaglineBanner.svelte";
 import TitleSVG from "$assets/paperbark-title.svg";
 import { getCollection } from "astro:content";
 
@@ -21,7 +21,7 @@ const taglines = await getCollection("tagline");
 </div>
 
 <script>
-    import { site } from "../../scripts/site";
+    import { site } from "../../../scripts/site";
 
     const boopTarget = document.getElementById("boop-target");
     const explosion = document.getElementById("explosion");

@@ -2,7 +2,7 @@
     import type { CollectionEntry } from "astro:content";
     import Tagline from "./Tagline.svelte";
     import { onMount } from "svelte";
-    import { site } from "../../scripts/site";
+    import { site } from "../../../scripts/site";
 
     let { taglines }: { taglines: CollectionEntry<"tagline">[] } = $props();
 
