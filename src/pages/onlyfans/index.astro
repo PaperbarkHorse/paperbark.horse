@@ -1,19 +1,29 @@
 ---
+import Paper from "$components/containers/Paper.astro";
+import ArrowButton from "$components/elements/buttons/ArrowButton.astro";
+import Flow from "$components/elements/text/Flow.astro";
 import Page from "$layouts/Page.astro";
 ---
 
-<Page title="OnlyFans" navigation={false} footer={false}>
+<Page title="Only Fans" navigation={false} footer={false}>
     <div class="dialog">
-        <div class="fan-container">
-            <div class="paperbark">
-                <img src="/images/paperbark-fan-dance.gif" alt="" style="image-rendering: pixelated;" />
-                <div class="shadow"></div>
-            </div>
-            <div class="fan">
-                <img src="/images/fan.gif" alt="" />
-                <div class="shadow"></div>
-            </div>
-        </div>
+        <Paper>
+            <Flow>
+                <div class="fan-container">
+                    <div class="paperbark">
+                        <div class="shadow"></div>
+                        <img src="/images/paperbark-fan-dance.gif" alt="" style="image-rendering: pixelated;" />
+                    </div>
+                    <div class="fan">
+                        <div class="shadow"></div>
+                        <img src="/images/fan.gif" alt="" />
+                    </div>
+                </div>
+                <div class="button-container" style="justify-content: center;">
+                    <ArrowButton direction="backwards" href="/">Return Home</ArrowButton>
+                </div>
+            </Flow>
+        </Paper>
     </div>
 </Page>
 
@@ -36,6 +46,7 @@ import Page from "$layouts/Page.astro";
         grid-template-columns: 5fr 6fr;
         align-items: center;
         max-width: 28rem;
+        isolation: isolate;
 
         .paperbark, .fan {
             position: relative;
@@ -45,25 +56,29 @@ import Page from "$layouts/Page.astro";
             width: 100%;
         }
 
+        .fan {
+            margin-right: 7%;
+        }
+
         .shadow {
             position: absolute;
-            background-color: rgba(0, 0, 0, 20%);
+            background-color: rgba(0, 0, 0, 12%);
             border-radius: 50%;
             z-index: -1;
         }
 
         .paperbark .shadow {
-            left: 10%;
-            right: 5%;
+            left: 6%;
+            right: 6%;
             bottom: -5%;
             height: 20%;
         }
 
         .fan .shadow {
-            left: 40%;
-            right: -5%;
-            bottom: 1%;
-            height: 19%;
+            left: 40.5%;
+            right: -4%;
+            bottom: 0%;
+            height: 22%;
         }
     }
 </style>
