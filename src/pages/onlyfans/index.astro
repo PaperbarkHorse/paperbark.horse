@@ -1,0 +1,69 @@
+---
+import Page from "$layouts/Page.astro";
+---
+
+<Page title="Discord" navigation={false} footer={false}>
+    <div class="dialog">
+        <div class="fan-container">
+            <div class="paperbark">
+                <img src="/images/paperbark-fan-dance.gif" alt="" style="image-rendering: pixelated;" />
+                <div class="shadow"></div>
+            </div>
+            <div class="fan">
+                <img src="/images/fan.gif" alt="" />
+                <div class="shadow"></div>
+            </div>
+        </div>
+    </div>
+</Page>
+
+<style lang="scss">
+    .dialog {
+        min-height: 100svh;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        gap: 2rem;
+
+        padding: 1rem;
+    }
+
+    .fan-container {
+        display: grid;
+        grid-template-columns: 5fr 6fr;
+        align-items: center;
+        max-width: 28rem;
+
+        .paperbark, .fan {
+            position: relative;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .shadow {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 20%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .paperbark .shadow {
+            left: 10%;
+            right: 5%;
+            bottom: -5%;
+            height: 20%;
+        }
+
+        .fan .shadow {
+            left: 40%;
+            right: -5%;
+            bottom: 1%;
+            height: 19%;
+        }
+    }
+</style>
