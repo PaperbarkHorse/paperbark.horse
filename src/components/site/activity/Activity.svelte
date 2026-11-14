@@ -107,6 +107,9 @@
         if (activity.type === "music-production") {
             return "Making music";
         }
+        if (activity.type === "event") {
+            return "At an event";
+        }
 
         console.warn(`Unknown activity type ${activity.type}`);
         return "Up to mischief";
@@ -517,8 +520,11 @@
                     </div>
                 </div>
             {/if}
+            {#if activity?.metadata?.["site.activity.info"]}
+                <div class="info">{activity.metadata["site.activity.info"]}</div>
+            {/if}
         {:else}
-            <div class="offline-info">
+            <div class="info">
                 I'm offline right now. Check back later when I'm doing something more interesting!
             </div>
         {/if}
@@ -583,7 +589,7 @@
         width: 100%;
     }
 
-    .offline-info {
+    .info {
         line-height: 1.25;
     }
 
