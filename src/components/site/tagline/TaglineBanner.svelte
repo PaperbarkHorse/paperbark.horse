@@ -2,7 +2,6 @@
     import type { CollectionEntry } from "astro:content";
     import Tagline from "./Tagline.svelte";
     import { onMount } from "svelte";
-    import { site } from "../../../scripts/site";
 
     let { taglines }: { taglines: CollectionEntry<"tagline">[] } = $props();
 
@@ -46,6 +45,9 @@
 
         if (unseenTaglines.length > 0) {
             tagline = unseenTaglines[Math.floor(Math.random() * unseenTaglines.length)];
+
+            seenTaglines.push(tagline.id);
+            localStorage.setItem("taglines-seen", JSON.stringify(seenTaglines));
         }
     });
 </script>
