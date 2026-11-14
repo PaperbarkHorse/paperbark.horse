@@ -7,12 +7,14 @@ import Paper from "$components/containers/Paper.astro";
 import Flow from "$components/elements/text/Flow.astro";
 import StickyNote from "$components/containers/StickyNote.astro";
 import Snow from "$components/site/festive/Snow.svelte";
+import FestiveLights from "$components/site/festive/FestiveLights.svelte";
 ---
 
 <Skeleton title="Hello" bodyClass="background-carpet">
     <div class="page">
         <div class="page-content">
             <div id="festive-snow" class="hidden" style="display: contents;">
+                <FestiveLights client:visible />
                 <Snow client:visible />
             </div>
             <div class="header">
@@ -46,7 +48,7 @@ import Snow from "$components/site/festive/Snow.svelte";
                             <li>
                                 My pronouns are <strong>He/Him</strong> or <strong>They/Them</strong>
                             </li>
-                            <li>Very shy, but friendly!</li>
+                            <li>Very shy, but happy to chat!</li>
                             <li>Hugs are welcome, but remember to ask first.</li>
                             <li>Please be gentle with me, loud and busy spaces can be overwhelming.</li>
                         </ul>

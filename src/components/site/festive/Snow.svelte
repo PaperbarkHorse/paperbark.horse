@@ -38,6 +38,8 @@
             let delta = now - lastTime;
             lastTime = now;
 
+            if (delta === 0 || delta >= 1) return;
+
             let width = canvas.width;
             let height = canvas.height;
 

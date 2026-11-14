@@ -16,6 +16,7 @@ import PolaroidGridItem from "$components/layouts/polaroid-grid/PolaroidGridItem
 import ActivitySection from "$components/site/activity/ActivitySection.astro";
 import Reactions from "$components/elements/Reactions.astro";
 import Snow from "$components/site/festive/Snow.svelte";
+import FestiveLights from "$components/site/festive/FestiveLights.svelte";
 
 let posts = (await getCollection("post"))
     .filter((post) => post.data.showcase && !post.data.unlisted)
@@ -70,6 +71,7 @@ const buttonSnippet = `<a href="https://paperbark.horse" target="_blank" rel="no
     <Fragment slot="header">
         <div id="festive-snow" class="hidden" style="display: contents;">
             <Snow client:visible />
+            <FestiveLights client:visible />
         </div>
 
         <SiteBanner />
